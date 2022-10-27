@@ -15,9 +15,16 @@
 
 using namespace std;
 
-struct studentComparator {
+struct studentComparatorAlpha1 {
     bool operator()(Student *s1, Student *s2) {
         if (s1->get_studentCode() != s2->get_studentCode()) return (s1->get_studentName() < s2->get_studentName());
+        return false;
+    }
+};
+
+struct studentComparatorAlpha2 {
+    bool operator()(Student *s1, Student *s2) {
+        if (s1->get_studentCode() != s2->get_studentCode()) return (s2->get_studentName() < s1->get_studentName());
         return false;
     }
 };
@@ -30,13 +37,15 @@ struct ucClassComparator {
 
 class Data{
 private:
-    set<Student* , studentComparator> students_;
+    set<Student* , studentComparatorAlpha1> students_;
+    //set<Student* , studentComparatorAlpha2> studentsA2_;
     vector<UCClass*> ucClasses_;
     queue<Request*> requests_;//como vai ser o request? pedidos únicos ou pode querer trocar várias aulas ao mm tempo
 public:
 
     //getters
-    set<Student *, studentComparator> get_students();
+    set<Student *, studentComparatorAlpha1> get_studentsA1();
+    set<Student *, studentComparatorAlpha2> get_studentsA2();
     vector<UCClass*> get_ucClasses();
     queue<Request*> get_requests();
 
@@ -54,6 +63,9 @@ public:
     //request methods;
     void guardarPedidos();
     void processRequests();
+
+
+    set<Student* , studentComparatorAlpha2> alphaZ(Data d);
 
 };
 

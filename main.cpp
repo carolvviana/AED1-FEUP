@@ -15,9 +15,11 @@ int main(){
             cout << lecture.get_weekDay() << ',' << lecture.get_startHour() << ',' << lecture.get_duration() << ',' << lecture.get_type() << ',' << endl;
     }
          }
-/*
+
+
 d.readFile_students_classes("C:\\AED\\Projeto1\\csv\\students_classes.csv");
-for (auto student : d.get_students()){
+/*
+    for (auto student : d.get_students()){
    cout << student->get_studentName() << ',' << student->get_studentCode() << ',';
    for (auto ucclass : student->get_classes()){
    cout << ucclass.get_classCode() << ',' << ucclass.get_ucCode() << "| ";
@@ -25,6 +27,10 @@ for (auto student : d.get_students()){
    cout << endl;
 }
  */
+    set<Student* , studentComparatorAlpha2> aux = d.Data::alphaZ(d);
+    for (auto student : aux) {
+        cout << student->get_studentName() << ',' << student->get_studentCode() << endl;
+    }
 /*
 Student student = Student("Carol", 123);
 UCClass uc1 = UCClass("amat", "turma1");
