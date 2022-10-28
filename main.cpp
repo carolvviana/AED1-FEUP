@@ -1,11 +1,12 @@
 #include <iostream>
 #include "Data.h"
+#include "SortStudents.cpp"
 using namespace std;
 int main(){
     Data d = Data();
 
-    d.readFile_classes_per_uc("C:\\AED\\Projeto1\\csv\\classes_per_uc.csv");
-    d.readFile_classes("C:\\AED\\Projeto1\\csv\\classes.csv");
+    d.readFile_classes_per_uc("C:\\Users\\carol\\AEDP1\\AED-Project1_v2\\AED-Project1.v2\\csv\\classes_per_uc.csv");
+    d.readFile_classes("C:\\Users\\carol\\AEDP1\\AED-Project1_v2\\AED-Project1.v2\\csv\\classes.csv");
 
 
 
@@ -17,7 +18,7 @@ int main(){
          }
 
 
-d.readFile_students_classes("C:\\AED\\Projeto1\\csv\\students_classes.csv");
+d.readFile_students_classes("C:\\Users\\carol\\AEDP1\\AED-Project1_v2\\AED-Project1.v2\\csv\\students_classes.csv");
 /*
     for (auto student : d.get_students()){
    cout << student->get_studentName() << ',' << student->get_studentCode() << ',';
@@ -27,8 +28,16 @@ d.readFile_students_classes("C:\\AED\\Projeto1\\csv\\students_classes.csv");
    cout << endl;
 }
  */
-    set<Student* , studentComparatorAlpha2> aux = d.Data::alphaZ(d);
+    set<Student* , studentComparatorAlpha2> aux = alphaZ(d);
     for (auto student : aux) {
+        cout << student->get_studentName() << ',' << student->get_studentCode() << endl;
+    }
+    set<Student* , studentCodeComparator> auxi = numb(d);
+    for (auto student : auxi) {
+        cout << student->get_studentName() << ',' << student->get_studentCode() << endl;
+    }
+    set<Student* , studentCodeComparatorInv> auxil = numbInv(d);
+    for (auto student : auxil) {
         cout << student->get_studentName() << ',' << student->get_studentCode() << endl;
     }
 /*

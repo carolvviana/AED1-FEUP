@@ -9,7 +9,7 @@
 #include <list>
 #include <iostream>
 #include "Lecture.h"
-//#include "Student.h" não posso fazer isto
+//#include "Student.h"
 
 
 using namespace std;

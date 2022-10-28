@@ -4,8 +4,7 @@
 
 
 
-set<Student *, studentComparatorAlpha1> Data :: get_studentsA1(){return students_;}
-//set<Student *, studentComparatorAlpha2> Data :: get_studentsA2(){return studentsA2_;}
+set<Student *, studentComparatorAlpha1> Data :: get_students(){return students_;}
 vector<UCClass*> Data :: get_ucClasses(){return ucClasses_;} //passar paara set
 queue<Request*> Data :: get_requests(){return requests_;}
 /*
@@ -151,13 +150,4 @@ void Data :: readFile_students_classes(string fname){
         }
     }
     else cout<<"Could not open the file\n";
-}
-
-set<Student* , studentComparatorAlpha2> Data :: alphaZ(Data d){
-    set<Student* , studentComparatorAlpha2> studentsA2;
-    for(Student* p :students_) studentsA2.insert(p);
-    return studentsA2;
-    //for (Student *stu : studentsA2){
-    //    cout << stu->get_studentName() <<','<<stu->get_studentCode();
-    //}
 }
