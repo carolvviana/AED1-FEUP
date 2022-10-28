@@ -10,6 +10,9 @@
 #include "UCClass.h"
 
 using namespace std;
+
+class UCClass;
+
 class Student{
 private:
     string studentName_;

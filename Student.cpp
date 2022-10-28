@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "Student.h"
+#include "UCClass.h"
 
 using namespace std;
 

@@ -139,6 +139,9 @@ void Data :: readFile_students_classes(string fname){
                 student->add_class(ucClass);
                 students_.insert(student);
             }
+
+            //FOI AQUI QUE ALTERÁMOS
+            ucClass->add_student(student);
             /*
 
 

@@ -40,15 +40,11 @@ d.readFile_students_classes("csv/students_classes.csv");
     for (auto student : auxil) {
         cout << student->get_studentName() << ',' << student->get_studentCode() << endl;
     }
-/*
-Student student = Student("Carol", 123);
-UCClass uc1 = UCClass("amat", "turma1");
-UCClass uc2 = UCClass("fis", "turma3");
-student.add_class(uc1);
-student.add_class(uc2);
-cout << student.get_studentName() << ' ' << student.get_studentCode() << ' ' ;
-for (auto classe : student.get_classes())
-   cout << classe.get_classCode() << ' ' << classe.get_ucCode() << endl;
-*/
+
+    cout << "==================================TENTATIVA DA SOFIA E GUI=============" << endl;
+    UCClass* ucclass = d.get_ucClasses()[0];
+    for (Student* student : ucclass->get_students()) {
+        cout << student->get_studentName() << endl;
+    }
     return 0;
 }
