@@ -5,7 +5,7 @@ using namespace std;
 int main(){
     Data d = Data();
 
-    d.readFile_classes_per_uc("C:\\Users\\carol\\AEDP1\\AED-Project1_v2\\AED-Project1.v2\\csv\\classes_per_uc.csv");
+    //d.readFile_classes_per_uc("C:\\Users\\carol\\AEDP1\\AED-Project1_v2\\AED-Project1.v2\\csv\\classes_per_uc.csv");
     d.readFile_classes("C:\\Users\\carol\\AEDP1\\AED-Project1_v2\\AED-Project1.v2\\csv\\classes.csv");
 
 
@@ -13,7 +13,7 @@ int main(){
     for ( int i= 0; i < d.get_ucClasses().size(); i++){
         cout << d.get_ucClasses()[i]->get_ucCode() << ',' << d.get_ucClasses()[i]->get_classCode() << endl;
         for (auto lecture : d.get_ucClasses()[i]->get_lectures()){
-            cout << lecture.get_weekDay() << ',' << lecture.get_startHour() << ',' << lecture.get_duration() << ',' << lecture.get_type() << ',' << endl;
+            cout << lecture->get_weekDay() << ',' << lecture->get_startHour() << ',' << lecture->get_duration() << ',' << lecture->get_type() << ',' << endl;
     }
          }
 

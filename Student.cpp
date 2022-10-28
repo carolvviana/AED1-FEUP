@@ -12,11 +12,11 @@ Student :: Student(const Student& student){studentName_ = student.studentName_; 
 void Student :: set_studentName(string studentName){studentName_ = studentName;}
 void Student :: set_studentCode(int studentCode){studentCode_ = studentCode;}
 
-void Student ::add_class(UCClass ucClass) {classes_.push_back(ucClass);}
+void Student ::add_class(UCClass* ucClass) {classes_.push_back(ucClass);}
 
 string Student :: get_studentName(){return studentName_;}
 int Student :: get_studentCode(){return studentCode_;}
-vector<UCClass> Student :: get_classes(){return classes_;};
+vector<UCClass*> Student :: get_classes(){return classes_;};
 /* //isto não é preciso
 bool Student :: operator<(const Student& stu) const{
     return (studentCode_ < stu.studentCode_);

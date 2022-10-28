@@ -1,8 +1,4 @@
-
 #include "Data.h"
-
-
-
 
 set<Student *, studentComparatorAlpha1> Data :: get_students(){return students_;}
 vector<UCClass*> Data :: get_ucClasses(){return ucClasses_;} //passar paara set
@@ -19,6 +15,7 @@ void Data :: readFile() {
     readFile_students_classes();
 }
 */
+/*
 //criar as turmas
 void Data :: readFile_classes_per_uc(string fname) {
     //variables
@@ -52,7 +49,7 @@ void Data :: readFile_classes_per_uc(string fname) {
     }
     else cout<<"Could not open the file\n";
 }
-
+*/
 //adiciona os horários de cada turma
 void Data :: readFile_classes(string fname){
     //variables
@@ -83,15 +80,22 @@ void Data :: readFile_classes(string fname){
             v.clear();
 
             UCClass *uc = new UCClass(ucCode, classCode);
-            Lecture lecture = Lecture(weekday, startHour, duration, type);
+            Lecture *lecture = new Lecture(weekday, startHour, duration, type);
+
             string uccode = uc->get_ucCode();
             string classcode = uc->get_classCode();
             auto it = find_if(ucClasses_.begin(), ucClasses_.end(), [uccode, classcode](
                     UCClass *uc2)->bool {return (uc2->get_ucCode() == uccode && uc2->get_classCode() == classcode );}); // find(students_.begin();students_.end(),student)
+
             if (it != ucClasses_.end()) {
                 uc = *it;
                 uc->add_lecture(lecture);
             }
+            else{
+                uc->add_lecture(lecture);
+                ucClasses_.push_back(uc);
+            }
+
         }
     }
     else cout<<"Could not open the file\n";
@@ -122,7 +126,7 @@ void Data :: readFile_students_classes(string fname){
             v.clear();
 
             Student *student = new Student(studentName, studentCode);
-            UCClass ucClass = UCClass(ucCode, classCode);
+            UCClass *ucClass = new UCClass(ucCode, classCode);
 
             //temos que ir buscar a info da ucclass ao container completo
             auto it = students_.find(student); // find(students_.begin();students_.end(),student)

@@ -18,7 +18,7 @@ class UCClass{ //turma
 private:
     string ucCode_;
     string classCode_;
-    vector<Lecture> lectures_;
+    vector<Lecture*> lectures_;
     //lista de estudantes
 
 public:
@@ -30,12 +30,12 @@ public:
     void set_ucCode(string ucCode);
     void set_classCode(string classCode);
 
-    void add_lecture(Lecture lecture);
+    void add_lecture(Lecture* lecture);
 
     //getters
     string get_ucCode();
     string get_classCode();
-    vector<Lecture> get_lectures(); //pair
+    vector<Lecture*> get_lectures(); //pair
 
     //overloads
     bool operator== (const UCClass& ucc) const;

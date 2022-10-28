@@ -14,7 +14,7 @@ class Student{
 private:
     string studentName_;
     int studentCode_;
-    vector<UCClass> classes_;
+    vector<UCClass*> classes_;
 
 public:
     //constructors
@@ -27,12 +27,12 @@ public:
     void set_studentName(string studentName);
     void set_studentCode(int studentCode);
 
-    void add_class(UCClass ucClass);
+    void add_class(UCClass* ucClass);
 
     //getters
     string get_studentName();
     int get_studentCode();
-    vector <UCClass> get_classes();
+    vector <UCClass*> get_classes();
 
     //overloads
     bool operator<(const Student& stu) const;
