@@ -10,12 +10,16 @@ struct studentComparatorAlpha2 {
 };
 struct studentCodeComparator {
     bool operator()(Student *s1, Student *s2) {
-        if (s1->get_studentCode() != s2->get_studentCode()) return (s1->get_studentCode() < s2->get_studentCode());
+        if (s1->get_studentCode() != s2->get_studentCode())
+            return (s1->get_studentCode() < s2->get_studentCode());
+        return false;
     }
 };
 struct studentCodeComparatorInv {
     bool operator()(Student *s1, Student *s2) {
-        if (s1->get_studentCode() != s2->get_studentCode()) return (s2->get_studentCode() < s1->get_studentCode());
+        if (s1->get_studentCode() != s2->get_studentCode())
+            return (s2->get_studentCode() < s1->get_studentCode());
+        return false;
     }
 };
 
