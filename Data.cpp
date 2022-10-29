@@ -1,7 +1,7 @@
 #include "Data.h"
 
 set<Student *, studentComparatorAlpha1> Data :: get_students(){return students_;}
-vector<UCClass*> Data :: get_ucClasses(){return ucClasses_;} //passar paara set
+vector<UCClass*> Data :: get_ucClasses(){return ucClasses_;} //passar para set
 queue<Request*> Data :: get_requests(){return requests_;}
 /*
 void Data :: add_ucClasses(UCClass* p){
@@ -128,11 +128,23 @@ void Data :: readFile_students_classes(string fname){
             Student *student = new Student(studentName, studentCode);
             UCClass *ucClass = new UCClass(ucCode, classCode);
 
-            //temos que ir buscar a info da ucclass ao container completo
-            auto it = students_.find(student); // find(students_.begin();students_.end(),student)
-            if (it != students_.end()){
+
+            string uccode = ucClass->get_ucCode();
+            string classcode = ucClass->get_classCode();
+            //fomos buscar a info da ucclass ao container completo:
+            auto itu = find_if(ucClasses_.begin(), ucClasses_.end(), [uccode, classcode](
+                    UCClass *uc2)->bool {return (uc2->get_ucCode() == uccode && uc2->get_classCode() == classcode );});
+
+            if(itu != ucClasses_.end()){
+                ucClass = *itu;
+            }
+
+            //adicionar novo student ou adicionar info ao student já existente
+            auto its = students_.find(student); // find(students_.begin();students_.end(),student)
+
+            if (its!= students_.end()){
                 // adicionar turmas
-                student = *it; // ir buscar estudante ja inicializado
+                student = *its; // ir buscar estudante ja inicializado
                 student->add_class(ucClass);
             }
             else {
@@ -142,18 +154,7 @@ void Data :: readFile_students_classes(string fname){
 
             //FOI AQUI QUE ALTERÁMOS
             ucClass->add_student(student);
-            /*
 
-
-            if (student.get_classes().empty()) student.add_class(ucClass);
-
-            auto it = find(student.get_classes().begin(), student.get_classes().end(), ucClass);
-            if ( it != student.get_classes().end()){
-                student.add_class(ucClass);}
-            student.add_class(ucClass);
-
-            students_.insert(student);
-             */
         }
     }
     else cout<<"Could not open the file\n";

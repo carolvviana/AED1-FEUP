@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Data.h"
 #include "SortStudents.cpp"
+#include "Counters.cpp"
 using namespace std;
 int main(){
     Data d = Data();
@@ -41,10 +42,14 @@ d.readFile_students_classes("csv/students_classes.csv");
         cout << student->get_studentName() << ',' << student->get_studentCode() << endl;
     }
 
-    cout << "==================================TENTATIVA DA SOFIA E GUI=============" << endl;
+    cout << "===========TENTATIVA DA SOFIA E GUI:" << endl;
     UCClass* ucclass = d.get_ucClasses()[0];
     for (Student* student : ucclass->get_students()) {
         cout << student->get_studentName() << endl;
     }
+
+    cout << "=========COUNTER TURMA: (funciona)" << endl << counterTurma(*ucclass) << endl;
+
+    cout <<"==========COUNTER YEAR: (funciona)" << endl << counterYear(1, d);
     return 0;
 }

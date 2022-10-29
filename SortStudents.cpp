@@ -23,7 +23,7 @@ struct studentCodeComparatorInv {
     }
 };
 
-
+//não faria mais sentido as funções receberem um set ?
 set<Student* , studentComparatorAlpha2> alphaZ(Data d){
     set<Student* , studentComparatorAlpha2> studentsA2;
     for(Student* p :d.get_students()) studentsA2.insert(p);
@@ -45,3 +45,21 @@ set<Student* , studentCodeComparatorInv> numbInv(Data d){
 
 //create function that shows student beautifully
 //função que mostra numero /nome de estudantes com menos/mais de N cadeiras
+
+//SORTERS PARA LISTAS DE ESTUDANTES
+
+bool lAlphaA (Student* s1, Student* s2){
+    return s1->get_studentName()<s2->get_studentName();
+}
+
+bool lAlphaZ (Student* s1, Student* s2){
+    return s1->get_studentName()>s2->get_studentName();
+}
+
+bool lNumbInv (Student* s1, Student* s2){
+    return s1->get_studentCode()>s2->get_studentCode();
+}
+
+bool lNumb (Student* s1, Student* s2){
+    return s1->get_studentCode()<s2->get_studentCode();
+}
