@@ -2,14 +2,15 @@
 #include "Data.h"
 #include "SortStudents.cpp"
 #include "Counters.cpp"
+#include "Timetables.cpp"
 using namespace std;
 int main(){
     Data d = Data();
 
     //d.readFile_classes_per_uc("C:\\Users\\carol\\AEDP1\\AED-Project1_v2\\AED-Project1.v2\\csv\\classes_per_uc.csv");
-    d.readFile_classes("csv/classes.csv");
+    d.readFile_classes("C:\\Users\\carol\\AEDP1\\AED-Project1_v2\\AED-Project1.v2\\csv\\classes.csv");
 
-
+/*
 
     for ( int i= 0; i < d.get_ucClasses().size(); i++){
         cout << d.get_ucClasses()[i]->get_ucCode() << ',' << d.get_ucClasses()[i]->get_classCode() << endl;
@@ -17,9 +18,9 @@ int main(){
             cout << lecture->get_weekDay() << ',' << lecture->get_startHour() << ',' << lecture->get_duration() << ',' << lecture->get_type() << ',' << endl;
     }
          }
+*/
 
-
-d.readFile_students_classes("csv/students_classes.csv");
+d.readFile_students_classes("C:\\Users\\carol\\AEDP1\\AED-Project1_v2\\AED-Project1.v2\\csv\\students_classes.csv");
 /*
     for (auto student : d.get_students()){
    cout << student->get_studentName() << ',' << student->get_studentCode() << ',';
@@ -28,7 +29,7 @@ d.readFile_students_classes("csv/students_classes.csv");
    }
    cout << endl;
 }
- */
+ */ /*
     set<Student* , studentComparatorAlpha2> aux = alphaZ(d);
     for (auto student : aux) {
         cout << student->get_studentName() << ',' << student->get_studentCode() << endl;
@@ -50,6 +51,9 @@ d.readFile_students_classes("csv/students_classes.csv");
 
     cout << "=========COUNTER TURMA: (funciona)" << endl << counterTurma(*ucclass) << endl;
 
-    cout <<"==========COUNTER YEAR: (funciona)" << endl << counterYear(1, d);
+    cout <<"==========COUNTER YEAR: (funciona)" << endl << counterYear(1, d);*/
+
+    student_timetable(*(d.get_students().begin()));
+
     return 0;
 }
