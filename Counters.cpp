@@ -15,7 +15,8 @@
 //LISTAGENS DE ESTUDANTES
  //=================TO BE CHECKED, após interface e atenção à Data d que as funcs recebem
 
-
+//os counter podem ser só sizes da lista...
+//por isso os métodos podem criar só as listas
 
 pair<list<Student*>, int> methodsTurma(UCClass ucC){
     pair<list<Student*>, int> p1;
@@ -82,3 +83,5 @@ int counterYear(char number, Data d){
 int counterUC(string uc, Data d){
     return methodsUC(uc, d).second;
 }
+
+//PRINTS ÀS LISTAS
