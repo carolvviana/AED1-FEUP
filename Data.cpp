@@ -3,11 +3,7 @@
 set<Student *, studentComparatorAlpha1> Data :: get_students(){return students_;}
 vector<UCClass*> Data :: get_ucClasses(){return ucClasses_;} //passar para set
 queue<Request*> Data :: get_requests(){return requests_;}
-/*
-void Data :: add_ucClasses(UCClass* p){
-    ucClasses_.push_back(p);
-}
-*/
+
 /*
 void Data :: readFile() {
     readFile_classes_per_uc();
@@ -15,41 +11,12 @@ void Data :: readFile() {
     readFile_students_classes();
 }
 */
-/*
-//criar as turmas
-void Data :: readFile_classes_per_uc(string fname) {
-    //variables
-    string ucCode, classCode;
-    vector<string> v;
 
-    //open file
-    ifstream input(fname);
-    if (input.is_open()) {
-
-        //divide file in lines
-        string line;
-        getline(input, line); //skips first line
-        while ( getline(input, line)) {
-            stringstream iss(line);
-
-            //divide line in tokens;
-            string token;
-            while ( getline(iss,token, ',')) {v.push_back(token);} //assign tokens to vector
-
-            //assign tokens to the correct variables
-            ucCode = v[0]; classCode = v[1];
-            v.clear();
-
-            //create UCClass w/ the data and add it to the vector
-            //vector is sorted, due to the way csv is arranjed.
-            UCClass *uc = new UCClass(ucCode, classCode);
-
-            ucClasses_.push_back(uc);
-        }
-    }
-    else cout<<"Could not open the file\n";
-}
-*/
+/**
+ * Função lê o ficheiro "classes.csv" e cria os objetos do tipo UCClass e Lecture.
+ *
+ * COMPLEXIDADE: O(n^2).
+ */
 //adiciona os horários de cada turma
 void Data :: readFile_classes(string fname){
     //variables
