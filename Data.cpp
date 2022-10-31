@@ -159,3 +159,47 @@ void Data :: readFile_students_classes(string fname){
     }
     else cout<<"Could not open the file\n";
 }
+void Data ::uc_timetable(string uccode) {
+    vector<Lecture*> lectures;
+    vector<tuple<string,Lecture>> monday;
+    vector<tuple<string,Lecture>> tuesday;
+    vector<tuple<string,Lecture>> wednesday;
+    vector<tuple<string,Lecture>> thursday;
+    vector<tuple<string,Lecture>> friday;
+    for (UCClass* uc: ucClasses_) {
+        if (uccode == uc->get_ucCode()){
+            for (Lecture* l: uc->get_lectures()){
+
+            }
+        }
+        for (Lecture *lec: uc->get_lectures()){
+            tuple<string,Lecture> par(uc->get_ucCode(), *lec);
+            if (lec->get_weekDay() == "Monday") monday.push_back(par);
+            if (lec->get_weekDay() == "Tuesday") tuesday.push_back(par);
+            if (lec->get_weekDay() == "Wednesday") wednesday.push_back(par);
+            if (lec->get_weekDay() == "Thursday") thursday.push_back(par);
+            if (lec->get_weekDay() == "Friday") friday.push_back(par);
+        }
+    }
+    sort(monday.begin(), monday.end(), sorted_vector());
+    sort(tuesday.begin(), tuesday.end(), sorted_vector());
+    sort(wednesday.begin(), wednesday.end(), sorted_vector());
+    sort(thursday.begin(), thursday.end(), sorted_vector());
+    sort(friday.begin(), friday.end(), sorted_vector());
+
+    cout << "MONDAY" << endl;
+    cout_tt (monday);
+    cout << '\n';
+    cout << "TUESDAY" << endl;
+    cout_tt (tuesday);
+    cout << '\n';
+    cout << "WEDNESDAY" << endl;
+    cout_tt (wednesday);
+    cout << '\n';
+    cout << "THURSDAY" << endl;
+    cout_tt (thursday);
+    cout << '\n';
+    cout << "FRIDAY" << endl;
+    cout_tt (friday);
+    cout << '\n';
+}

@@ -44,6 +44,7 @@ public:
 
     //overloads
     bool operator== (const UCClass& ucc) const;
+
 };
 
 

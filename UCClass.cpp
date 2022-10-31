@@ -1,6 +1,8 @@
 
 #include "UCClass.h"
 #include "Student.h"
+#include <tuple>
+#include <string>
 
 using namespace std;
 
@@ -21,3 +23,4 @@ list<Student*> UCClass::get_students(){return students_;}
 bool UCClass :: operator==(const UCClass& ucc) const{
     return (ucCode_ == ucc.ucCode_ && classCode_ == ucc.classCode_);
 }
+

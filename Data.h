@@ -4,6 +4,8 @@
 #include <vector>
 #include <set>
 #include <queue>
+#include <tuple>
+#include <string>
 #include <fstream>
 #include <sstream>
 #include <algorithm>
@@ -73,6 +75,9 @@ public:
     void guardarPedidos();
     void processRequests();
 
+
+    void uc_timetable(string uccode);
+    void class_timetable();
 };
 
 
