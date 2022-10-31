@@ -53,9 +53,9 @@ d.readFile_students_classes("C:\\Users\\carol\\AEDP1\\AED-Project1_v2\\AED-Proje
 
     cout <<"==========COUNTER YEAR: (funciona)" << endl << counterYear(1, d);*/
 
-    for (Student *s : d.get_students()){
+    /* for (Student *s : d.get_students()){
         s->student_timetable();
-    }
-
+    }*/
+    d.class_timetable("1LEIC08");
     return 0;
 }

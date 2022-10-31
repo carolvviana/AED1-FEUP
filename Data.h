@@ -77,7 +77,7 @@ public:
 
 
     void uc_timetable(string uccode);
-    void class_timetable();
+    void class_timetable(string classcode);
 };
 
 
