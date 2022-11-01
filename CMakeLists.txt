@@ -17,4 +17,9 @@ add_executable(AED_Project1
         Student.h
         Data.cpp
         Data.h
+        Counters.cpp
+        SortStudents.cpp
+        Interface.h
+        Interface.cpp
+
         )

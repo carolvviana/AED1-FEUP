@@ -1,14 +1,23 @@
 #include <iostream>
 #include "Data.h"
-#include "SortStudents.cpp"
-#include "Counters.cpp"
-#include "Timetables.cpp"
+#include "Interface.h"
 using namespace std;
-int main(){
+int main() {
     Data d = Data();
+    Interface iFace = Interface();
 
-    //d.readFile_classes_per_uc("C:\\Users\\carol\\AEDP1\\AED-Project1_v2\\AED-Project1.v2\\csv\\classes_per_uc.csv");
-    d.readFile_classes("C:\\Users\\carol\\AEDP1\\AED-Project1_v2\\AED-Project1.v2\\csv\\classes.csv");
+    iFace.setData(d);
+
+    try {
+        iFace.welcomePage();
+    }
+    catch (int exit) {
+        return 0;
+    }
+    return 0;
+}
+   //d.readFile_classes_per_uc("C:\\Users\\carol\\AEDP1\\AED-Project1_v2\\AED-Project1.v2\\csv\\classes_per_uc.csv");
+    //d.readFile_classes("..\\csv\\classes.csv");
 
 /*
 
@@ -18,9 +27,9 @@ int main(){
             cout << lecture->get_weekDay() << ',' << lecture->get_startHour() << ',' << lecture->get_duration() << ',' << lecture->get_type() << ',' << endl;
     }
          }
-*/
 
-d.readFile_students_classes("C:\\Users\\carol\\AEDP1\\AED-Project1_v2\\AED-Project1.v2\\csv\\students_classes.csv");
+
+//d.readFile_students_classes("..\\csv\\students_classes.csv");
 /*
     for (auto student : d.get_students()){
    cout << student->get_studentName() << ',' << student->get_studentCode() << ',';
@@ -29,7 +38,7 @@ d.readFile_students_classes("C:\\Users\\carol\\AEDP1\\AED-Project1_v2\\AED-Proje
    }
    cout << endl;
 }
- */ /*
+ *//*
     set<Student* , studentComparatorAlpha2> aux = alphaZ(d);
     for (auto student : aux) {
         cout << student->get_studentName() << ',' << student->get_studentCode() << endl;
@@ -42,7 +51,8 @@ d.readFile_students_classes("C:\\Users\\carol\\AEDP1\\AED-Project1_v2\\AED-Proje
     for (auto student : auxil) {
         cout << student->get_studentName() << ',' << student->get_studentCode() << endl;
     }
-
+    */
+/*
     cout << "===========TENTATIVA DA SOFIA E GUI:" << endl;
     UCClass* ucclass = d.get_ucClasses()[0];
     for (Student* student : ucclass->get_students()) {
@@ -56,12 +66,13 @@ d.readFile_students_classes("C:\\Users\\carol\\AEDP1\\AED-Project1_v2\\AED-Proje
     /* for (Student *s : d.get_students()){
         s->student_timetable();
     }*/
+    /*
     d.class_timetable("1LEIC08");
     set<Student*,studentComparatorAlpha1> s = d.get_students();
     string uc = d.get_ucClasses()[0]->get_ucCode();
 
     cout <<"==========COUNTER UC: " << endl << counterUC(uc, s) << endl;
-    cout <<"==========PRINT UC: " << endl; printUC(uc, s);
+    //cout <<"==========PRINT UC: " << endl; printUC(uc, s);
 
     return 0;
-}
+ */

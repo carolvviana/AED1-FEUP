@@ -1,4 +1,5 @@
-
+#ifndef AED_PROJECT1_SORTSTUDENTS_CPP
+#define AED_PROJECT1_SORTSTUDENTS_CPP
 #include "Data.h"
 //falta meter aqui a ordem alfabetica
 
@@ -95,3 +96,4 @@ bool l_UC (Student* s1, Student* s2){
 bool l_UCInv (Student* s1, Student* s2){
     return s1->get_classes().size() > s2->get_classes().size();
 }
+#endif //AED_PROJECT1_SORTSTUDENTS_CPP

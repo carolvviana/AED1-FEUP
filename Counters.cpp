@@ -1,5 +1,6 @@
+#ifndef AED_PROJECT1_COUNTERS_CPP
+#define AED_PROJECT1_COUNTERS_CPP
 #include "Data.h"
-
 
 //LISTAGENS DE ESTUDANTES
  //=================TO BE CHECKED, após interface e atenção à Data d que as funcs recebem
@@ -172,3 +173,4 @@ void printFilterEqual (list<Student*> lista){
         cout << "- " << stu->get_studentName() << ";" << endl;
     }
 }
+#endif //AED_PROJECT1_COUNTERS_CPP
