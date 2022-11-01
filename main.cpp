@@ -8,7 +8,7 @@ int main(){
     Data d = Data();
 
     //d.readFile_classes_per_uc("C:\\Users\\carol\\AEDP1\\AED-Project1_v2\\AED-Project1.v2\\csv\\classes_per_uc.csv");
-    d.readFile_classes("C:\\Users\\carol\\AEDP1\\AED-Project1_v2\\AED-Project1.v2\\csv\\classes.csv");
+    d.readFile_classes("C:\\Users\\User\\Desktop\\AED\\AED-Project1.v2\\csv\\classes.csv");
 
 /*
 
@@ -20,7 +20,7 @@ int main(){
          }
 */
 
-d.readFile_students_classes("C:\\Users\\carol\\AEDP1\\AED-Project1_v2\\AED-Project1.v2\\csv\\students_classes.csv");
+d.readFile_students_classes("C:\\Users\\User\\Desktop\\AED\\AED-Project1.v2\\csv\\students_classes.csv");
 /*
     for (auto student : d.get_students()){
    cout << student->get_studentName() << ',' << student->get_studentCode() << ',';
@@ -57,5 +57,11 @@ d.readFile_students_classes("C:\\Users\\carol\\AEDP1\\AED-Project1_v2\\AED-Proje
         s->student_timetable();
     }*/
     d.class_timetable("1LEIC08");
+    set<Student*,studentComparatorAlpha1> s = d.get_students();
+    string uc = d.get_ucClasses()[0]->get_ucCode();
+
+    cout <<"==========COUNTER UC: " << endl << counterUC(uc, s) << endl;
+    cout <<"==========PRINT UC: " << endl; printUC(uc, s);
+
     return 0;
 }

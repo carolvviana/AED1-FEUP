@@ -20,37 +20,24 @@
  *
  * COMPLEXIDADE: O(1).
  */
-pair<list<Student*>, int> methodsTurma(UCClass ucC){
-    pair<list<Student*>, int> p1;
-    p1.first = ucC.get_students();
-    p1.second = ucC.get_students().size();
-    return p1;
-}
+//ELIMINADA
 
 /**
  * Função retorna a lista de estudantes de um determinado ano (number) bem como o número de estudantes nesse ano.
  *
  * COMPLEXIDADE: O(n^2).
  */
-pair<list<Student*>, int> methodsYear(char number, Data d){
-    //pair<list<Student*>, int> p1 = new pair<list<Student*>, int>;
+list<Student*> methodsYear(char number, set<Student*,studentComparatorAlpha1> s){
     list<Student*> lista = {};
-    set<Student*, studentComparatorAlpha1> s = d.get_students();
-    int counter = 0;
     number+=48;
     for (Student* stu : s){
         for(UCClass *ucClass :stu->get_classes()){
-            char teste = ucClass->get_classCode()[0];
-            if(teste == number) {
-                counter++;
+            if(ucClass->get_classCode()[0] == number) {
                 lista.push_back(stu);
             }
         }
     }
-    pair<list<Student*>, int> p1;
-    p1.first = lista;
-    p1.second = counter;
-    return p1;
+    return lista;
 }
 
 /**
@@ -58,22 +45,16 @@ pair<list<Student*>, int> methodsYear(char number, Data d){
  *
  * COMPLEXIDADE: O(n^2).
  */
-pair<list<Student*>, int> methodsUC(string uc, Data d){
+list<Student*> methodsUC(string uc, set<Student*,studentComparatorAlpha1> s){
     list<Student*> lista = {};
-    set<Student*, studentComparatorAlpha1> s = d.get_students();
-    int counter = 0;
     for (Student* stu : s){
         for(UCClass *ucClass :stu->get_classes()){
             if(ucClass->get_ucCode() == uc) {
-                counter++;
                 lista.push_back(stu);
             }
         }
     }
-    pair<list<Student*>, int> p1;
-    p1.first = lista;
-    p1.second = counter;
-    return p1;
+    return lista;
 }
 
 //CONTAGENS DE ESTUDANTES
@@ -85,7 +66,7 @@ pair<list<Student*>, int> methodsUC(string uc, Data d){
  * COMPLEXIDADE: O(1).
  */
 int counterTurma(UCClass ucC){
-    return methodsTurma(ucC).second;
+    return ucC.get_students().size();
 }
 
 // #2 numero de estudantes num certo ano
@@ -94,8 +75,8 @@ int counterTurma(UCClass ucC){
  *
  * COMPLEXIDADE: O(1).
  */
-int counterYear(char number, Data d){
-    return methodsYear(number, d).second;
+int counterYear(char number, set<Student*, studentComparatorAlpha1> s){
+    return methodsYear(number, s).size();
 }
 
 // #3 numero de estudantes numa certa UC
@@ -104,8 +85,35 @@ int counterYear(char number, Data d){
  *
  * COMPLEXIDADE: O(1).
  */
-int counterUC(string uc, Data d){
-    return methodsUC(uc, d).second;
+int counterUC(string uc, set<Student*,studentComparatorAlpha1> s){
+    return methodsUC(uc, s).size();
 }
 
 //PRINTS ÀS LISTAS
+
+void printTurma (UCClass ucC){
+    list<Student*> lista = ucC.get_students();
+
+    cout << "Students in the class " << ucC.get_ucCode() << ":" << endl;
+
+    for (Student* stu : lista) {
+        cout << "- " << stu->get_studentName() << ";" << endl;
+    }
+
+}
+
+void printYear (char number, set<Student*,studentComparatorAlpha1> s){
+    list<Student*> lista = methodsYear(number, s);
+    cout << "Students in year " << number << ":" << endl;
+    for (Student* stu : lista) {
+        cout << "- " << stu->get_studentName() << ";" << endl;
+    }
+}
+
+void printUC (string uc, set<Student*,studentComparatorAlpha1> s){
+    list<Student*> lista = methodsUC(uc, s);
+    cout << "Students in the UC " << uc << ":" << endl;
+    for (Student* stu : lista) {
+        cout << "- " << stu->get_studentName() << ";" << endl;
+    }
+}
