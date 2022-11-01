@@ -243,9 +243,13 @@ void Data:: processRequests(){
 
     if ((req->get_class_og()).size() == 0) { // pedido de adiçãp
         for (UCClass *uc: req->get_class_final()) {
-
-            tmp = uc->get_students().size();
+            for (UCClass *uc2: ucClasses_){
+                if (uc->get_ucCode() == uc2->get_ucCode()) aux.push_back(uc2->get_students().size());
+            }
+            tmp = (it->get_students()).size();
             aux.push_back(tmp);
+            while (it != ucClasses_.end()){}
+
         }
         auto max = max_element(aux.begin());
     }
