@@ -71,5 +71,5 @@ void Student :: student_timetable(){
     cout_tt (friday);
     cout << '\n';
 
-// SE HOUVER TEMPO, CONVERTER HORAS E COLOCAR HORA FINAL NO HORARIO
+
 }

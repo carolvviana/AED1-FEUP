@@ -3,7 +3,7 @@
 set<Student *, studentComparatorAlpha1> Data :: get_students(){return students_;}
 vector<UCClass*> Data :: get_ucClasses(){return ucClasses_;} //passar para set
 queue<Request*> Data :: get_requests(){return requests_;}
-
+vector<Request*> Data:: get_archive(){return archive_;}
 /*
 void Data :: readFile() {
     readFile_classes_per_uc();
@@ -216,4 +216,33 @@ void Data ::class_timetable(string classcode) {
     cout << "FRIDAY" << endl;
     cout_tt2 (friday);
     cout << '\n';
+}
+
+//funcao recebe student code, mas tem de receber ja os vetores das classes (por isso tem de se criara os vetores na interface)
+void Data::guardarPedidos(int sc, vector<UCClass*> og, vector<UCClass*> final) {
+    Request *req;
+    for (Student *s: students_) {
+        if (sc == s->get_studentCode()){
+            req = new Request(s, og, final);
+        }
+    }
+    requests_.push(req);
+}
+
+void Data:: processRequests(){
+    int count1 = 0;
+    Request* req = requests_.front();
+    if ((req->get_class_final()).size() == 0) { // pedido de remoção
+        for (UCClass *uc: req->get_class_og()) {
+            auto it = find(req->get_student()->get_classes().begin(),req->get_student()->get_classes().end(), uc);
+            (req->get_student()->get_classes()).erase(it);
+        }
+    }
+
+    if ((req->get_class_og()).size() == 0) { // pedido de adiçãp
+        for (UCClass *uc: req->get_class_final()) {
+
+        }
+    }
+
 }

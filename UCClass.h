@@ -45,6 +45,7 @@ public:
     //overloads
     bool operator== (const UCClass& ucc) const;
 
+    bool check_compatibility(UCClass* uc1, UCClass* uc2);
 };
 
 

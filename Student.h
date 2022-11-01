@@ -38,7 +38,6 @@ public:
     vector <UCClass*> get_classes();
 
     //overloads
-    bool operator<(const Student& stu) const;
 
     void cout_tt (vector<tuple<string,Lecture>> t1);
     void student_timetable();

@@ -36,7 +36,7 @@ public:
     set<Student *, studentComparatorAlpha1> get_students();
     vector<UCClass*> get_ucClasses();
     queue<Request*> get_requests();
-
+    vector<Request*> get_archive();
 
     //auxiliary methods
     void add_ucClasses(UCClass* p);
@@ -49,12 +49,13 @@ public:
     void readFile_students_classes(string fname);
 
     //request methods;
-    void guardarPedidos();
+    void guardarPedidos(int sc, vector<UCClass*> og, vector<UCClass*> final);
     void processRequests();
 
 
     void uc_timetable(string uccode);
     void class_timetable(string classcode);
+
 };
 
 
