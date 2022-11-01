@@ -1,12 +1,5 @@
 #include "Data.h"
 
-/* n estudantes em turma - DONE
- * nome estudantes em turma
- * n estudantes em cadeira - DONE
- * nome estudantes em cadeira
- * n estudantes ano - DONE
- * nome estudantes ano
- * */
 
 //LISTAGENS DE ESTUDANTES
  //=================TO BE CHECKED, após interface e atenção à Data d que as funcs recebem
@@ -91,28 +84,90 @@ int counterUC(string uc, set<Student*,studentComparatorAlpha1> s){
 
 //PRINTS ÀS LISTAS
 
-void printTurma (UCClass ucC){
-    list<Student*> lista = ucC.get_students();
-
-    cout << "Students in the class " << ucC.get_ucCode() << ":" << endl;
-
+void printTurma (list<Student*> lista){
+    cout << "Students in the class:" << endl;
     for (Student* stu : lista) {
         cout << "- " << stu->get_studentName() << ";" << endl;
     }
 
 }
 
-void printYear (char number, set<Student*,studentComparatorAlpha1> s){
-    list<Student*> lista = methodsYear(number, s);
-    cout << "Students in year " << number << ":" << endl;
+void printYear ( list<Student*> lista){
+    cout << "Students in year:" << endl;
     for (Student* stu : lista) {
         cout << "- " << stu->get_studentName() << ";" << endl;
     }
 }
 
-void printUC (string uc, set<Student*,studentComparatorAlpha1> s){
-    list<Student*> lista = methodsUC(uc, s);
-    cout << "Students in the UC " << uc << ":" << endl;
+
+void printUC (list<Student*> lista){
+    cout << "Students in the UC:" << endl;
+    for (Student* stu : lista) {
+        cout << "- " << stu->get_studentName() << ";" << endl;
+    }
+}
+
+// função pra filtrar estudantes por numeros de UCs menor que n, maior, igual
+
+list<Student*> filterLess(int n, set<Student*,studentComparatorAlpha1> s){
+    list<Student*> lista = {};
+    for (Student* stu : s){
+        if (stu->get_classes().size()<n){
+            lista.push_back(stu);
+        }
+    }
+    return lista;
+}
+
+list<Student*> filterMore(int n, set<Student*,studentComparatorAlpha1> s){
+    list<Student*> lista = {};
+    for (Student* stu : s){
+        if (stu->get_classes().size()>n){
+            lista.push_back(stu);
+        }
+    }
+    return lista;
+}
+
+list<Student*> filterEqual(int n, set<Student*,studentComparatorAlpha1> s){
+    list<Student*> lista = {};
+    for (Student* stu : s){
+        if (stu->get_classes().size()==n){
+            lista.push_back(stu);
+        }
+    }
+    return lista;
+}
+
+//COUNTERS: probably sao desnecessarios pq basta fazer methods.size(), etc...
+int counterFilterLess(int n, set<Student*,studentComparatorAlpha1> s){
+    return filterLess(n, s).size();
+}
+
+int counterFilterMore(int n, set<Student*,studentComparatorAlpha1> s){
+    return filterMore(n, s).size();
+}
+
+int counterFilterEqual(int n, set<Student*,studentComparatorAlpha1> s){
+    return filterEqual(n , s).size();
+}
+
+void printFilterLess (list<Student*> lista){
+    cout << "Students with less than the number of UCs you picked:" << endl;
+    for (Student* stu : lista) {
+        cout << "- " << stu->get_studentName() << ";" << endl;
+    }
+}
+
+void printFilterMore (list<Student*> lista){
+    cout << "Students with more than the number of UCs you picked:" << endl;
+    for (Student* stu : lista) {
+        cout << "- " << stu->get_studentName() << ";" << endl;
+    }
+}
+
+void printFilterEqual (list<Student*> lista){
+    cout << "Students with the number of classes you picked:" << endl;
     for (Student* stu : lista) {
         cout << "- " << stu->get_studentName() << ";" << endl;
     }

@@ -23,14 +23,25 @@ struct studentCodeComparatorInv {
     }
 };
 
+struct studentComparatorUC {
+    bool operator()(Student *s1, Student *s2) {
+        if (s1->get_studentCode() != s2->get_studentCode()) return s1->get_classes().size() < s2->get_classes().size();
+        return false;
+    }
+};
+
+struct studentComparatorUCInv {
+    bool operator()(Student *s1, Student *s2) {
+        if (s1->get_studentCode() != s2->get_studentCode()) return s1->get_classes().size() > s2->get_classes().size();
+        return false;
+    }
+};
+
 //não faria mais sentido as funções receberem um set ?
 set<Student* , studentComparatorAlpha2> alphaZ(Data d){
     set<Student* , studentComparatorAlpha2> studentsA2;
     for(Student* p :d.get_students()) studentsA2.insert(p);
     return studentsA2;
-    //for (Student *stu : studentsA2){
-    //    cout << stu->get_studentName() <<','<<stu->get_studentCode();
-    //}
 }
 set<Student* , studentCodeComparator> numb(Data d){
     set<Student* , studentCodeComparator> studentNum;
@@ -43,23 +54,44 @@ set<Student* , studentCodeComparatorInv> numbInv(Data d){
     return studentInv;
 }
 
+set<Student* , studentComparatorUC> s_UC(Data d){
+    set<Student* , studentComparatorUC> studentsUC;
+    for(Student* p :d.get_students()) studentsUC.insert(p);
+    return studentsUC;
+}
+
+set<Student* , studentComparatorUCInv> s_UCInv(Data d){
+    set<Student* , studentComparatorUCInv> studentsUC;
+    for(Student* p :d.get_students()) studentsUC.insert(p);
+    return studentsUC;
+}
+
 //create function that shows student beautifully
-//função que mostra numero /nome de estudantes com menos/mais de N cadeiras
 
 //SORTERS PARA LISTAS DE ESTUDANTES
 
-bool lAlphaA (Student* s1, Student* s2){
+bool l_AlphaA (Student* s1, Student* s2){
     return s1->get_studentName()<s2->get_studentName();
 }
 
-bool lAlphaZ (Student* s1, Student* s2){
+bool l_AlphaZ (Student* s1, Student* s2){
     return s1->get_studentName()>s2->get_studentName();
 }
 
-bool lNumbInv (Student* s1, Student* s2){
+bool l_NumbInv (Student* s1, Student* s2){
     return s1->get_studentCode()>s2->get_studentCode();
 }
 
-bool lNumb (Student* s1, Student* s2){
+bool l_Numb (Student* s1, Student* s2){
     return s1->get_studentCode()<s2->get_studentCode();
+}
+
+// sorters: numero de cadeiras crescente/decrescente para lista e para set
+
+bool l_UC (Student* s1, Student* s2){
+    return s1->get_classes().size() < s2->get_classes().size();
+}
+
+bool l_UCInv (Student* s1, Student* s2){
+    return s1->get_classes().size() > s2->get_classes().size();
 }
