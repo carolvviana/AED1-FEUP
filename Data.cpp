@@ -228,7 +228,13 @@ void Data::guardarPedidos(int sc, vector<UCClass*> og, vector<UCClass*> final) {
     }
     requests_.push(req);
 }
-
+bool check_compatibility(UCClass* uc1, UCClass* uc2){
+    for (Lecture* l1: uc1->get_lectures())
+        for (Lecture* l2: uc2->get_lectures()){
+            if ((l2->get_type() == "TP" && l1->get_type()== "TP") && ( l2->get_endHour() > l1->get_startHour() || l2->get_startHour() < l1->get_endHour())) return false;
+        }
+    return true;
+}
 void Data:: processRequests(){
     vector<int> aux;
     vector<UCClass*> auxi;
@@ -242,16 +248,26 @@ void Data:: processRequests(){
     }
 
     if ((req->get_class_og()).size() == 0) { // pedido de adiçãp
-        for (UCClass *uc: req->get_class_final()) {
-            for (UCClass *uc2: ucClasses_){
+        for (UCClass *uc: req->get_class_final()) { //iterar por todas as classes que ele pediu para adicionar
+
+            for (UCClass *uc2: ucClasses_){  //verificar quantos alunos é que há nas outras turmas dessa cadeira
                 if (uc->get_ucCode() == uc2->get_ucCode()) aux.push_back(uc2->get_students().size());
             }
-            tmp = (it->get_students()).size();
-            aux.push_back(tmp);
-            while (it != ucClasses_.end()){}
+            auto itmax = max_element(aux.begin(), aux.end());
+            int max = *itmax; // numero maximo de alunos nessa cadeira
+
+            auto itmin = min_element(aux.begin(), aux.end());
+            int min = *itmin; // numero minimo de alunos dessa cadeira
+
+            for (UCClass* uc2: req->get_student()->get_classes()){
+                if (!check_compatibility(uc2, uc) || uc->get_students().size()+1 > (min+4)){ archive_.push_back(req); break; }
+                else {
+                    (req->get_student()->get_classes()).push_back(uc);
+                    uc->get_students().push_back(req->get_student());
+                }
+            }
 
         }
-        auto max = max_element(aux.begin());
     }
 
 }

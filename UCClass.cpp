@@ -24,10 +24,4 @@ bool UCClass :: operator==(const UCClass& ucc) const{
     return (ucCode_ == ucc.ucCode_ && classCode_ == ucc.classCode_);
 }
 
-bool UCClass:: check_compatibility(UCClass* uc1, UCClass* uc2){
-    for (Lecture* l1: uc1->get_lectures())
-        for (Lecture* l2: uc2->get_lectures()){
-            if ((l2->get_type() == "TP" && l1->get_type()== "TP") && ( l2->get_endHour() > l1->get_startHour() || l2->get_startHour() < l1->get_endHour())) return false;
-        }
-    return true;
-}
+
