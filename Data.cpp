@@ -236,59 +236,70 @@ bool check_compatibility(UCClass* uc1, UCClass* uc2){
         }
     return true;
 }
-void Data:: processRequests(){
+void Data:: processRequests() {
     vector<int> aux;
     vector<int> aux2;
-    Request* req = requests_.front();
 
-    if ((req->get_class_final()).size() == 0) { // pedido de remoção
-        for (UCClass *uc: req->get_class_og()) {
+    while (requests_.size() != 0) {
+        Request *req = requests_.front();
 
-            for (UCClass *uc2: ucClasses_){  //verificar quantos alunos é que há nas outras turmas dessa cadeira
-                if (uc->get_ucCode() == uc2->get_ucCode()) aux.push_back(uc2->get_students().size());
-            }
+        if ((req->get_class_final()).size() == 0) { // pedido de remoção
+            for (UCClass *uc: req->get_class_og()) {
 
-            auto itmax = max_element(aux.begin(), aux.end());
-            int max = *itmax; // numero maximo de alunos nessa cadeira
-
-            aux.clear();
-
-            if (uc->get_students().size()-1 < (max-4)) {archive.push_back(req); break;}
-            else{
-                auto it = find(req->get_student()->get_classes().begin(),req->get_student()->get_classes().end(), uc);
-                (req->get_student()->get_classes()).erase(it); // remover class das classes do estudante
-                auto ite = find(uc->get_students().begin(),uc->get_students().end(), req->get_student());
-                uc->get_students().erase(ite); //remover student dos estudantes da uc
-            }
-
-        }
-    }
-
-    if ((req->get_class_og()).size() == 0) { // pedido de adiçãp
-        for (UCClass *uc: req->get_class_final()) { //iterar por todas as classes que ele pediu para adicionar
-
-            for (UCClass *uc2: ucClasses_){  //verificar quantos alunos é que há nas outras turmas dessa cadeira
-                if (uc->get_ucCode() == uc2->get_ucCode()) aux2.push_back(uc2->get_students().size());
-            }
-
-            auto itmax = max_element(aux2.begin(), aux2.end());
-            int max = *itmax; // numero maximo de alunos nessa cadeira
-
-            auto itmin = min_element(aux2.begin(), aux2.end());
-            int min = *itmin; // numero minimo de alunos dessa cadeira
-
-            aux2.clear();
-
-            for (UCClass* uc2: req->get_student()->get_classes()){
-                if (!check_compatibility(uc2, uc) || uc->get_students().size()+1 > (min+4)){ archive_.push_back(req); break;} // pedido nao aceite, vai para arquivo
-                else {
-                    (req->get_student()->get_classes()).push_back(uc);
-                    uc->get_students().push_back(req->get_student()); // pedido aceite. uc é adicionada às ucs do aluno e aluno é adicionado à lista de ucs
+                for (UCClass *uc2: ucClasses_) {  //verificar quantos alunos é que há nas outras turmas dessa cadeira
+                    if (uc->get_ucCode() == uc2->get_ucCode()) aux.push_back(uc2->get_students().size());
                 }
+
+                auto itmax = max_element(aux.begin(), aux.end());
+                int max = *itmax; // numero maximo de alunos nessa cadeira
+
+                aux.clear();
+
+                if (uc->get_students().size() - 1 < (max - 4)) {
+                    archive_.push_back(req);
+                    break;
+                }
+                else {
+                    auto it = find(req->get_student()->get_classes().begin(), req->get_student()->get_classes().end(),
+                                   uc);
+                    (req->get_student()->get_classes()).erase(it); // remover class das classes do estudante
+                    auto ite = find(uc->get_students().begin(), uc->get_students().end(), req->get_student());
+                    uc->get_students().erase(ite); //remover student dos estudantes da uc
+                }
+
             }
-
         }
-    }
 
-    requests_.pop();
+        if ((req->get_class_og()).size() == 0) { // pedido de adiçãp
+            for (UCClass *uc: req->get_class_final()) { //iterar por todas as classes que ele pediu para adicionar
+
+                for (UCClass *uc2: ucClasses_) {  //verificar quantos alunos é que há nas outras turmas dessa cadeira
+                    if (uc->get_ucCode() == uc2->get_ucCode()) aux2.push_back(uc2->get_students().size());
+                }
+
+                auto itmax = max_element(aux2.begin(), aux2.end());
+                int max = *itmax; // numero maximo de alunos nessa cadeira
+
+                auto itmin = min_element(aux2.begin(), aux2.end());
+                int min = *itmin; // numero minimo de alunos dessa cadeira
+
+                aux2.clear();
+
+                for (UCClass *uc2: req->get_student()->get_classes()) {
+                    if (!check_compatibility(uc2, uc) || uc->get_students().size() + 1 > (min + 4)) {
+                        archive_.push_back(req);
+                        break;
+                    } // pedido nao aceite, vai para arquivo
+                    else {
+                        (req->get_student()->get_classes()).push_back(uc);
+                        uc->get_students().push_back(
+                                req->get_student()); // pedido aceite. uc é adicionada às ucs do aluno e aluno é adicionado à lista de ucs
+                    }
+                }
+
+            }
+        }
+
+        requests_.pop();
+    }
 }
