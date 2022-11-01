@@ -23,38 +23,15 @@ struct studentComparatorAlpha1 {
         return false;
     }
 };
-/*
-struct studentComparatorAlpha2 {
-    bool operator()(Student *s1, Student *s2) {
-        if (s1->get_studentCode() != s2->get_studentCode()) return (s2->get_studentName() < s1->get_studentName());
-        return false;
-    }
-};
-struct studentCodeComparator {
-    bool operator()(Student *s1, Student *s2) {
-        if (s1->get_studentCode() != s2->get_studentCode()) return (s1->get_studentCode() < s2->get_studentCode());
-    }
-};
-struct studentCodeComparatorInv {
-    bool operator()(Student *s1, Student *s2) {
-        if (s1->get_studentCode() != s2->get_studentCode()) return (s2->get_studentCode() < s1->get_studentCode());
-    }
-};
-*/
-
-/*
-struct ucClassComparator {
-    bool operator()(UCClass *c1, UCClass *c2)
-};
-*/
 
 class Data{
 private:
     set<Student* , studentComparatorAlpha1> students_;
     vector<UCClass*> ucClasses_;
     queue<Request*> requests_;//como vai ser o request? pedidos únicos ou pode querer trocar várias aulas ao mm tempo
-public:
+    vector<Request*> archive_;
 
+public:
     //getters
     set<Student *, studentComparatorAlpha1> get_students();
     vector<UCClass*> get_ucClasses();

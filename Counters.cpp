@@ -1,7 +1,3 @@
-
-// nºestudentes em turma/ano/uc + nome de estudantes em turma/ano/uc
-// funcao para cout disto de forma bonita
-
 #include "Data.h"
 
 /* n estudantes em turma - DONE
@@ -27,7 +23,7 @@
 pair<list<Student*>, int> methodsTurma(UCClass ucC){
     pair<list<Student*>, int> p1;
     p1.first = ucC.get_students();
-    p1.second = ucC.get_students().size();;
+    p1.second = ucC.get_students().size();
     return p1;
 }
 
@@ -79,9 +75,6 @@ pair<list<Student*>, int> methodsUC(string uc, Data d){
     p1.second = counter;
     return p1;
 }
-
-
-
 
 //CONTAGENS DE ESTUDANTES
 

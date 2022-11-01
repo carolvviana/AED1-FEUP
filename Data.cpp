@@ -15,7 +15,7 @@ void Data :: readFile() {
 /**
  * Função lê o ficheiro "classes.csv" e cria os objetos do tipo UCClass e Lecture.
  *
- * COMPLEXIDADE: O(n^2).
+ * COMPLEXIDADE: O(n).
  */
 //adiciona os horários de cada turma
 void Data :: readFile_classes(string fname){
