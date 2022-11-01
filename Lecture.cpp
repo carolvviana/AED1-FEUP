@@ -10,10 +10,11 @@ void Lecture::set_weekDay(string weekDay){weekDay_ = weekDay;}
 void Lecture::set_startHour(float startHour) {startHour_ = startHour;}
 void Lecture::set_duration(float duration){duration_ = duration;}
 void Lecture::set_type(string type){type_=type;}
-void Lecture::set_endHour(float endHour);
+void Lecture::set_endHour(float endHour){endHour_ = endHour;};
 
 //getters
 string Lecture::get_weekDay(){return weekDay_;}
 float Lecture::get_startHour(){return startHour_;}
 float Lecture::get_duration(){return duration_;}
 string Lecture::get_type(){return type_;}
+float Lecture::get_endHour(){return endHour_;};

@@ -29,7 +29,7 @@ struct sorted_vector{
 };
 void Student :: cout_tt (vector<tuple<string,Lecture>> t1){
     for (tuple<string,Lecture> t: t1){
-        cout << get<1>(t).get_startHour()<< " | " << get<0>(t) << " | " << get<1>(t).get_type() << endl;
+        cout << get<1>(t).get_startHour()<< " | "<< get<1>(t).get_endHour()<< " | " << get<0>(t) << " | " << get<1>(t).get_type() << endl;
     }
 }
 
