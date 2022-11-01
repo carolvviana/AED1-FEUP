@@ -230,7 +230,9 @@ void Data::guardarPedidos(int sc, vector<UCClass*> og, vector<UCClass*> final) {
 }
 
 void Data:: processRequests(){
-    int count1 = 0;
+    vector<int> aux;
+    vector<UCClass*> auxi;
+    int tmp;
     Request* req = requests_.front();
     if ((req->get_class_final()).size() == 0) { // pedido de remoção
         for (UCClass *uc: req->get_class_og()) {
@@ -242,7 +244,10 @@ void Data:: processRequests(){
     if ((req->get_class_og()).size() == 0) { // pedido de adiçãp
         for (UCClass *uc: req->get_class_final()) {
 
+            tmp = uc->get_students().size();
+            aux.push_back(tmp);
         }
+        auto max = max_element(aux.begin());
     }
 
 }

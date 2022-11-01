@@ -15,6 +15,7 @@
 #include "Lecture.h"
 #include "Request.h"
 
+
 using namespace std;
 
 struct studentComparatorAlpha1 {
