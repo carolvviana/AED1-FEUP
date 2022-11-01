@@ -31,6 +31,7 @@ private:
     vector<UCClass*> ucClasses_;
     queue<Request*> requests_;//como vai ser o request? pedidos únicos ou pode querer trocar várias aulas ao mm tempo
     vector<Request*> archive_;
+    vector<Request*> success_;
 
 public:
     //getters
