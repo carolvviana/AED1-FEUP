@@ -1,11 +1,10 @@
-#include <iostream>
-#include "Data.h"
+
+//#include "Data.h"
 #include "Interface.h"
 using namespace std;
 int main() {
     Data d = Data();
     Interface iFace = Interface();
-
     iFace.setData(d);
 
     try {
@@ -14,6 +13,7 @@ int main() {
     catch (int exit) {
         return 0;
     }
+
     return 0;
 }
    //d.readFile_classes_per_uc("C:\\Users\\carol\\AEDP1\\AED-Project1_v2\\AED-Project1.v2\\csv\\classes_per_uc.csv");

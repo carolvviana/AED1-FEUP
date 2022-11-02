@@ -3,6 +3,8 @@
 //
 
 #include "Interface.h"
+#include "Counters.cpp"
+
 Interface::Interface()= default;
 
 //0
@@ -216,10 +218,12 @@ void Interface::studentsInfo() const {
         int code;
         switch (input) {
             case ('1'):
-                cout << endl << "Student's code: ";
+                cout << endl << "Student's code:";
                 cin >> code;
-                //search student and show info
-                return studentsMenu();
+                cout << endl;
+                d_.printSInfo(code);
+                lastPage();
+                return studentsInfo();
             case ('b'):
                 return;
             case ('q'):
@@ -230,8 +234,7 @@ void Interface::studentsInfo() const {
                 cout << endl << "Not a valid option" << endl;
         }
     }
-
-}//WIP
+}
 void Interface::studentsList() const{
     cout << endl << "=========LIST STUDENTS=========" << endl;
     cout << endl;
@@ -242,22 +245,19 @@ void Interface::studentsList() const{
     string ucClass;
     char op;
     bool flag = true;
-    //list<int> l = {1,2,3};
+    list<Student*> l = {};
     while (true){
         cout << "Choose option: ";
         cin >> input;
         switch (input) {
             case ('1'):
-                //get set
-                //sortMenuSet(s);
-                //TO DO
+                sortMenuSet(d_.get_students());
                 return studentsList();
             case ('2'):
                 cout << endl << "Insert year: ";
                 cin >> nr; cout << endl;
-                //get list(nr)
-                //sortMenuList(l);
-                //TO DO
+                l = methodsYear(char(nr)+48,d_.get_students());
+                sortMenuList(l);
                 return studentsList();
             case ('3'):
                 cout << endl << "Insert UC number: ";
@@ -277,25 +277,24 @@ void Interface::studentsList() const{
             case ('5'):
                 cout << endl << "Insert number: ";
                 cin >> nr; cout << endl;
-                cout << "Equal to('='), More('>') or Less('<') than your number: ";
+                cout << "Equal to('='), More('>') or Less('<') than " << nr << ": ";
                 cin >> op; cout << endl;
                 switch(op){
                     case ('<'):
-                        //get list(nr)
+                        l = filterLess(nr, d_.get_students());
                         break;
                     case ('>'):
-                        //get list(nr)
+                        l = filterMore(nr, d_.get_students());
                         break;
                     case ('='):
-                        //get list(nr)
+                        l = filterEqual(nr, d_.get_students());
                         break;
                     default:
                         cout << "Operator not recognized. Please choose your filter again"<<endl;
                         flag = false;
                 }
                 if (flag) {
-                    //sortMenuList(l);
-                    //TO DO
+                    sortMenuList(l);
                 }
                 return studentsList();
             case ('b'):
@@ -309,7 +308,7 @@ void Interface::studentsList() const{
         }
     }
 
-}//WIP -> Implementar funções, PASSAR PARA REGEX
+}//FALTA 3 E 4, TENTAR REGEX?
 
 //4-requests
 void Interface::createRMenu() const {
@@ -347,34 +346,44 @@ void Interface::processRMenu() const {
 }//TO DO
 
 //sorter menus
-void Interface::sortMenuList(list<int> l) const {
+void Interface::sortMenuList(list<Student*> l) const {
     cout << endl << "=========SORT MENU=========" << endl;
     cout << endl;
     cout << "How do you want to sort the students? " << endl;
-    cout << endl << "Options:   1-Alphabetical(A-Z)\t2-Alphabetical(Z-A)\t3-Code(low to high\t4-Code(high to low)\tb-Back\tq-Main Menu\te-Exit"<<endl;
+    cout << endl << "Options:   1-Alphabetical(A-Z)\t2-Alphabetical(Z-A)\t3-Code(low to high\t4-Code(high to low)\n\t5-Number of UCs(low to high)\t6-Number of UCs(high to low)\tb-Back\tq-Main Menu\te-Exit"<<endl;
     char input;
     while (true){
         cout << "Choose option: ";
         cin >> input;
         switch (input) {
             case ('1'):
-                l.sort(); //alpha1
-                print(l);
+                l.sort(l_AlphaA); //alpha1
+                printList(l);
                 lastPage();
                 return sortMenuList(l);
             case ('2'):
-                l.sort(); //alpha2
-                //print(l);
+                l.sort(l_AlphaZ); //alpha2
+                printList(l);
                 lastPage();
                 return sortMenuList(l);
             case ('3'):
-                l.sort(); //numb
-                //print(l);
+                l.sort(l_Numb); //numb
+                printList(l);
                 lastPage();
                 return sortMenuList(l);
             case ('4'):
-                l.sort(); //numbinv
-                //print(l);
+                l.sort(l_NumbInv); //numbinv
+                printList(l);
+                lastPage();
+                return sortMenuList(l);
+            case ('5'):
+                l.sort(l_UC); // <n UCs
+                printList(l);
+                lastPage();
+                return sortMenuList(l);
+            case ('6'):
+                l.sort(l_UCInv); // >n UCs
+                printList(l);
                 lastPage();
                 return sortMenuList(l);
             case ('b'):
@@ -387,34 +396,39 @@ void Interface::sortMenuList(list<int> l) const {
                 cout << endl << "Not a valid option" << endl;
         }
     }
-}//WIP -> Aplicar sorters e Prints.
-void Interface::sortMenuSet(set<int> s) const {
+}//TESTAR
+void Interface::sortMenuSet(set<Student*,studentComparatorAlpha1> s) const {
     cout << endl << "=========SORT MENU=========" << endl;
     cout << endl;
     cout << "How do you want to sort the students? " << endl;
-    cout << endl << "Options:   1-Alphabetical(A-Z)\t2-Alphabetical(Z-A)\t3-Code(low to high\t4-Code(high to low)\tb-Back\tq-Main Menu\te-Exit"<<endl;
+    cout << endl << "Options:   1-Alphabetical(A-Z)\t2-Alphabetical(Z-A)\t3-Code(low to high)\t4-Code(high to low)\n\t5-Number of UCs(low to high)\t6-Number of UCs(high to low)\tb-Back\tq-Main Menu\te-Exit"<<endl;
     char input;
     while (true){
         cout << "Choose option: ";
         cin >> input;
         switch (input) {
             case ('1'):
-                //print(s); //alpha1
+                printSetAlphaA(s);
                 lastPage();
                 return sortMenuSet(s);
             case ('2'):
-                //alphaZ(s); //alpha2
-                //print(s);
+                printSetAlphaZ(s_alphaZ(s));
                 lastPage();
                 return sortMenuSet(s);
             case ('3'):
-                //numb(s); //numb
-                //print(s);
+                printSetNumb(s_numb(s));
                 lastPage();
                 return sortMenuSet(s);
             case ('4'):
-                //numbInv(s); //numbinv
-                //print(s);
+                printSetNumbInv(s_numbInv(s));
+                lastPage();
+                return sortMenuSet(s);
+            case ('5'):
+                printSetUC(s_UC(s));
+                lastPage();
+                return sortMenuSet(s);
+            case ('6'):
+                printSetUCInv(s_UCInv(s));
                 lastPage();
                 return sortMenuSet(s);
             case ('b'):
@@ -427,7 +441,7 @@ void Interface::sortMenuSet(set<int> s) const {
                 cout << endl << "Not a valid option" << endl;
         }
     }
-}//WIP -> Aplicar sorters e Prints.
+}//TESTAR
 
 //extra
 void Interface::lastPage() const {
@@ -456,8 +470,9 @@ void Interface::exitProgram() const {
 } //REVISION VERY NECESSARY
 void Interface::quitMenu() const {}//WIP -> Actually work ain't even started
 //utils
+/*
 void Interface::print(list<int> l) const{
     for (auto i: l){
         cout << i <<endl;
     }
-}
+}*/

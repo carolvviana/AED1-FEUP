@@ -35,19 +35,18 @@ private:
 
 public:
     //getters
-    set<Student *, studentComparatorAlpha1> get_students();
-    vector<UCClass*> get_ucClasses();
-    queue<Request*> get_requests();
-    vector<Request*> get_archive();
+    set<Student *, studentComparatorAlpha1> get_students() const;
+    vector<UCClass*> get_ucClasses() const;
+    queue<Request*> get_requests() const;
+    vector<Request*> get_archive() const;
 
     //auxiliary methods
-    void add_ucClasses(UCClass* p);
-    void add_student(Student student);
+   void printSInfo(int code) const;
 
     //file reading methods
-    void readFile(); //tem varios ifs e pergunta ao utilizador qual os ficheiros que queremos ler. consoante isso, chama diferentes funções
+
     void readFile_classes(string fname);
-    void readFile_classes_per_uc(string fname);
+    //void readFile_classes_per_uc(string fname);
     void readFile_students_classes(string fname);
 
     //request methods;

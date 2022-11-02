@@ -39,31 +39,31 @@ struct studentComparatorUCInv {
 };
 
 //não faria mais sentido as funções receberem um set ?
-set<Student* , studentComparatorAlpha2> alphaZ(Data d){
+set<Student* , studentComparatorAlpha2> s_alphaZ(set<Student *, studentComparatorAlpha1> s){
     set<Student* , studentComparatorAlpha2> studentsA2;
-    for(Student* p :d.get_students()) studentsA2.insert(p);
+    for(Student* p :s) studentsA2.insert(p);
     return studentsA2;
 }
-set<Student* , studentCodeComparator> numb(Data d){
+set<Student* , studentCodeComparator> s_numb(set<Student *, studentComparatorAlpha1> s){
     set<Student* , studentCodeComparator> studentNum;
-    for (Student* p:d.get_students()) studentNum.insert(p);
+    for (Student* p:s) studentNum.insert(p);
     return studentNum;
 }
-set<Student* , studentCodeComparatorInv> numbInv(Data d){
+set<Student* , studentCodeComparatorInv> s_numbInv(set<Student *, studentComparatorAlpha1> s){
     set<Student* , studentCodeComparatorInv> studentInv;
-    for (Student* p:d.get_students()) studentInv.insert(p);
+    for (Student* p:s) studentInv.insert(p);
     return studentInv;
 }
 
-set<Student* , studentComparatorUC> s_UC(Data d){
+set<Student* , studentComparatorUC> s_UC(set<Student *, studentComparatorAlpha1> s){
     set<Student* , studentComparatorUC> studentsUC;
-    for(Student* p :d.get_students()) studentsUC.insert(p);
+    for(Student* p :s) studentsUC.insert(p);
     return studentsUC;
 }
 
-set<Student* , studentComparatorUCInv> s_UCInv(Data d){
+set<Student* , studentComparatorUCInv> s_UCInv(set<Student *, studentComparatorAlpha1> s){
     set<Student* , studentComparatorUCInv> studentsUC;
-    for(Student* p :d.get_students()) studentsUC.insert(p);
+    for(Student* p :s) studentsUC.insert(p);
     return studentsUC;
 }
 

@@ -1,16 +1,10 @@
 #include "Data.h"
 
-set<Student *, studentComparatorAlpha1> Data :: get_students(){return students_;}
-vector<UCClass*> Data :: get_ucClasses(){return ucClasses_;} //passar para set
-queue<Request*> Data :: get_requests(){return requests_;}
-vector<Request*> Data:: get_archive(){return archive_;}
-/*
-void Data :: readFile() {
-    readFile_classes_per_uc();
-    readFile_classes();
-    readFile_students_classes();
-}
-*/
+set<Student *, studentComparatorAlpha1> Data :: get_students() const{return students_;}
+vector<UCClass*> Data :: get_ucClasses() const{return ucClasses_;} //passar para set
+queue<Request*> Data :: get_requests() const{return requests_;}
+vector<Request*> Data:: get_archive() const{return archive_;}
+
 
 /**
  * Função lê o ficheiro "classes.csv" e cria os objetos do tipo UCClass e Lecture.
@@ -126,6 +120,25 @@ void Data :: readFile_students_classes(string fname){
     }
     else cout<<"Could not open the file\n";
 }
+
+
+void Data::printSInfo(int code) const{
+    bool flag = true;
+    for(Student * stu: students_){
+        if (stu->get_studentCode() == code){
+            cout << "Name: " << stu->get_studentName() << endl;
+            cout << "Student Code: " << stu->get_studentCode() << endl << endl << "Classes:"<< endl;
+            for (UCClass *uc : stu->get_classes()){
+                cout << uc->get_ucCode() << ", " << uc->get_classCode() << ";" << endl;
+            }
+            flag = false;
+            break;
+        }
+    }
+    if (flag){ cout << "Student not found.";}
+}
+
+
 struct sorted_vector2{
     bool operator()(tuple<string,Lecture> t1, tuple<string,Lecture> t2){
         if (get<1>(t1).get_startHour() < get<1>(t2).get_startHour()) return true;

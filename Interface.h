@@ -5,10 +5,10 @@
 #ifndef AED_PROJECT1_INTERFACE_H
 #define AED_PROJECT1_INTERFACE_H
 
-#include "Data.h"
+//#include "Data.h"
 //#include "SortStudents.cpp"
-//#include "Counters.cpp"
-#include "Timetables.cpp"
+#include "Counters.cpp"
+//#include "Timetables.cpp"
 
 class Interface {
 
@@ -46,13 +46,13 @@ public:
     void lastPage() const;
 
     //sorter menu
-    void sortMenuList(list<int /* Student**/> l) const;
-    void sortMenuSet(set<int /*Student*,StudentComparator*/> s) const;
+    void sortMenuList(list<Student*> l) const;
+    void sortMenuSet(set<Student*,studentComparatorAlpha1> s) const;
     //general
     void exitProgram() const;
     void quitMenu() const;
     //utils
-    void print(list<int> l) const;
+
 
 };
 
