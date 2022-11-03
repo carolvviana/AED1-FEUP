@@ -15,7 +15,7 @@ void Interface::welcomePage() {
     cout << endl << "Options:\n\t1-Select files to read\n\t2-Credits\n\te-Exit"<<endl;
     char input;
     while (true){
-        cout << "Choose option: ";
+        cout << "Choose option:";
         cin >> input;
 
         switch (input) {
@@ -38,10 +38,10 @@ void Interface::readFiles() {
     cout << endl << "=========READ FILES=========" << endl;
     cout << endl;
     cout << "Which files do you want to read?" << endl;
-    cout << endl << "Options:\n\t1-Default files\n\tb-Back\n\te-Exit"<<endl;
+    cout << endl << "Options:\n\t1-Default files\n\t2-Updated Student file\n\tb-Back\n\te-Exit"<<endl;
     char input;
     while (true){
-        cout << "Choose option: ";
+        cout << "Choose option:";
         cin >> input;
         switch (input) {
             case ('1'):
@@ -49,10 +49,12 @@ void Interface::readFiles() {
                 d_.readFile_students_classes("..\\csv\\students_classes.csv");
                 mainMenu();
                 return readFiles();
-                /*case ('2'):
-                    customFiles();
-                    mainMenu();
-                    return readFiles();*/
+            case ('2'):
+                //customFiles();
+                d_.readFile_classes("..\\csv\\classes.csv");
+                d_.readFile_students_classes("..\\csv\\students_classes.csv"); //ALTERAR PARA UPDATED_STUDENTS
+                mainMenu();
+                return readFiles();
             case ('b'):
                 return;
             case ('e'):
@@ -61,7 +63,7 @@ void Interface::readFiles() {
                 cout << endl << "Not a valid option" << endl;
         }
     }
-}
+} //WIP -> FICHEIRO ESTUDANTES ALTERADO
 void Interface::credits() const {
     cout << endl << "=========CREDITS=========" << endl;
     cout << endl;
@@ -73,7 +75,7 @@ void Interface::credits() const {
     cout << endl << endl << "Options:\n\tb-Back\n\te-Exit"<< endl;
     char input;
     while (true) {
-        cout << "Choose option: ";
+        cout << "Choose option:";
         cin >> input;
 
         switch (input) {
@@ -120,7 +122,7 @@ void Interface::mainMenu() const {
     cout << endl << "Options:\n\t1-Students\n\t2-Classes\n\t3-Timetables\n\t4-Requests\n\tb-Back\n\te-Exit"<<endl;
     char input;
     while (true){
-        cout << "Choose option: ";
+        cout << "Choose option:";
         cin >> input;
 
         switch (input) {
@@ -150,10 +152,10 @@ void Interface::mainMenu() const {
 void Interface::studentsMenu() const {
     cout << endl << "=========STUDENTS MENU=========" << endl;
     cout << endl;
-    cout << endl << "Options:\n\t1-View student's info\n\t2-List students\n\tb-Back\n\tq-Main Menu\n\te-Exit"<<endl;
+    cout << endl << "Options:\n\t1-View student's info\n\t2-List students\n\tb-Back\n\te-Exit"<<endl;
     char input;
     while (true){
-        cout << "Choose option: ";
+        cout << "Choose option:";
         cin >> input;
         switch (input) {
             case ('1'):
@@ -164,8 +166,6 @@ void Interface::studentsMenu() const {
                 return studentsMenu();
             case ('b'):
                 return;
-            case ('q'):
-                return quitMenu(); // WIP
             case ('e'):
                 return exitProgram();
             default:
@@ -180,13 +180,13 @@ void Interface::timetablesMenu() const {
     cout << endl << "=========TIMETABLES MENU=========" << endl;
     cout << endl;
     cout << "Select which type of timetable you want to see." << endl;
-    cout << endl << "Options:\n\t1-Student\n\t2-UC\n\t3-Class\n\tb-Back\n\tq-Main Menu\n\te-Exit"<<endl;
+    cout << endl << "Options:\n\t1-Student\n\t2-UC\n\t3-Class\n\tb-Back\n\te-Exit"<<endl;
     char input;
     string ucCode, classCode;
     Student stu;
     int code;
     while (true){
-        cout << "Choose option: ";
+        cout << "Choose option:";
         cin >> input;
 
         switch (input) {
@@ -219,23 +219,20 @@ void Interface::timetablesMenu() const {
                 return timetablesMenu();
             case ('b'):
                 return;
-            case ('q'):
-                return quitMenu(); // WIP
             case ('e'):
                 return exitProgram();
             default:
                 cout << endl << "Not a valid option" << endl;
         }
     }
-
 }
 void Interface::requestsMenu() const {
     cout << endl << "=========REQUESTS MENU=========" << endl;
     cout << endl;
-    cout << endl << "Options:\n\t1-Create Request\n\t2-Process Requests\n\tb-Back\n\tq-Main Menu\n\te-Exit"<<endl;
+    cout << endl << "Options:\n\t1-Create Request\n\t2-Process Requests\n\tb-Back\n\te-Exit"<<endl;
     char input;
     while (true){
-        cout << "Choose option: ";
+        cout << "Choose option:";
         cin >> input;
         switch (input) {
             case ('1'):
@@ -246,8 +243,6 @@ void Interface::requestsMenu() const {
                 return requestsMenu();
             case ('b'):
                 return;
-            case ('q'):
-                return quitMenu(); // WIP
             case ('e'):
                 return exitProgram();
             default:
@@ -261,10 +256,10 @@ void Interface::studentsInfo() const {
     cout << endl << "=========STUDENT'S INFO=========" << endl;
     cout << endl;
     cout << "Search student by: " << endl;
-    cout << endl << "Options:\n\t1-Code\n\tb-Back\n\tq-Main Menu\n\te-Exit"<<endl;
+    cout << endl << "Options:\n\t1-Code\n\tb-Back\n\te-Exit"<<endl;
     char input;
     while (true){
-        cout << "Choose option: ";
+        cout << "Choose option:";
         cin >> input;
         //string name;
         int code;
@@ -278,8 +273,6 @@ void Interface::studentsInfo() const {
                 return studentsInfo();
             case ('b'):
                 return;
-            case ('q'):
-                return quitMenu(); // WIP
             case ('e'):
                 return exitProgram();
             default:
@@ -291,16 +284,16 @@ void Interface::studentsList() const{
     cout << endl << "=========LIST STUDENTS=========" << endl;
     cout << endl;
     cout << "Select the filter you want to apply: " << endl;
-    cout << endl << "Options:\n\t1-All students\n\t2-By year\n\t3-By UC\n\t4-By class\n\t5-By nr of UCs\n\tb-Back\n\tq-Main Menu\n\te-Exit"<<endl;
+    cout << endl << "Options:\n\t1-All students\n\t2-By year\n\t3-By UC\n\t4-By class\n\t5-By nr of UCs\n\tb-Back\n\te-Exit"<<endl;
     char input;
     int nr;
     string ucCode, classCode;
     char op;
     bool flag = true;
     list<Student*> l = {};
-    UCClass *ucClass;
+    bool flag2 = false;
     while (true){
-        cout << "Choose option: ";
+        cout << "Choose option:";
         cin >> input;
         switch (input) {
             case ('1'):
@@ -330,15 +323,17 @@ void Interface::studentsList() const{
                 if(regex_match(ucCode, regex("(L\\.EIC0)((1[0-9])|(2[0-5])|(0[1-9]))"))){
                     cout << endl << "Insert Class code ('yLEICxx', with 'y' being the year and 'xx' the class number): ";
                     cin >> classCode; cout << endl;
-                    auto iter = find_if(d_.get_ucClasses().begin(), d_.get_ucClasses().end(), [ucCode, classCode](
-                            UCClass *uc2)->bool {return (uc2->get_ucCode() == ucCode && uc2->get_classCode() == classCode );});     //DOESN'T WORK
-                    if(iter != d_.get_ucClasses().end()){
-                        ucClass = *iter;
-                        l = ucClass->get_students();
-                        sortMenuList(l);
+                    for (UCClass *uc : d_.get_ucClasses()){
+                        if (uc->get_classCode() == classCode && uc->get_ucCode() == ucCode){
+                            l = uc->get_students();
+                            flag2 = true;
+                        }
                     }
+                    if(flag2){
+                        sortMenuList(l);}
                     else{cout << "ERROR: Could not find Class." << endl;
                         lastPage();}
+
                 }
                 else {
                     cout << "ERROR: Could not find UC." << endl;
@@ -370,22 +365,19 @@ void Interface::studentsList() const{
                 return studentsList();
             case ('b'):
                 return;
-            case ('q'):
-                return quitMenu(); // WIP
             case ('e'):
                 return exitProgram();
             default:
                 cout << endl << "Not a valid option" << endl;
         }
     }
-
-}//TESTAR -> 1 bug, case 4
+}
 
 //4-requests
 void Interface::createRMenu() const {
     cout << endl << "=========CREATE REQUESTS=========" << endl;
     cout << endl;
-    cout << endl << "Insert Student's code: ";
+    cout << endl << "Insert Student's code:";
     int code;
     cin >> code;
     Student stu = d_.findStudent(code);
@@ -397,26 +389,24 @@ void Interface::createRMenu() const {
         }
         cout << endl << "Select the type of request you want to make: " << endl;
         cout << endl
-             << "Options:\n\t1-Remove student from class\n\t2-Add student to class\n\t3-Replace student's classes\n\tb-Back\n\tq-Main Menu\n\te-Exit"
+             << "Options:\n\t1-Remove student from class\n\t2-Add student to class\n\t3-Replace student's classes\n\tb-Back\n\te-Exit"
              << endl;
         char input;
         while (true) {
-            cout << "Choose option: ";
+            cout << "Choose option:";
             cin >> input;
             switch (input) {
                 case ('1'):
-                    studentsInfo();
+                    studentsInfo(); //
                     return createRMenu();
                 case ('2'):
-                    studentsList();
+                    studentsList(); //
                     return createRMenu();
                 case ('3'):
-                    studentsList();
+                    studentsList(); //
                     return createRMenu();
                 case ('b'):
                     return;
-                case ('q'):
-                    return quitMenu(); // WIP
                 case ('e'):
                     return exitProgram();
                 default:
@@ -424,7 +414,7 @@ void Interface::createRMenu() const {
             }
         }
     }
-}//TO DO
+}//WIP
 void Interface::processRMenu() const {
 
 }//TO DO
@@ -434,10 +424,10 @@ void Interface::sortMenuList(list<Student*> l) const {
     cout << endl << "=========SORT MENU=========" << endl;
     cout << endl;
     cout << "How do you want to sort the students? " << endl;
-    cout << endl << "Options:\n\t1-Alphabetical(A-Z)\n\t2-Alphabetical(Z-A)\n\t3-Code(low to high\n\t4-Code(high to low)\n\t5-Number of UCs(low to high)\n\t6-Number of UCs(high to low)\n\tb-Back\n\tq-Main Menu\n\te-Exit"<<endl;
+    cout << endl << "Options:\n\t1-Alphabetical(A-Z)\n\t2-Alphabetical(Z-A)\n\t3-Code(low to high\n\t4-Code(high to low)\n\t5-Number of UCs(low to high)\n\t6-Number of UCs(high to low)\n\tb-Back\n\te-Exit"<<endl;
     char input;
     while (true){
-        cout << "Choose option: ";
+        cout << "Choose option:";
         cin >> input;
         switch (input) {
             case ('1'):
@@ -472,8 +462,6 @@ void Interface::sortMenuList(list<Student*> l) const {
                 return sortMenuList(l);
             case ('b'):
                 return;
-            case ('q'):
-                return quitMenu(); // WIP
             case ('e'):
                 return exitProgram();
             default:
@@ -485,10 +473,10 @@ void Interface::sortMenuSet(set<Student*,studentComparatorAlpha1> s) const {
     cout << endl << "=========SORT MENU=========" << endl;
     cout << endl;
     cout << "How do you want to sort the students? " << endl;
-    cout << endl << "Options:\n\t1-Alphabetical(A-Z)\n\t2-Alphabetical(Z-A)\n\t3-Code(low to high)\n\t4-Code(high to low)\n\t5-Number of UCs(low to high)\n\t6-Number of UCs(high to low)\n\tb-Back\n\tq-Main Menu\n\te-Exit"<<endl;
+    cout << endl << "Options:\n\t1-Alphabetical(A-Z)\n\t2-Alphabetical(Z-A)\n\t3-Code(low to high)\n\t4-Code(high to low)\n\t5-Number of UCs(low to high)\n\t6-Number of UCs(high to low)\n\tb-Back\n\te-Exit"<<endl;
     char input;
     while (true){
-        cout << "Choose option: ";
+        cout << "Choose option:";
         cin >> input;
         switch (input) {
             case ('1'):
@@ -507,39 +495,35 @@ void Interface::sortMenuSet(set<Student*,studentComparatorAlpha1> s) const {
                 printSetNumbInv(s_numbInv(s));
                 lastPage();
                 return sortMenuSet(s);
-            case ('5'): //DOESN'T WORK CORRECTLY
+            case ('5'):
                 printSetUC(s_UC(s));
                 lastPage();
                 return sortMenuSet(s);
-            case ('6'): //DOESN'T WORK CORRECTLY
+            case ('6'):
                 printSetUCInv(s_UCInv(s));
                 lastPage();
                 return sortMenuSet(s);
             case ('b'):
                 return;
-            case ('q'):
-                return quitMenu(); // WIP
             case ('e'):
                 return exitProgram();
             default:
                 cout << endl << "Not a valid option" << endl;
         }
     }
-} //2 Bugs - case 5 & 6
+}
 
 //extra
 void Interface::lastPage() const {
     cout << endl << endl;
-    cout << endl << "Options:\n\tb-Back\n\tq-Main Menu\n\te-Exit"<<endl;
+    cout << endl << "Options:\n\tb-Back\n\te-Exit"<<endl;
     char input;
     while (true){
-        cout << "Choose option: ";
+        cout << "Choose option:";
         cin >> input;
         switch (input) {
             case ('b'):
                 return;
-            case ('q'):
-                return quitMenu(); // WIP
             case ('e'):
                 return exitProgram();
             default:
@@ -552,11 +536,4 @@ void Interface::exitProgram() const {
     cout << endl << "Exiting program..." << endl;
     throw 200;
 }
-void Interface::quitMenu() const {}//WIP -> Actually work ain't even started
-//utils
-/*
-void Interface::print(list<int> l) const{
-    for (auto i: l){
-        cout << i <<endl;
-    }
-}*/
+

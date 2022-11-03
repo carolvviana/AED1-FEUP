@@ -29,14 +29,14 @@ struct studentCodeComparatorInv {
 struct studentComparatorUC {
     bool operator()(Student *s1, Student *s2) {
         if (s1->get_studentCode() != s2->get_studentCode())
-            return s1->get_classes().size() < s2->get_classes().size();
+            return (s1->get_classes().size() < s2->get_classes().size()) || ((s1->get_classes().size() == s2->get_classes().size()) && (s1->get_studentName() < s2->get_studentName()));
         return false;
     }
 };
 struct studentComparatorUCInv {
     bool operator()(Student *s1, Student *s2) {
         if (s1->get_studentCode() != s2->get_studentCode())
-            return s1->get_classes().size() > s2->get_classes().size();
+            return (s1->get_classes().size() > s2->get_classes().size()) || ((s1->get_classes().size() == s2->get_classes().size()) && (s1->get_studentName() < s2->get_studentName()));
         return false;
     }
 };

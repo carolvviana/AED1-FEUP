@@ -21,6 +21,7 @@ list<Student*> methodsYear(char number, set<Student*,studentComparatorAlpha1> s)
         for(UCClass *ucClass :stu->get_classes()){
             if(ucClass->get_classCode()[0] == number) {
                 lista.push_back(stu);
+                break;
             }
         }
     }
@@ -157,6 +158,8 @@ void printList(list<Student*> lista){
     for (Student* stu : lista) {
         cout << "- " << stu->get_studentName() << ", " << stu->get_studentCode() << ";" << endl;
     }
+
+    cout << "\n\nNumber of students: " << lista.size() << endl;
 }
 /*
 void printTurma (list<Student*> lista){
@@ -212,6 +215,8 @@ void printSetAlphaA(set<Student *, studentComparatorAlpha1> s){
     for (Student* stu : s){
         cout << "- " << stu->get_studentName() << ", " << stu->get_studentCode() << ";" << endl;
     }
+    cout << "\n\nNumber of students: " << s.size() << endl;
+
 }
 
 /**
@@ -223,6 +228,7 @@ void printSetAlphaZ(set<Student *, studentComparatorAlpha2> s){
     for (Student* stu : s){
         cout << "- " << stu->get_studentName() << ", " << stu->get_studentCode() << ";" << endl;
     }
+    cout << "\n\nNumber of students: " << s.size() << endl;
 }
 /**
  * Função dá output ao utilizador de uma lista de estudantes ordenada por número de estudante crescente.
@@ -233,6 +239,7 @@ void printSetNumb(set<Student *, studentCodeComparator> s){
     for (Student* stu : s){
         cout << "- " << stu->get_studentName() << ", " << stu->get_studentCode() << ";" << endl;
     }
+    cout << "\n\nNumber of students: " << s.size() << endl;
 }
 
 /**
@@ -244,6 +251,7 @@ void printSetNumbInv(set<Student *, studentCodeComparatorInv> s){
     for (Student* stu : s){
         cout << "- " << stu->get_studentName() << ", " << stu->get_studentCode() << ";" << endl;
     }
+    cout << "\n\nNumber of students: " << s.size() << endl;
 }
 /**
  * Função dá output ao utilizador de uma lista de estudantes ordenada por número de UCs crescente.
@@ -252,8 +260,9 @@ void printSetNumbInv(set<Student *, studentCodeComparatorInv> s){
  */
 void printSetUC(set<Student* , studentComparatorUC> s){
     for (Student* stu : s){
-        cout << "- " << stu->get_studentName() << ", " << stu->get_studentCode() << ";" << endl;
+        cout << "- " << stu->get_studentName() << ", " << stu->get_studentCode() << ", " << stu->get_classes().size() << ";" << endl;
     }
+    cout << "\n\nNumber of students: " << s.size() << endl;
 }
 
 /**
@@ -263,8 +272,9 @@ void printSetUC(set<Student* , studentComparatorUC> s){
  */
 void printSetUCInv(set<Student* , studentComparatorUCInv> s){
     for (Student* stu : s){
-        cout << "- " << stu->get_studentName() << ", " << stu->get_studentCode() << ";" << endl;
+        cout << "- " << stu->get_studentName() << ", " << stu->get_studentCode() << ", " << stu->get_classes().size() << ";" << endl;
     }
+    cout << "\n\nNumber of students: " << s.size() << endl;
 }
 
 #endif //AED_PROJECT1_FILTERS_CPP
