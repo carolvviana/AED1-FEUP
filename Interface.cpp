@@ -330,10 +330,10 @@ void Interface::studentsList() const{
                 if(regex_match(ucCode, regex("(L\\.EIC0)((1[0-9])|(2[0-5])|(0[1-9]))"))){
                     cout << endl << "Insert Class code ('yLEICxx', with 'y' being the year and 'xx' the class number): ";
                     cin >> classCode; cout << endl;
-                    auto itu = find_if(d_.get_ucClasses().begin(), d_.get_ucClasses().end(), [ucCode, classCode](
+                    auto iter = find_if(d_.get_ucClasses().begin(), d_.get_ucClasses().end(), [ucCode, classCode](
                             UCClass *uc2)->bool {return (uc2->get_ucCode() == ucCode && uc2->get_classCode() == classCode );});     //DOESN'T WORK
-                    if(itu != d_.get_ucClasses().end()){
-                        ucClass = *itu;
+                    if(iter != d_.get_ucClasses().end()){
+                        ucClass = *iter;
                         l = ucClass->get_students();
                         sortMenuList(l);
                     }

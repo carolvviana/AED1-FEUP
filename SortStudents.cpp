@@ -42,7 +42,7 @@ set<Student* , studentCodeComparatorInv> s_numbInv(set<Student *, studentCompara
  */
 set<Student* , studentComparatorUC> s_UC(set<Student *, studentComparatorAlpha1> s){
     set<Student* , studentComparatorUC> studentsUC;
-    for(Student* p :s) studentsUC.insert(p);
+    for (Student* p :s) studentsUC.insert(p);
     return studentsUC;
 }
 /**
