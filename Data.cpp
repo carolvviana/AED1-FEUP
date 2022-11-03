@@ -129,7 +129,7 @@ void Data::printSInfo(int code) const{
             cout << "Name: " << stu->get_studentName() << endl;
             cout << "Student Code: " << stu->get_studentCode() << endl << endl << "Classes:"<< endl;
             for (UCClass *uc : stu->get_classes()){
-                cout << uc->get_ucCode() << ", " << uc->get_classCode() << ";" << endl;
+                cout << "\t" << uc->get_ucCode() << ", " << uc->get_classCode() << ";" << endl;
             }
             flag = false;
             break;
@@ -138,6 +138,21 @@ void Data::printSInfo(int code) const{
     if (flag){ cout << "Student not found.";}
 }
 
+Student Data::findStudent(int code) const {
+    bool flag = true;
+    Student s;
+    for(Student * stu: students_){
+        if (stu->get_studentCode() == code){
+            flag = false;
+            s = *stu;
+            break;
+        }
+    }
+    if (flag){ cout << "Student not found." << endl;
+        s = Student("Failure",0);
+        }
+    return s;
+}
 
 struct sorted_vector2{
     bool operator()(tuple<string,Lecture> t1, tuple<string,Lecture> t2){
@@ -150,7 +165,7 @@ void cout_tt2 (vector<tuple<string,Lecture>> t1){
         cout << get<1>(t).get_startHour()<< " | " << get<1>(t).get_endHour()<< " | " << get<0>(t) << " | " << get<1>(t).get_type() << endl;
     }
 }
-void Data ::uc_timetable(string uccode) {
+void Data ::uc_timetable(string uccode) const {
     vector<tuple<string,Lecture>> monday;
     vector<tuple<string,Lecture>> tuesday;
     vector<tuple<string,Lecture>> wednesday;
@@ -190,7 +205,8 @@ void Data ::uc_timetable(string uccode) {
     cout_tt2 (friday);
     cout << '\n';
 }
-void Data ::class_timetable(string classcode) {
+void Data ::class_timetable(string classcode) const{ //alterações feitas, flag para verificar se turma existe
+    bool flag = false;
     vector<tuple<string,Lecture>> monday;
     vector<tuple<string,Lecture>> tuesday;
     vector<tuple<string,Lecture>> wednesday;
@@ -198,6 +214,7 @@ void Data ::class_timetable(string classcode) {
     vector<tuple<string,Lecture>> friday;
     for (UCClass* uc: ucClasses_) {
         if (classcode == uc->get_classCode()){
+            flag = true;
             for (Lecture* l: uc->get_lectures()){
                 tuple<string,Lecture> par(uc->get_ucCode(), *l);
                 if (l->get_weekDay() == "Monday") monday.push_back(par);
@@ -208,39 +225,50 @@ void Data ::class_timetable(string classcode) {
             }
         }
     }
-    sort(monday.begin(), monday.end(), sorted_vector2());
-    sort(tuesday.begin(), tuesday.end(), sorted_vector2());
-    sort(wednesday.begin(), wednesday.end(), sorted_vector2());
-    sort(thursday.begin(), thursday.end(), sorted_vector2());
-    sort(friday.begin(), friday.end(), sorted_vector2());
+    if (flag) {
+        sort(monday.begin(), monday.end(), sorted_vector2());
+        sort(tuesday.begin(), tuesday.end(), sorted_vector2());
+        sort(wednesday.begin(), wednesday.end(), sorted_vector2());
+        sort(thursday.begin(), thursday.end(), sorted_vector2());
+        sort(friday.begin(), friday.end(), sorted_vector2());
 
-    cout << "MONDAY" << endl;
-    cout_tt2(monday);
-    cout << '\n';
-    cout << "TUESDAY" << endl;
-    cout_tt2(tuesday);
-    cout << '\n';
-    cout << "WEDNESDAY" << endl;
-    cout_tt2 (wednesday);
-    cout << '\n';
-    cout << "THURSDAY" << endl;
-    cout_tt2 (thursday);
-    cout << '\n';
-    cout << "FRIDAY" << endl;
-    cout_tt2 (friday);
-    cout << '\n';
+        cout << "MONDAY" << endl;
+        cout_tt2(monday);
+        cout << '\n';
+        cout << "TUESDAY" << endl;
+        cout_tt2(tuesday);
+        cout << '\n';
+        cout << "WEDNESDAY" << endl;
+        cout_tt2(wednesday);
+        cout << '\n';
+        cout << "THURSDAY" << endl;
+        cout_tt2(thursday);
+        cout << '\n';
+        cout << "FRIDAY" << endl;
+        cout_tt2(friday);
+        cout << '\n';
+    }
+    else {cout << "Could not find Class." << endl;}
 }
 
 //funcao recebe student code, mas tem de receber ja os vetores das classes (por isso tem de se criara os vetores na interface)
 void Data::guardarPedidos(int sc, vector<UCClass*> og, vector<UCClass*> final) {
     Request *req;
+    bool flag = false;
     for (Student *s: students_) {
         if (sc == s->get_studentCode()){
+            flag = true;
             req = new Request(s, og, final);
+            break;
         }
     }
-    requests_.push(req);
+    if (flag) {
+        requests_.push(req);
+    }
+    else {cout << "Could not find student. Request creation failed." << endl;}
 }
+
+
 
 bool check_compatibility(UCClass* uc1, UCClass* uc2){
     for (Lecture* l1: uc1->get_lectures())

@@ -3,14 +3,15 @@
 //
 
 #include "Interface.h"
-#include "Counters.cpp"
+
+#include <regex>
 
 Interface::Interface()= default;
 
 //0
 void Interface::welcomePage() {
     cout << endl << "=========WELCOME PAGE=========" << endl;
-    cout << endl << "Options:   1-Select files to read\t2-Credits\te-Exit"<<endl;
+    cout << endl << "Options:\n\t1-Select files to read\n\t2-Credits\n\te-Exit"<<endl;
     char input;
     while (true){
         cout << "Choose option: ";
@@ -36,7 +37,7 @@ void Interface::readFiles() {
     cout << endl << "=========READ FILES=========" << endl;
     cout << endl;
     cout << "Which files do you want to read?" << endl;
-    cout << endl << "Options:   1-Default files\tb-Back\te-Exit"<<endl;
+    cout << endl << "Options:\n\t1-Default files\n\tb-Back\n\te-Exit"<<endl;
     char input;
     while (true){
         cout << "Choose option: ";
@@ -59,16 +60,16 @@ void Interface::readFiles() {
                 cout << endl << "Not a valid option" << endl;
         }
     }
-}//WIP -> Read files
+}
 void Interface::credits() const {
     cout << endl << "=========CREDITS=========" << endl;
     cout << endl;
     cout << "Made by:" << endl;
     cout << "Carolina Viana, up202108802" << endl;
     cout << "Guilherme Monteiro, up202108668" << endl;
-    cout << "Sofia Sá, up202108676" << endl;
+    cout << "Sofia Sa, up202108676" << endl;
 
-    cout << endl << endl << "Options:   b-Back\te-Exit"<< endl;
+    cout << endl << endl << "Options:\n\tb-Back\n\te-Exit"<< endl;
     char input;
     while (true) {
         cout << "Choose option: ";
@@ -115,7 +116,7 @@ void Interface::mainMenu() const {
     cout << "Classes -> View a class's number of students, capacity, and organize them." << endl;
     cout << "Timetables -> View student's/class's/UC's timetables" << endl;
     cout << "Requests -> Create and process requests" << endl;
-    cout << endl << "Options:   1-Students\t2-Classes\t3-Timetables\t4-Requests\tb-Back\te-Exit"<<endl;
+    cout << endl << "Options:\n\t1-Students\n\t2-Classes\n\t3-Timetables\n\t4-Requests\n\tb-Back\n\te-Exit"<<endl;
     char input;
     while (true){
         cout << "Choose option: ";
@@ -142,13 +143,13 @@ void Interface::mainMenu() const {
                 cout << endl << "Not a valid option" << endl;
         }
     }
-}//WIP -> Explicar opções
+}
 
 //3
 void Interface::studentsMenu() const {
     cout << endl << "=========STUDENTS MENU=========" << endl;
     cout << endl;
-    cout << endl << "Options:   1-View student's info\t2-List students\tb-Back\tq-Main Menu\te-Exit"<<endl;
+    cout << endl << "Options:\n\t1-View student's info\n\t2-List students\n\tb-Back\n\tq-Main Menu\n\te-Exit"<<endl;
     char input;
     while (true){
         cout << "Choose option: ";
@@ -175,12 +176,62 @@ void Interface::classesMenu() const {
 //listar alunos numa class, nr
 }//TO DO
 void Interface::timetablesMenu() const {
+    cout << endl << "=========TIMETABLES MENU=========" << endl;
+    cout << endl;
+    cout << "Select which type of timetable you want to see." << endl;
+    cout << endl << "Options:\n\t1-Student\n\t2-UC\n\t3-Class\n\tb-Back\n\tq-Main Menu\n\te-Exit"<<endl;
+    char input;
+    string ucCode, classCode;
+    Student stu;
+    int code;
+    while (true){
+        cout << "Choose option: ";
+        cin >> input;
 
-}//TO DO
+        switch (input) {
+            case ('1'):
+                cout << endl << "Student's code:";
+                cin >> code;
+                cout << endl;
+                stu = d_.findStudent(code);
+                if(stu.get_studentCode() != 0) stu.student_timetable(); //student is real
+                lastPage();
+                return timetablesMenu();
+            case ('2'):
+                cout << endl << "Insert UC code ('L.EIC0xx', with 'xx' being from 01 to 25): ";
+                cin >> ucCode; cout << endl;
+                if(regex_match(ucCode, regex("(L\\.EIC0)((1[0-9])|(2[0-5])|(0[1-9]))"))) {
+                    d_.uc_timetable(ucCode);
+                    lastPage();
+                }
+                else {
+                    cout << "ERROR: Could not find UC." << endl;
+                    lastPage();
+                }
+                return timetablesMenu();
+            case ('3'):
+                cout << endl << "Class's code ('yLEICxx', with 'y' being the year and 'xx' the class number):";
+                cin >> classCode;
+                cout << endl;
+                d_.class_timetable(classCode);
+                lastPage();
+                return timetablesMenu();
+            case ('b'):
+                return;
+            case ('q'):
+                return quitMenu(); // WIP
+            case ('e'):
+                return exitProgram();
+            default:
+                cout << endl << "Not a valid option" << endl;
+        }
+    }
+
+}
 void Interface::requestsMenu() const {
     cout << endl << "=========REQUESTS MENU=========" << endl;
     cout << endl;
-    cout << endl << "Options:   1-Create Request\t2-Process Requests\tb-Back\tq-Main Menu\te-Exit"<<endl;
+    cout << endl << "Options:\n\t1-Create Request\n\t2-Process Requests\n\tb-Back\n\tq-Main Menu\n\te-Exit"<<endl;
     char input;
     while (true){
         cout << "Choose option: ";
@@ -206,15 +257,15 @@ void Interface::requestsMenu() const {
 
 //4-students
 void Interface::studentsInfo() const {
-    cout << endl << "=========STUDENTS INFO=========" << endl;
+    cout << endl << "=========STUDENT'S INFO=========" << endl;
     cout << endl;
     cout << "Search student by: " << endl;
-    cout << endl << "Options:   1-Code\tb-Back\tq-Main Menu\te-Exit"<<endl;
+    cout << endl << "Options:\n\t1-Code\n\tb-Back\n\tq-Main Menu\n\te-Exit"<<endl;
     char input;
     while (true){
         cout << "Choose option: ";
         cin >> input;
-        string name;
+        //string name;
         int code;
         switch (input) {
             case ('1'):
@@ -239,13 +290,14 @@ void Interface::studentsList() const{
     cout << endl << "=========LIST STUDENTS=========" << endl;
     cout << endl;
     cout << "Select the filter you want to apply: " << endl;
-    cout << endl << "Options:   1-All students\t2-By year\t3-By UC\t4-By class\t5-By nr of UCs\tb-Back\tq-Main Menu\te-Exit"<<endl;
+    cout << endl << "Options:\n\t1-All students\n\t2-By year\n\t3-By UC\n\t4-By class\n\t5-By nr of UCs\n\tb-Back\n\tq-Main Menu\n\te-Exit"<<endl;
     char input;
-    int nr; //alterar para char?
-    string ucClass;
+    int nr;
+    string ucCode, classCode;
     char op;
     bool flag = true;
     list<Student*> l = {};
+    UCClass *ucClass;
     while (true){
         cout << "Choose option: ";
         cin >> input;
@@ -256,23 +308,41 @@ void Interface::studentsList() const{
             case ('2'):
                 cout << endl << "Insert year: ";
                 cin >> nr; cout << endl;
-                l = methodsYear(char(nr)+48,d_.get_students());
+                l = methodsYear(char(nr),d_.get_students());
                 sortMenuList(l);
                 return studentsList();
             case ('3'):
-                cout << endl << "Insert UC number: ";
-                cin >> nr; cout << endl;
-                //get list(nr
-                //sortMenuList(l);
-                //TO DO
+                cout << endl << "Insert UC code ('L.EIC0xx', with 'xx' being from 01 to 25): ";
+                cin >> ucCode; cout << endl;
+                if(regex_match(ucCode, regex("(L\\.EIC0)((1[0-9])|(2[0-5])|(0[1-9]))"))) {
+                    l = methodsUC(ucCode, d_.get_students());
+                    sortMenuList(l);
+                }
+                else {
+                    cout << "ERROR: Could not find UC." << endl;
+                    lastPage();
+                }
                 return studentsList();
             case ('4'):
-                cout << endl <<"Example:" << endl << "UCCode ClassCode" << endl;
-                cout << "Insert 'UCCode' and 'ClassCode', like in the example " << endl; //tentar REGEX
-                cin >> ucClass; cout << endl;
-                //get list(ucClass);
-                //sortMenuList(l);
-                //TO DO
+                cout << endl << "Insert UC code ('L.EIC0xx', with 'xx' being from 01 to 25): ";
+                cin >> ucCode; cout << endl;
+                if(regex_match(ucCode, regex("(L\\.EIC0)((1[0-9])|(2[0-5])|(0[1-9]))"))){
+                    cout << endl << "Insert Class code ('yLEICxx', with 'y' being the year and 'xx' the class number): ";
+                    cin >> classCode; cout << endl;
+                    auto itu = find_if(d_.get_ucClasses().begin(), d_.get_ucClasses().end(), [ucCode, classCode](
+                            UCClass *uc2)->bool {return (uc2->get_ucCode() == ucCode && uc2->get_classCode() == classCode );});     //DOESN'T WORK
+                    if(itu != d_.get_ucClasses().end()){
+                        ucClass = *itu;
+                        l = ucClass->get_students();
+                        sortMenuList(l);
+                    }
+                    else{cout << "ERROR: Could not find Class." << endl;
+                        lastPage();}
+                }
+                else {
+                    cout << "ERROR: Could not find UC." << endl;
+                    lastPage();
+                }
                 return studentsList();
             case ('5'):
                 cout << endl << "Insert number: ";
@@ -308,36 +378,49 @@ void Interface::studentsList() const{
         }
     }
 
-}//FALTA 3 E 4, TENTAR REGEX?
+}//TESTAR -> 1 bug, case 4
 
 //4-requests
 void Interface::createRMenu() const {
     cout << endl << "=========CREATE REQUESTS=========" << endl;
     cout << endl;
-    cout << endl << "Select the type of request you want to make: " << endl;
-    cout << endl << "Options:   1-Remove student from class\t2-Add student to class\t3-replace student's classes\tb-Back\tq-Main Menu\te-Exit"<<endl;
-    char input;
-    while (true){
-        cout << "Choose option: ";
-        cin >> input;
-        switch (input) {
-            case ('1'):
-                studentsInfo();
-                return requestsMenu();
-            case ('2'):
-                studentsList();
-                return requestsMenu();
-            case ('3'):
-                studentsList();
-                return requestsMenu();
-            case ('b'):
-                return;
-            case ('q'):
-                return quitMenu(); // WIP
-            case ('e'):
-                return exitProgram();
-            default:
-                cout << endl << "Not a valid option" << endl;
+    cout << endl << "Insert Student's code: ";
+    int code;
+    cin >> code;
+    Student stu = d_.findStudent(code);
+    if (stu.get_studentCode() == 0) return createRMenu();
+    else {
+        cout << "Current classes:" << endl;
+        for (UCClass *uc : stu.get_classes()){
+            cout << "\t" << uc->get_ucCode() << ", " << uc->get_classCode() << ";" << endl;
+        }
+        cout << endl << "Select the type of request you want to make: " << endl;
+        cout << endl
+             << "Options:\n\t1-Remove student from class\n\t2-Add student to class\n\t3-Replace student's classes\n\tb-Back\n\tq-Main Menu\n\te-Exit"
+             << endl;
+        char input;
+        while (true) {
+            cout << "Choose option: ";
+            cin >> input;
+            switch (input) {
+                case ('1'):
+                    studentsInfo();
+                    return createRMenu();
+                case ('2'):
+                    studentsList();
+                    return createRMenu();
+                case ('3'):
+                    studentsList();
+                    return createRMenu();
+                case ('b'):
+                    return;
+                case ('q'):
+                    return quitMenu(); // WIP
+                case ('e'):
+                    return exitProgram();
+                default:
+                    cout << endl << "Not a valid option" << endl;
+            }
         }
     }
 }//TO DO
@@ -350,7 +433,7 @@ void Interface::sortMenuList(list<Student*> l) const {
     cout << endl << "=========SORT MENU=========" << endl;
     cout << endl;
     cout << "How do you want to sort the students? " << endl;
-    cout << endl << "Options:   1-Alphabetical(A-Z)\t2-Alphabetical(Z-A)\t3-Code(low to high\t4-Code(high to low)\n\t5-Number of UCs(low to high)\t6-Number of UCs(high to low)\tb-Back\tq-Main Menu\te-Exit"<<endl;
+    cout << endl << "Options:\n\t1-Alphabetical(A-Z)\n\t2-Alphabetical(Z-A)\n\t3-Code(low to high\n\t4-Code(high to low)\n\t5-Number of UCs(low to high)\n\t6-Number of UCs(high to low)\n\tb-Back\n\tq-Main Menu\n\te-Exit"<<endl;
     char input;
     while (true){
         cout << "Choose option: ";
@@ -396,12 +479,12 @@ void Interface::sortMenuList(list<Student*> l) const {
                 cout << endl << "Not a valid option" << endl;
         }
     }
-}//TESTAR
+}
 void Interface::sortMenuSet(set<Student*,studentComparatorAlpha1> s) const {
     cout << endl << "=========SORT MENU=========" << endl;
     cout << endl;
     cout << "How do you want to sort the students? " << endl;
-    cout << endl << "Options:   1-Alphabetical(A-Z)\t2-Alphabetical(Z-A)\t3-Code(low to high)\t4-Code(high to low)\n\t5-Number of UCs(low to high)\t6-Number of UCs(high to low)\tb-Back\tq-Main Menu\te-Exit"<<endl;
+    cout << endl << "Options:\n\t1-Alphabetical(A-Z)\n\t2-Alphabetical(Z-A)\n\t3-Code(low to high)\n\t4-Code(high to low)\n\t5-Number of UCs(low to high)\n\t6-Number of UCs(high to low)\n\tb-Back\n\tq-Main Menu\n\te-Exit"<<endl;
     char input;
     while (true){
         cout << "Choose option: ";
@@ -423,11 +506,11 @@ void Interface::sortMenuSet(set<Student*,studentComparatorAlpha1> s) const {
                 printSetNumbInv(s_numbInv(s));
                 lastPage();
                 return sortMenuSet(s);
-            case ('5'):
+            case ('5'): //DOESN'T WORK CORRECTLY
                 printSetUC(s_UC(s));
                 lastPage();
                 return sortMenuSet(s);
-            case ('6'):
+            case ('6'): //DOESN'T WORK CORRECTLY
                 printSetUCInv(s_UCInv(s));
                 lastPage();
                 return sortMenuSet(s);
@@ -441,12 +524,12 @@ void Interface::sortMenuSet(set<Student*,studentComparatorAlpha1> s) const {
                 cout << endl << "Not a valid option" << endl;
         }
     }
-}//TESTAR
+} //2 Bugs - case 5 & 6
 
 //extra
 void Interface::lastPage() const {
     cout << endl << endl;
-    cout << endl << "Options:   b-Back\tq-Main Menu\te-Exit"<<endl;
+    cout << endl << "Options:\n\tb-Back\n\tq-Main Menu\n\te-Exit"<<endl;
     char input;
     while (true){
         cout << "Choose option: ";
@@ -467,7 +550,7 @@ void Interface::lastPage() const {
 void Interface::exitProgram() const {
     cout << endl << "Exiting program..." << endl;
     throw 200;
-} //REVISION VERY NECESSARY
+}
 void Interface::quitMenu() const {}//WIP -> Actually work ain't even started
 //utils
 /*

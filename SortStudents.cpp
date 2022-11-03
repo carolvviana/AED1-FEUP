@@ -1,44 +1,7 @@
 #ifndef AED_PROJECT1_SORTSTUDENTS_CPP
 #define AED_PROJECT1_SORTSTUDENTS_CPP
-#include "Data.h"
-//falta meter aqui a ordem alfabetica
+#include "SortStudents.h"
 
-struct studentComparatorAlpha2 {
-    bool operator()(Student *s1, Student *s2) {
-        if (s1->get_studentCode() != s2->get_studentCode()) return (s2->get_studentName() < s1->get_studentName());
-        return false;
-    }
-};
-struct studentCodeComparator {
-    bool operator()(Student *s1, Student *s2) {
-        if (s1->get_studentCode() != s2->get_studentCode())
-            return (s1->get_studentCode() < s2->get_studentCode());
-        return false;
-    }
-};
-struct studentCodeComparatorInv {
-    bool operator()(Student *s1, Student *s2) {
-        if (s1->get_studentCode() != s2->get_studentCode())
-            return (s2->get_studentCode() < s1->get_studentCode());
-        return false;
-    }
-};
-
-struct studentComparatorUC {
-    bool operator()(Student *s1, Student *s2) {
-        if (s1->get_studentCode() != s2->get_studentCode()) return s1->get_classes().size() < s2->get_classes().size();
-        return false;
-    }
-};
-
-struct studentComparatorUCInv {
-    bool operator()(Student *s1, Student *s2) {
-        if (s1->get_studentCode() != s2->get_studentCode()) return s1->get_classes().size() > s2->get_classes().size();
-        return false;
-    }
-};
-
-//não faria mais sentido as funções receberem um set ?
 set<Student* , studentComparatorAlpha2> s_alphaZ(set<Student *, studentComparatorAlpha1> s){
     set<Student* , studentComparatorAlpha2> studentsA2;
     for(Student* p :s) studentsA2.insert(p);
@@ -67,7 +30,7 @@ set<Student* , studentComparatorUCInv> s_UCInv(set<Student *, studentComparatorA
     return studentsUC;
 }
 
-//create function that shows student beautifully
+
 
 //SORTERS PARA LISTAS DE ESTUDANTES
 

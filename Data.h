@@ -41,8 +41,8 @@ public:
     vector<Request*> get_archive() const;
 
     //auxiliary methods
-   void printSInfo(int code) const;
-
+    void printSInfo(int code) const;
+    Student findStudent(int code) const;
     //file reading methods
 
     void readFile_classes(string fname);
@@ -54,8 +54,8 @@ public:
     void processRequests();
 
 
-    void uc_timetable(string uccode);
-    void class_timetable(string classcode);
+    void uc_timetable(string uccode) const;
+    void class_timetable(string classcode) const;
 
 };
 

@@ -7,7 +7,7 @@
 
 //#include "Data.h"
 //#include "SortStudents.cpp"
-#include "Counters.cpp"
+#include "Filters.h"
 //#include "Timetables.cpp"
 
 class Interface {

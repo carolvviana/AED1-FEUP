@@ -1,7 +1,7 @@
-#ifndef AED_PROJECT1_COUNTERS_CPP
-#define AED_PROJECT1_COUNTERS_CPP
-#include "Data.h"
-#include "SortStudents.cpp"
+#ifndef AED_PROJECT1_FILTERS_CPP
+#define AED_PROJECT1_FILTERS_CPP
+
+#include "Filters.h"
 //LISTAGENS DE ESTUDANTES
  //=================TO BE CHECKED, após interface e atenção à Data d que as funcs recebem
 
@@ -37,7 +37,7 @@ list<Student*> methodsYear(char number, set<Student*,studentComparatorAlpha1> s)
 /**
  * Função retorna a lista de estudantes de uma determinada cadeira (uc) bem como o número de estudantes dessa cadeira.
  *
- * COMPLEXIDADE: O(n^2).
+ * COMPLEXIDADE: O(n^2). //o segundo n é só 5...
  */
 list<Student*> methodsUC(string uc, set<Student*,studentComparatorAlpha1> s){
     list<Student*> lista = {};
@@ -212,4 +212,4 @@ void printSetUCInv(set<Student* , studentComparatorUCInv> s){
     }
 }
 
-#endif //AED_PROJECT1_COUNTERS_CPP
+#endif //AED_PROJECT1_FILTERS_CPP
