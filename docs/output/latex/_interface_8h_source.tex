@@ -1,0 +1,63 @@
+\hypertarget{_interface_8h_source}{}\doxysection{C\+:/\+Users/\+User/\+Desktop/\+AED/\+AED-\/\+Project1.v2/\+Interface.h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Guilherme Monteiro on 01/11/2022.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef AED\_PROJECT1\_INTERFACE\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define AED\_PROJECT1\_INTERFACE\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{comment}{//\#include "{}Data.h"{}}}
+\DoxyCodeLine{9 \textcolor{comment}{//\#include "{}SortStudents.cpp"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}Filters.h"{}}}
+\DoxyCodeLine{11 \textcolor{comment}{//\#include "{}Timetables.cpp"{}}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{keyword}{class }\mbox{\hyperlink{class_interface}{Interface}} \{}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{public}:}
+\DoxyCodeLine{16     \mbox{\hyperlink{class_data}{Data}} d\_;}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18     \mbox{\hyperlink{class_interface}{Interface}}();}
+\DoxyCodeLine{19     \textcolor{keywordtype}{void} setData(\mbox{\hyperlink{class_data}{Data}} d)\{d\_ = d;\}}
+\DoxyCodeLine{20     \textcolor{comment}{//Data getData()\{return d;\}}}
+\DoxyCodeLine{21     \textcolor{comment}{//0}}
+\DoxyCodeLine{22     \textcolor{keywordtype}{void} welcomePage();}
+\DoxyCodeLine{23     \textcolor{comment}{//1}}
+\DoxyCodeLine{24     \textcolor{keywordtype}{void} readFiles() ;}
+\DoxyCodeLine{25     \textcolor{keywordtype}{void} credits() \textcolor{keyword}{const};}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27     \textcolor{comment}{//2}}
+\DoxyCodeLine{28     \textcolor{keywordtype}{void} mainMenu() \textcolor{keyword}{const};}
+\DoxyCodeLine{29     \textcolor{comment}{//3}}
+\DoxyCodeLine{30     \textcolor{keywordtype}{void} studentsMenu() \textcolor{keyword}{const};}
+\DoxyCodeLine{31     \textcolor{keywordtype}{void} timetablesMenu() \textcolor{keyword}{const};}
+\DoxyCodeLine{32     \textcolor{keywordtype}{void} requestsMenu()  \textcolor{keyword}{const};}
+\DoxyCodeLine{33     \textcolor{comment}{//4-\/students}}
+\DoxyCodeLine{34     \textcolor{keywordtype}{void} studentsInfo() \textcolor{keyword}{const};}
+\DoxyCodeLine{35     \textcolor{keywordtype}{void} studentsList() \textcolor{keyword}{const};}
+\DoxyCodeLine{36     \textcolor{comment}{//4-\/classes}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38     \textcolor{comment}{//4-\/timetables}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40     \textcolor{comment}{//4-\/requests}}
+\DoxyCodeLine{41     \textcolor{keywordtype}{void} createRMenu() \textcolor{keyword}{const};}
+\DoxyCodeLine{42     \textcolor{keywordtype}{void} processRMenu() \textcolor{keyword}{const};}
+\DoxyCodeLine{43     \textcolor{comment}{//extra}}
+\DoxyCodeLine{44     \textcolor{keywordtype}{void} lastPage() \textcolor{keyword}{const};}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46     \textcolor{comment}{//sorter menu}}
+\DoxyCodeLine{47     \textcolor{keywordtype}{void} sortMenuList(list<Student*> l) \textcolor{keyword}{const};}
+\DoxyCodeLine{48     \textcolor{keywordtype}{void} sortMenuSet(set<Student*,studentComparatorAlpha1> s) \textcolor{keyword}{const};}
+\DoxyCodeLine{49     \textcolor{comment}{//general}}
+\DoxyCodeLine{50     \textcolor{keywordtype}{void} exitProgram() \textcolor{keyword}{const};}
+\DoxyCodeLine{51     \textcolor{keywordtype}{void} quitMenu() \textcolor{keyword}{const};}
+\DoxyCodeLine{52     \textcolor{comment}{//utils}}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 \};}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//AED\_PROJECT1\_INTERFACE\_H}}
+
+\end{DoxyCode}
