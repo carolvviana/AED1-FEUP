@@ -43,6 +43,8 @@ public:
     void student_timetable();
     //methods
     //Student operator //operator override
+
+    bool operator<(const Student& s1){ return (studentCode_ < s1.studentCode_);}
 };
 
 

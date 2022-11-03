@@ -8,6 +8,7 @@
 
 Interface::Interface()= default;
 
+//using namespace std;
 //0
 void Interface::welcomePage() {
     cout << endl << "=========WELCOME PAGE=========" << endl;

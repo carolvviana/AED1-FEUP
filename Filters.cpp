@@ -10,13 +10,6 @@
 
 
 /**
- * Função retorna a lista de estudantes de uma determinada turma (ucC) bem como o número de estudantes nessa turma.
- *
- * COMPLEXIDADE: O(1).
- */
-//ELIMINADA
-
-/**
  * Função retorna a lista de estudantes de um determinado ano (number) bem como o número de estudantes nesse ano.
  *
  * COMPLEXIDADE: O(n^2).
@@ -52,7 +45,11 @@ list<Student*> methodsUC(string uc, set<Student*,studentComparatorAlpha1> s){
 }
 
 // função pra filtrar estudantes por numeros de UCs menor que n, maior, igual
-
+/**
+ * Função retorna a lista de estudantes com menos de N UCs.
+ *
+ * COMPLEXIDADE: O(n).
+ */
 list<Student*> filterLess(int n, set<Student*,studentComparatorAlpha1> s){
     list<Student*> lista = {};
     for (Student* stu : s){
@@ -62,7 +59,11 @@ list<Student*> filterLess(int n, set<Student*,studentComparatorAlpha1> s){
     }
     return lista;
 }
-
+/**
+ * Função retorna a lista de estudantes com mais de N UCs.
+ *
+ * COMPLEXIDADE: O(n).
+ */
 list<Student*> filterMore(int n, set<Student*,studentComparatorAlpha1> s){
     list<Student*> lista = {};
     for (Student* stu : s){
@@ -73,6 +74,11 @@ list<Student*> filterMore(int n, set<Student*,studentComparatorAlpha1> s){
     return lista;
 }
 
+/**
+ * Função retorna a lista de estudantes com N UCs.
+ *
+ * COMPLEXIDADE: O(n).
+ */
 list<Student*> filterEqual(int n, set<Student*,studentComparatorAlpha1> s){
     list<Student*> lista = {};
     for (Student* stu : s){
@@ -116,18 +122,36 @@ int counterUC(string uc, set<Student*,studentComparatorAlpha1> s){
 }
 
 //COUNTERS: probably sao desnecessarios pq basta fazer methods.size(), etc...
+/**
+ * Função retorna o número de estudantes com menos de N UCs.
+ *
+ * COMPLEXIDADE: O(1).
+ */
 int counterFilterLess(int n, set<Student*,studentComparatorAlpha1> s){
     return filterLess(n, s).size();
 }
-
+/**
+ * Função retorna o número de estudantes com mais de N UCs.
+ *
+ * COMPLEXIDADE: O(1).
+ */
 int counterFilterMore(int n, set<Student*,studentComparatorAlpha1> s){
     return filterMore(n, s).size();
 }
-
+/**
+ * Função retorna o número de estudantes com N UCs.
+ *
+ * COMPLEXIDADE: O(1).
+ */
 int counterFilterEqual(int n, set<Student*,studentComparatorAlpha1> s){
     return filterEqual(n , s).size();
 }
 
+/**
+ * Função dá output ao utilizador de uma determinada lista de estudantes.
+ *
+ * COMPLEXIDADE: O(n).
+ */
 //PRINTS ÀS LISTAS
 void printList(list<Student*> lista){
     for (Student* stu : lista) {
@@ -178,34 +202,65 @@ void printFilterEqual (list<Student*> lista){
 }
 */
 
+/**
+ * Função dá output ao utilizador de uma lista de estudantes ordenada alfabeticamente.
+ *
+ * COMPLEXIDADE: O(n).
+ */
 //prints aos sets
 void printSetAlphaA(set<Student *, studentComparatorAlpha1> s){
     for (Student* stu : s){
         cout << "- " << stu->get_studentName() << ", " << stu->get_studentCode() << ";" << endl;
     }
 }
+
+/**
+ * Função dá output ao utilizador de uma lista de estudantes ordenada pelo inverso da ordem alfabética.
+ *
+ * COMPLEXIDADE: O(n).
+ */
 void printSetAlphaZ(set<Student *, studentComparatorAlpha2> s){
     for (Student* stu : s){
         cout << "- " << stu->get_studentName() << ", " << stu->get_studentCode() << ";" << endl;
     }
 }
+/**
+ * Função dá output ao utilizador de uma lista de estudantes ordenada por número de estudante crescente.
+ *
+ * COMPLEXIDADE: O(n).
+ */
 void printSetNumb(set<Student *, studentCodeComparator> s){
     for (Student* stu : s){
         cout << "- " << stu->get_studentName() << ", " << stu->get_studentCode() << ";" << endl;
     }
 }
+
+/**
+ * Função dá output ao utilizador de uma lista de estudantes ordenada por número de estudante decrescente.
+ *
+ * COMPLEXIDADE: O(n).
+ */
 void printSetNumbInv(set<Student *, studentCodeComparatorInv> s){
     for (Student* stu : s){
         cout << "- " << stu->get_studentName() << ", " << stu->get_studentCode() << ";" << endl;
     }
 }
-
+/**
+ * Função dá output ao utilizador de uma lista de estudantes ordenada por número de UCs crescente.
+ *
+ * COMPLEXIDADE: O(n).
+ */
 void printSetUC(set<Student* , studentComparatorUC> s){
     for (Student* stu : s){
         cout << "- " << stu->get_studentName() << ", " << stu->get_studentCode() << ";" << endl;
     }
 }
 
+/**
+ * Função dá output ao utilizador de uma lista de estudantes ordenada por número de UCs decrescente.
+ *
+ * COMPLEXIDADE: O(n).
+ */
 void printSetUCInv(set<Student* , studentComparatorUCInv> s){
     for (Student* stu : s){
         cout << "- " << stu->get_studentName() << ", " << stu->get_studentCode() << ";" << endl;

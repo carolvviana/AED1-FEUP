@@ -5,7 +5,6 @@ vector<UCClass*> Data :: get_ucClasses() const{return ucClasses_;} //passar para
 queue<Request*> Data :: get_requests() const{return requests_;}
 vector<Request*> Data:: get_archive() const{return archive_;}
 
-
 /**
  * Função lê o ficheiro "classes.csv" e cria os objetos do tipo UCClass e Lecture.
  *
@@ -63,6 +62,11 @@ void Data :: readFile_classes(string fname){
 
 }
 
+/**
+ * Função lê o ficheiro "students_classes.csv" e cria os objetos do tipo Student e UC.
+ *
+ * COMPLEXIDADE: O(n).
+ */
 //cria os estudantes e adiciona as turmas (já com horários) ao estudante.
 void Data :: readFile_students_classes(string fname){
     //variables
@@ -121,7 +125,12 @@ void Data :: readFile_students_classes(string fname){
     else cout<<"Could not open the file\n";
 }
 
-
+/**
+ * Função dá output ao utilizador da informação sobre um estudante (Nome, Número de Aluno e Turmas).
+ * Informa o utilizador se o estudante não existir
+ *
+ * COMPLEXIDADE: O(n^2).
+ */
 void Data::printSInfo(int code) const{
     bool flag = true;
     for(Student * stu: students_){
@@ -138,6 +147,11 @@ void Data::printSInfo(int code) const{
     if (flag){ cout << "Student not found.";}
 }
 
+/**
+ * Função procura retorna o Estudante com um determinada número de estudante.
+ *
+ * COMPLEXIDADE: O(n).
+ */
 Student Data::findStudent(int code) const {
     bool flag = true;
     Student s;
@@ -160,11 +174,21 @@ struct sorted_vector2{
         return false;
     }
 };
+/**
+ * Função dá print a um vetor de tuplos compostos por uma string e um objeto do tipo Lecture, que representa um dia da semana no horário de um estudante.
+ *
+ * COMPLEXIDADE: O(n).
+ */
 void cout_tt2 (vector<tuple<string,Lecture>> t1){
     for (tuple<string,Lecture> t: t1){
         cout << get<1>(t).get_startHour()<< " | " << get<1>(t).get_endHour()<< " | " << get<0>(t) << " | " << get<1>(t).get_type() << endl;
     }
 }
+/**
+ * Função cria e dá output ao utilizador sobre o horário de uma determinada UC.
+ *
+ * COMPLEXIDADE: O(n^2).
+ */
 void Data ::uc_timetable(string uccode) const {
     vector<tuple<string,Lecture>> monday;
     vector<tuple<string,Lecture>> tuesday;
@@ -205,6 +229,11 @@ void Data ::uc_timetable(string uccode) const {
     cout_tt2 (friday);
     cout << '\n';
 }
+/**
+ * Função cria e dá output ao utilizador sobre o horário de uma determinada turma.
+ *
+ * COMPLEXIDADE: O(n^2).
+ */
 void Data ::class_timetable(string classcode) const{ //alterações feitas, flag para verificar se turma existe
     bool flag = false;
     vector<tuple<string,Lecture>> monday;
@@ -251,6 +280,11 @@ void Data ::class_timetable(string classcode) const{ //alterações feitas, flag
     else {cout << "Could not find Class." << endl;}
 }
 
+/**
+ * Função cria e guarda pedido de estudante (de adição, remoção ou troca de turma) na fila de pedidos)
+ *
+ * COMPLEXIDADE: O(n).
+ */
 //funcao recebe student code, mas tem de receber ja os vetores das classes (por isso tem de se criara os vetores na interface)
 void Data::guardarPedidos(int sc, vector<UCClass*> og, vector<UCClass*> final) {
     Request *req;
@@ -269,15 +303,26 @@ void Data::guardarPedidos(int sc, vector<UCClass*> og, vector<UCClass*> final) {
 }
 
 
-
+/**
+ * Função verifica a compatibilidade entre horários de duas turmas.
+ *
+ * COMPLEXIDADE: O(n^2).
+ */
 bool check_compatibility(UCClass* uc1, UCClass* uc2){
     for (Lecture* l1: uc1->get_lectures())
         for (Lecture* l2: uc2->get_lectures()){
-            if ((l2->get_type() == "TP" && l1->get_type()== "TP") && ( l2->get_endHour() > l1->get_startHour() || l2->get_startHour() < l1->get_endHour())) return false;
+            if (((l2->get_type() == "TP" && l1->get_type()== "TP") || (l2->get_type() == "PL" && l1->get_type()== "PL") || (l2->get_type() == "TP" && l1->get_type()== "PL") || (l2->get_type() == "PL" && l1->get_type()== "TP")) && ( l2->get_endHour() > l1->get_startHour() || l2->get_startHour() < l1->get_endHour())) return false;
         }
     return true;
 }
+/**
+ * Função processa os pedidos na fila de pedidos. Assume que o valor máximo de alunos por turma é 25. Separa os pedidos em dois tipos: pedidos de adição e de remoção. Os pedidos de trocas surgem como um pedido de adição e outro de remoção por parte de dois alunos diferentes.
+ * Pedidos não aceites a priori são guardados num vetor archive_ e voltam a ser processados quando os pedidos na fila principal "terminarem".
+ *
+ * COMPLEXIDADE: O(n^2).
+ */
 void Data:: processRequests() {
+    int cap = 25;
     vector<int> aux;
     vector<int> aux2;
 
@@ -327,7 +372,7 @@ void Data:: processRequests() {
                 aux2.clear();
 
                 for (UCClass *uc2: req->get_student()->get_classes()) {
-                    if (!check_compatibility(uc2, uc) || uc->get_students().size() + 1 > (min + 4)) {
+                    if (!check_compatibility(uc2, uc) || uc->get_students().size() + 1 > (min + 4) || uc->get_students().size() + 1 > cap) {
                         archive_.push_back(req);
                         break;
                     } // pedido nao aceite, vai para arquivo
