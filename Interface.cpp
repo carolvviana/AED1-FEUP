@@ -88,27 +88,6 @@ void Interface::credits() const {
         }
     }
 }
-//1.5
-/*void Interface::customFiles() const {
-    cout << endl << "=========CUSTOM FILES=========" << endl;
-    cout << endl;
-    string inp1,inp2,inp3;
-    //is the first input really necessary?
-    //also, what if the file isn´t correctly read?
-    //figure out a way to back from here
-    cout << "Please write the path to the desired 'classes.csv' file, or 'd' for the default file: ";
-    cin >> inp1;
-    //inp1 == "d" ? inp1 = defaultPath1;
-    //readfiles1(inp1);
-    cout << "Please write the path to the desired 'classes_per_uc.csv' file, or 'd' for the default file: ";
-    cin >> inp2;
-    //inp2 == "d" ? inp2 = defaultPath2;
-    //readfiles2(inp2);
-    cout << "Please write the path to the desired 'students_classes.csv' file, or 'd' for the default file: ";
-    cin >> inp3;
-    //inp3 == "d" ? inp3 = defaultPath3;
-    //readfiles3(inp3);
-}//WIP -> is it really needed? */
 
 //2
 void Interface::mainMenu() const {
@@ -119,7 +98,7 @@ void Interface::mainMenu() const {
     cout << "Classes -> View a class's number of students, capacity, and organize them." << endl;
     cout << "Timetables -> View student's/class's/UC's timetables" << endl;
     cout << "Requests -> Create and process requests" << endl;
-    cout << endl << "Options:\n\t1-Students\n\t2-Classes\n\t3-Timetables\n\t4-Requests\n\tb-Back\n\te-Exit"<<endl;
+    cout << endl << "Options:\n\t1-Students\n\t2-Timetables\n\t3-Requests\n\tb-Back\n\te-Exit"<<endl;
     char input;
     while (true){
         cout << "Choose option:";
@@ -129,13 +108,11 @@ void Interface::mainMenu() const {
             case ('1'):
                 studentsMenu();
                 return mainMenu();
+
             case ('2'):
-                classesMenu();
-                return mainMenu();
-            case ('3'):
                 timetablesMenu();
                 return mainMenu();
-            case ('4'):
+            case ('3'):
                 requestsMenu();
                 return mainMenu();
             case ('b'):
@@ -173,9 +150,9 @@ void Interface::studentsMenu() const {
         }
     }
 }
-void Interface::classesMenu() const {
+//void Interface::classesMenu() const {
 //listar alunos numa class, nr
-}//TO DO
+//}//TO DO
 void Interface::timetablesMenu() const {
     cout << endl << "=========TIMETABLES MENU=========" << endl;
     cout << endl;
@@ -392,6 +369,9 @@ void Interface::createRMenu() const {
              << "Options:\n\t1-Remove student from class\n\t2-Add student to class\n\t3-Replace student's classes\n\tb-Back\n\te-Exit"
              << endl;
         char input;
+        vector<UCClass*> og = {};
+        vector<UCClass*> final= {};
+
         while (true) {
             cout << "Choose option:";
             cin >> input;

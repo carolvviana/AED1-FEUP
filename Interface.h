@@ -23,13 +23,11 @@ public:
     //1
     void readFiles() ;
     void credits() const;
-    //1.5
-    // void customFiles() const;
+
     //2
     void mainMenu() const;
     //3
     void studentsMenu() const;
-    void classesMenu() const;
     void timetablesMenu() const;
     void requestsMenu()  const;
     //4-students
