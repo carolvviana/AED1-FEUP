@@ -6,6 +6,12 @@ Interface::Interface()= default;
 
 //using namespace std;
 //0
+
+/**
+ * Função imprime o menu inicial do programa, apresenta as opções disponiveis e recebe a escolha do utilizador.
+ *
+ * COMPLEXIDADE: O(n).
+ */
 void Interface::welcomePage() {
     cout << endl << "=========WELCOME PAGE=========" << endl;
     cout << endl << "Options:\n\t1-Select files to read\n\t2-Credits\n\te-Exit"<<endl;
@@ -30,6 +36,12 @@ void Interface::welcomePage() {
 }
 
 //1
+
+/**
+ * Função imprime o menu de leitura dos ficheiros, permite ao utilizador escolher entre os ficheiros "default" ou os ficheiros já alterados.
+ *
+ * COMPLEXIDADE: O(n).
+ */
 void Interface::readFiles() {
     cout << endl << "=========READ FILES=========" << endl;
     cout << endl;
@@ -59,7 +71,13 @@ void Interface::readFiles() {
                 cout << endl << "Not a valid option" << endl;
         }
     }
-} //WIP -> FICHEIRO ESTUDANTES ALTERADO
+}
+
+/**
+ * Função mostra os autores do programa.
+ *
+ * COMPLEXIDADE: O(n).
+ */
 void Interface::credits() const {
     cout << endl << "=========CREDITS=========" << endl;
     cout << endl;
@@ -86,6 +104,11 @@ void Interface::credits() const {
 }
 
 //2
+/**
+ * Função imprime o menu principal do programa e permite ir para os outros "sub"-menus, com as funcionalidades específicas.
+ *
+ * COMPLEXIDADE: O(n).
+ */
 void Interface::mainMenu() {
     cout << endl << "=========MAIN MENU=========" << endl;
     cout << endl;
@@ -122,6 +145,11 @@ void Interface::mainMenu() {
 }
 
 //3
+/**
+ * Função imprime o menu de métodos de estudantes. Permite ao utilizador escolher entre as varias opções.
+ *
+ * COMPLEXIDADE: O(n).
+ */
 void Interface::studentsMenu() const {
     cout << endl << "=========STUDENTS MENU=========" << endl;
     cout << endl;
@@ -146,6 +174,12 @@ void Interface::studentsMenu() const {
         }
     }
 }
+
+/**
+ * Função imprime o menu de métodos de horários. Permite ao utilizador escolher entre os tipos especificos de horarios (Student, UC, Class).
+ *
+ * COMPLEXIDADE: O(n).
+ */
 void Interface::timetablesMenu() const {
     cout << endl << "=========TIMETABLES MENU=========" << endl;
     cout << endl;
@@ -196,6 +230,13 @@ void Interface::timetablesMenu() const {
         }
     }
 }
+
+
+/**
+ * Função imprime o menu de métodos de pedidos de alteraçao. Permite ao utilizador escolher entre criar e processar pedidos.
+ *
+ * COMPLEXIDADE: O(n).
+ */
 void Interface::requestsMenu()  {
     cout << endl << "=========REQUESTS MENU=========" << endl;
     cout << endl;
@@ -222,6 +263,11 @@ void Interface::requestsMenu()  {
 }
 
 //4-students
+/**
+ * Função pede ao utilizador um codigo de estudante e posteriormente imprime informação sobre o mesmo.
+ *
+ * COMPLEXIDADE: O(n).
+ */
 void Interface::studentsInfo() const {
     cout << endl << "=========STUDENT'S INFO=========" << endl;
     cout << endl;
@@ -231,7 +277,6 @@ void Interface::studentsInfo() const {
     while (true){
         cout << "Choose option:";
         cin >> input;
-        //string name;
         int code;
         switch (input) {
             case ('1'):
@@ -250,6 +295,12 @@ void Interface::studentsInfo() const {
         }
     }
 }
+
+/**
+ * Função pede ao utilizador que escolha o filtro a aplicar numa listagem de estudantes.
+ *
+ * COMPLEXIDADE: O(n^2).
+ */
 void Interface::studentsList() const{
     cout << endl << "=========LIST STUDENTS=========" << endl;
     cout << endl;
@@ -344,6 +395,11 @@ void Interface::studentsList() const{
 }
 
 //4-requests
+/**
+ * Função que imprime um menu dde criação de pedidos. Recebe o codigo de estudante e permite ao utilizador escolher entre 3 tipos de pedidos (remoção, adição e troca).
+ *
+ * COMPLEXIDADE: O(n).
+ */
 void Interface::createRMenu()  {
     cout << endl << "=========CREATE REQUESTS=========" << endl;
     cout << endl;
@@ -401,7 +457,13 @@ void Interface::createRMenu()  {
             }
         }
     }
-}//WIP
+}
+
+/**
+ * Função processa os pedidos que estão na fila dos pedidos, indicando se foram bem sucedidos ou arquivados.
+ *
+ * COMPLEXIDADE: O(n).
+ */
 void Interface::processRMenu() {
     string s;
     d_.processRequests();
@@ -418,9 +480,15 @@ void Interface::processRMenu() {
     d_.clear_archive();
     lastPage();
     return;
-}//TO DO
+}
 
 //sorter menus
+/**
+ * Função que apresenta opções de ordenação da lista recebida e chamará a respetiva função de impressão de acordo com o input do utilizador.
+ *
+ * COMPLEXIDADE: O(n).
+ * @param l lista de pointers para objetos do tipo Student a ser ordenada
+ */
 void Interface::sortMenuList(list<Student*> l) const {
     cout << endl << "=========SORT MENU=========" << endl;
     cout << endl;
@@ -470,6 +538,13 @@ void Interface::sortMenuList(list<Student*> l) const {
         }
     }
 }
+
+/**
+ * Função que apresenta opções de ordenação do set recebido e chamará a respetiva função de impressão de acordo com o input do utilizador.
+ *
+ * COMPLEXIDADE: O(n).
+ * @param s set de pointers para objetos do tipo Student, ordenados, por default, alfabeticamente
+ */
 void Interface::sortMenuSet(set<Student*,studentComparatorAlpha1> s) const {
     cout << endl << "=========SORT MENU=========" << endl;
     cout << endl;
@@ -515,6 +590,11 @@ void Interface::sortMenuSet(set<Student*,studentComparatorAlpha1> s) const {
 }
 
 //extra
+/**
+ * Função que representa a ultima pagina do menu. Dispoe de duas ultimas opções - voltar atrás e fechar o programa.
+ *
+ * COMPLEXIDADE: O(n).
+ */
 void Interface::lastPage() const {
     cout << endl << endl;
     cout << endl << "Options:\n\tb-Back\n\te-Exit"<<endl;
@@ -533,6 +613,11 @@ void Interface::lastPage() const {
     }
 }
 //general
+/**
+ * Função grava as alterações efetuadas no ficheiro e fecha o programa.
+ *
+ * COMPLEXIDADE: O(1).
+ */
 void Interface::exitProgram() const {
     cout << endl << "Saving changes..." << endl;
     d_.file_writer("..\\csv\\updated_students_classes.csv");
@@ -540,7 +625,11 @@ void Interface::exitProgram() const {
     throw 200;
 }
 
-
+/**
+ * Função que permite ao utilizador criar vetores de pointers para objetos do tipo UCClass, atraves do input.
+ *
+ * COMPLEXIDADE: O(n^2).
+ */
 vector<UCClass*> Interface::createVec() const{
     bool flag = true;
     vector<UCClass*> v = {};
