@@ -48,7 +48,7 @@ void Interface::readFiles() {
             case ('2'):
                 //customFiles();
                 d_.readFile_classes("..\\csv\\classes.csv");
-                d_.readFile_students_classes("..\\csv\\students_classes.csv"); //ALTERAR PARA UPDATED_STUDENTS
+                d_.readFile_students_classes("..\\csv\\updated_students_classes.csv"); //ALTERAR PARA UPDATED_STUDENTS
                 mainMenu();
                 return readFiles();
             case ('b'):
@@ -355,7 +355,7 @@ void Interface::createRMenu()  {
     else {
         cout << "Current classes:" << endl;
         for (UCClass *uc : stu->get_classes()){
-            cout << "\t" << uc->get_ucCode() << ", " << uc->get_classCode() << ";" << endl;
+            cout << "\t" << uc->get_ucCode() << "," << uc->get_classCode() << endl;
         }
         cout << endl << "Select the type of request you want to make: " << endl;
         cout << endl
@@ -407,14 +407,14 @@ void Interface::processRMenu() {
     d_.processRequests();
 
     if (d_.get_requests().size() != 0){
-        cout << "These students' requests could not be satisfied for now: "<< endl;
+        cout << endl << endl << "These students' requests could not be satisfied for now: "<< endl;
         for (Request* r: d_.get_archive()){
             if (r->get_class_final().size() == 0) s = "Removal";
             if (r->get_class_og().size() == 0) s = "Addition";
             cout << r->get_student()->get_studentName() << " - " << s << endl;
         }
     }
-    else cout << "Request succeeded" << endl;
+    else cout << endl << endl << "Request succeeded" << endl;
     d_.clear_archive();
     lastPage();
     return;
@@ -534,6 +534,8 @@ void Interface::lastPage() const {
 }
 //general
 void Interface::exitProgram() const {
+    cout << endl << "Saving changes..." << endl;
+    d_.file_writer("..\\csv\\updated_students_classes.csv");
     cout << endl << "Exiting program..." << endl;
     throw 200;
 }

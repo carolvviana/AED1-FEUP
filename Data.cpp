@@ -321,7 +321,7 @@ void Data :: data_pop(){
 bool check_compatibility(UCClass* uc1, UCClass* uc2){
     for (Lecture* l1: uc1->get_lectures())
         for (Lecture* l2: uc2->get_lectures()){
-            if (((l2->get_type() == "TP" && l1->get_type()== "TP") || (l2->get_type() == "PL" && l1->get_type()== "PL") || (l2->get_type() == "TP" && l1->get_type()== "PL") || (l2->get_type() == "PL" && l1->get_type()== "TP")) && ( l2->get_endHour() > l1->get_startHour() || l2->get_startHour() < l1->get_endHour())) return false;
+            if (((l2->get_type() == "TP" && l1->get_type()== "TP") || (l2->get_type() == "PL" && l1->get_type()== "PL") || (l2->get_type() == "TP" && l1->get_type()== "PL") || (l2->get_type() == "PL" && l1->get_type()== "TP")) && ( (l1->get_weekDay()==l2->get_weekDay()) && (l2->get_endHour() > l1->get_startHour() || l2->get_startHour() < l1->get_endHour()))) return false;
         }
     return true;
 }
@@ -334,6 +334,7 @@ bool check_compatibility(UCClass* uc1, UCClass* uc2){
  */
 void Data:: processRequests() {
     int cap = 25;
+    bool flag = true;
     vector<int> aux;
     vector<int> aux2;
 
@@ -382,19 +383,24 @@ void Data:: processRequests() {
 
                 aux2.clear();
 
+                if (uc->get_students().size() + 1 > (min + 4) || uc->get_students().size() + 1 > cap) flag = false;
+
                 for (UCClass *uc2: req->get_student()->get_classes()) {
-                    if (!check_compatibility(uc2, uc) || uc->get_students().size() + 1 > (min + 4) || uc->get_students().size() + 1 > cap) {
+                    /* || uc->get_students().size() + 1 > (min + 4)*/
+                    if (!check_compatibility(uc2, uc)) {
+                        flag = false;
                         archive_.push_back(req);
                         break;
                     } // pedido nao aceite, vai para arquivo
                     else {
-                        req->get_student()->add_class(uc);
-                        uc->add_student(req->get_student());// pedido aceite. uc é adicionada às ucs do aluno e aluno é adicionado à lista de ucs
+                       flag = true;
                     }
                 }
-
+                if (flag){
+                    req->get_student()->add_class(uc);
+                    uc->add_student(req->get_student());// pedido aceite. uc é adicionada às ucs do aluno e aluno é adicionado à lista de ucs}
             }
-        }
+        }}
         data_pop();
     }
     for (Request* r: archive_){requests_.push(r);}
@@ -404,14 +410,18 @@ void Data:: clear_archive(){
     archive_.clear();
 }
 
-void Data:: file_writer(string fname){
+void Data:: file_writer(string fname) const{
     ofstream f (fname);
     if (f.is_open()){
         f << "StudentCode,StudentName,UcCode,ClassCode" << endl;
         for (Student* s: students_){
-            for (UCClass* uc: s->get_classes()){
-                f << s->get_studentCode() << ',' << s->get_studentName() << ',' << uc->get_ucCode() << ',' << uc->get_classCode() << endl;
-            }
+
+
+                for (UCClass *uc: s->get_classes()) {
+                    f << s->get_studentCode() << ',' << s->get_studentName() << ',' << uc->get_ucCode() << ','
+                      << uc->get_classCode() << endl;
+                }
+
         }
     }
     else cout << "File not found" << endl;

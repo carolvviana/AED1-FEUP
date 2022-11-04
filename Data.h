@@ -48,7 +48,7 @@ public:
     void readFile_classes(string fname);
     //void readFile_classes_per_uc(string fname);
     void readFile_students_classes(string fname);
-    void file_writer(string fname);
+    void file_writer(string fname) const;
 
     //request methods;
     void saveRequests(Student* student, vector<UCClass*> og, vector<UCClass*> final);
