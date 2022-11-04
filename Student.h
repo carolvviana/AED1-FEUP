@@ -38,7 +38,7 @@ public:
     vector <UCClass*> get_classes();
 
     //overloads
-
+    void rem(UCClass* uc);
     void cout_tt (vector<tuple<string,Lecture>> t1);
     void student_timetable();
     //methods

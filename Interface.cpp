@@ -406,17 +406,17 @@ void Interface::createRMenu()  {
         }
     }
 }//WIP
-void Interface::processRMenu() const {
-    while (!d_.get_requests().empty()){
-        for( UCClass* uco : d_.get_requests().front()->get_class_og() ){
-            cout << uco->get_ucCode() << "," << uco->get_classCode()<<";"<< endl;
+void Interface::processRMenu() {
+    d_.processRequests();
+
+    if (d_.get_archive().size() == 0){
+        cout << "These students' requests could not be satisfied for now: "<< endl;
+        for (Request* r: d_.get_archive()){
+            cout << r->get_student() << endl;
         }
-        cout << "------\n";
-        for( UCClass* ucf : d_.get_requests().front()->get_class_final() ){
-            cout << ucf->get_ucCode() << "," << ucf->get_classCode()<<";"<< endl;
-        }
-        d_.get_requests().pop();
     }
+    else cout << "Request succeeded" << endl;
+
     lastPage();
     return;
 }//TO DO

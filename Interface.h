@@ -39,7 +39,7 @@ public:
 
     //4-requests
     void createRMenu() ;
-    void processRMenu() const;
+    void processRMenu() ;
     //extra
     void lastPage() const;
 

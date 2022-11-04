@@ -2,6 +2,7 @@
 #include "UCClass.h"
 #include "Student.h"
 #include <tuple>
+#include <algorithm>
 #include <string>
 
 using namespace std;
@@ -24,4 +25,8 @@ bool UCClass :: operator==(const UCClass& ucc) const{
     return (ucCode_ == ucc.ucCode_ && classCode_ == ucc.classCode_);
 }
 
+void UCClass :: remo(Student* s){
+    auto it = find_if(students_.begin(),students_.end(),[s] (Student* st){ return s->get_studentCode() == st->get_studentCode();});
+    students_.erase(it);
 
+}

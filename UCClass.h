@@ -44,7 +44,7 @@ public:
 
     //overloads
     bool operator== (const UCClass& ucc) const;
-
+    void remo(Student* s);
 };
 
 

@@ -293,7 +293,9 @@ void Data::saveRequests(Student* student, vector<UCClass*> og, vector<UCClass*> 
 
 
 }
-
+void Data :: data_pop(){
+    requests_.pop();
+}
 
 /**
  * Função verifica a compatibilidade entre horários de duas turmas.
@@ -318,7 +320,7 @@ void Data:: processRequests() {
     vector<int> aux;
     vector<int> aux2;
 
-    while (requests_.size() != 0) {
+    while (!requests_.empty()) {
         Request *req = requests_.front();
 
         if ((req->get_class_final()).size() == 0) { // pedido de remoção
@@ -338,11 +340,14 @@ void Data:: processRequests() {
                     break;
                 }
                 else {
+                    req->get_student()->rem(uc);
+                    uc->remo(req->get_student());
+                    /*
                     auto it = find(req->get_student()->get_classes().begin(), req->get_student()->get_classes().end(),
                                    uc);
                     (req->get_student()->get_classes()).erase(it); // remover class das classes do estudante
                     auto ite = find(uc->get_students().begin(), uc->get_students().end(), req->get_student());
-                    uc->get_students().erase(ite); //remover student dos estudantes da uc
+                    uc->get_students().erase(ite); //remover student dos estudantes da uc*/
                 }
 
             }
@@ -378,7 +383,9 @@ void Data:: processRequests() {
             }
         }
 
-        requests_.pop();
+        data_pop();
+
+        for (Request* r: archive_){requests_.push(r);}
     }
 }
 

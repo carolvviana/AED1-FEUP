@@ -73,3 +73,8 @@ void Student :: student_timetable(){
 
 
 }
+
+void Student:: rem(UCClass* uc){;
+    auto it = remove_if(classes_.begin(), classes_.end(),[uc] (UCClass* t){ return (uc->get_ucCode() == t->get_ucCode()) && (uc->get_classCode() == t->get_classCode());});
+    classes_.erase(it, classes_.end());
+}
