@@ -1,7 +1,3 @@
-//
-// Created by carol on 18/10/2022.
-//
-
 #ifndef AED_PROJECT1_REQUEST_H
 #define AED_PROJECT1_REQUEST_H
 

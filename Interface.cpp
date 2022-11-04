@@ -1,7 +1,3 @@
-//
-// Created by Guilherme Monteiro on 01/11/2022.
-//
-
 #include "Interface.h"
 
 #include <regex>
@@ -407,16 +403,19 @@ void Interface::createRMenu()  {
     }
 }//WIP
 void Interface::processRMenu() {
+    string s;
     d_.processRequests();
 
-    if (d_.get_archive().size() == 0){
+    if (d_.get_requests().size() != 0){
         cout << "These students' requests could not be satisfied for now: "<< endl;
         for (Request* r: d_.get_archive()){
-            cout << r->get_student() << endl;
+            if (r->get_class_final().size() == 0) s = "Removal";
+            if (r->get_class_og().size() == 0) s = "Addition";
+            cout << r->get_student()->get_studentName() << " - " << s << endl;
         }
     }
     else cout << "Request succeeded" << endl;
-
+    d_.clear_archive();
     lastPage();
     return;
 }//TO DO

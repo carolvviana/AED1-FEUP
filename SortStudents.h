@@ -1,7 +1,3 @@
-//
-// Created by Guilherme Monteiro on 03/11/2022.
-//
-
 #ifndef AED_PROJECT1_SORTSTUDENTS_H
 #define AED_PROJECT1_SORTSTUDENTS_H
 #include "Data.h"

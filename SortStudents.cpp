@@ -3,9 +3,11 @@
 #include "SortStudents.h"
 
 /**
- * Função retorna um set de estudantes ordenado com ordem inversa à alfabética.
+ * Função retorna um set de pointers de estudantes ordenado com ordem inversa à alfabética.
  *
  * COMPLEXIDADE: O(n).
+ * @param s set de pointers para objetos do tipo Student ordenados alfabeticamente (ordenação default)
+ * @return set de pointers para objetos do tipo Student ordenados com ordem inversa à alfabética
  */
 set<Student* , studentComparatorAlpha2> s_alphaZ(set<Student *, studentComparatorAlpha1> s){
     set<Student* , studentComparatorAlpha2> studentsA2;
@@ -14,9 +16,11 @@ set<Student* , studentComparatorAlpha2> s_alphaZ(set<Student *, studentComparato
 }
 
 /**
- * Função retorna um set de estudantes ordenado com número de estudante crescente.
+ * Função retorna um set de pointers de estudantes ordenado com número de estudante crescente.
  *
  * COMPLEXIDADE: O(n).
+ * @param s set de pointers para objetos do tipo Student ordenados alfabeticamente (ordenação default)
+ * @return set de pointers para objetos do tipo Student ordenados por numero de estudante crescente
  */
 set<Student* , studentCodeComparator> s_numb(set<Student *, studentComparatorAlpha1> s){
     set<Student* , studentCodeComparator> studentNum;
@@ -28,6 +32,8 @@ set<Student* , studentCodeComparator> s_numb(set<Student *, studentComparatorAlp
  * Função retorna um set de estudantes ordenado com número de estudante decrescente.
  *
  * COMPLEXIDADE: O(n).
+ * @param s set de pointers para objetos do tipo Student ordenados alfabeticamente (ordenação default)
+ * @return set de pointers para objetos do tipo Student ordenados por numero de estudante decrescente
  */
 set<Student* , studentCodeComparatorInv> s_numbInv(set<Student *, studentComparatorAlpha1> s){
     set<Student* , studentCodeComparatorInv> studentInv;
@@ -39,6 +45,8 @@ set<Student* , studentCodeComparatorInv> s_numbInv(set<Student *, studentCompara
  * Função retorna um set de estudantes ordenado com número de UCs crescente.
  *
  * COMPLEXIDADE: O(n).
+ * @param s set de pointers para objetos do tipo Student ordenados alfabeticamente (ordenação default)
+ * @return set de pointers para objetos do tipo Student ordenados por numero de UCs crescente
  */
 set<Student* , studentComparatorUC> s_UC(set<Student *, studentComparatorAlpha1> s){
     set<Student* , studentComparatorUC> studentsUC;
@@ -49,6 +57,8 @@ set<Student* , studentComparatorUC> s_UC(set<Student *, studentComparatorAlpha1>
  * Função retorna um set de estudantes ordenado com número de UCs decrescente.
  *
  * COMPLEXIDADE: O(n).
+ * @param s set de pointers para objetos do tipo Student ordenados alfabeticamente (ordenação default)
+ * @return set de pointers para objetos do tipo Student ordenados por numero de UCs decrescente
  */
 set<Student* , studentComparatorUCInv> s_UCInv(set<Student *, studentComparatorAlpha1> s){
     set<Student* , studentComparatorUCInv> studentsUC;
@@ -63,6 +73,9 @@ set<Student* , studentComparatorUCInv> s_UCInv(set<Student *, studentComparatorA
  * Função compara estudantes por nome (alfabeticamente)
  *
  * COMPLEXIDADE: O(1).
+ * @param s1 pointer para objeto do tipo Student presente na comparação
+ * @param s2 pointer para objeto do tipo Student presente na comparação
+ * @return valor booleano - true se o nome do objeto Student s1 for "menor" do que o nome de s2 (comparação entre caracteres)
  */
 bool l_AlphaA (Student* s1, Student* s2){
     return s1->get_studentName()<s2->get_studentName();
@@ -71,6 +84,9 @@ bool l_AlphaA (Student* s1, Student* s2){
  * Função compara estudantes por nome (ordem inversa à alfabética)
  *
  * COMPLEXIDADE: O(1).
+ * @param s1 pointer para objeto do tipo Student presente na comparação
+ * @param s2 pointer para objeto do tipo Student presente na comparação
+ * @return valor booleano - true se o nome do objeto Student s1 for "maior" do que o nome de s2 (comparação entre caracteres)
  */
 bool l_AlphaZ (Student* s1, Student* s2){
     return s1->get_studentName()>s2->get_studentName();
@@ -80,24 +96,32 @@ bool l_AlphaZ (Student* s1, Student* s2){
  * Função compara estudantes por número de estudante (ordem decrescente).
  *
  * COMPLEXIDADE: O(1).
+ * @param s1 pointer para objeto do tipo Student presente na comparação
+ * @param s2 pointer para objeto do tipo Student presente na comparação
+ * @return valor booleano - true se o codigo do objeto Student s1 for maior do que o codigo de s2
  */
 bool l_NumbInv (Student* s1, Student* s2){
     return s1->get_studentCode()>s2->get_studentCode();
 }
 /**
- * Função compara estudantes por número de estudantes (ordem crescente).
+ * Função compara estudantes por número de estudante (ordem crescente).
  *
  * COMPLEXIDADE: O(1).
+ * @param s1 pointer para objeto do tipo Student presente na comparação
+ * @param s2 pointer para objeto do tipo Student presente na comparação
+ * @return valor booleano - true se o codigo do objeto Student s1 for menor do que o codigo de s2
  */
 bool l_Numb (Student* s1, Student* s2){
     return s1->get_studentCode()<s2->get_studentCode();
 }
 
-// sorters: numero de cadeiras crescente/decrescente para lista e para set
 /**
  * Função compara estudantes por número de UCs (crescente).
  *
  * COMPLEXIDADE: O(1).
+ * @param s1 pointer para objeto do tipo Student presente na comparação
+ * @param s2 pointer para objeto do tipo Student presente na comparação
+ * @return valor booleano - true se o numero de UCs do objeto Student s1 for menor do que o de s2
  */
 bool l_UC (Student* s1, Student* s2){
     return s1->get_classes().size() < s2->get_classes().size();
@@ -107,6 +131,9 @@ bool l_UC (Student* s1, Student* s2){
  * Função compara estudantes por número de UCs (decrescente).
  *
  * COMPLEXIDADE: O(1).
+ * @param s1 pointer para objeto do tipo Student presente na comparação
+ * @param s2 pointer para objeto do tipo Student presente na comparação
+ * @return valor booleano - true se o numero de UCs do objeto Student s1 for maior do que o de s2
  */
 bool l_UCInv (Student* s1, Student* s2){
     return s1->get_classes().size() > s2->get_classes().size();

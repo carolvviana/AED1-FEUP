@@ -1,7 +1,7 @@
 #include "Data.h"
 
 set<Student *, studentComparatorAlpha1> Data :: get_students() const{return students_;}
-vector<UCClass*> Data :: get_ucClasses() const{return ucClasses_;} //passar para set
+vector<UCClass*> Data :: get_ucClasses() const{return ucClasses_;}
 queue<Request*> Data :: get_requests() const{return requests_;}
 vector<Request*> Data:: get_archive() const{return archive_;}
 
@@ -11,7 +11,7 @@ vector<Request*> Data:: get_archive() const{return archive_;}
  * COMPLEXIDADE: O(n).
  * @param fname string com o nome de ficheiro de input
  */
-//adiciona os horários de cada turma
+
 void Data :: readFile_classes(string fname){
     //variables
     string classCode, ucCode, weekday, type;
@@ -69,7 +69,7 @@ void Data :: readFile_classes(string fname){
  * COMPLEXIDADE: O(n).
  * @param fname string com o nome de ficheiro de input
  */
-//cria os estudantes e adiciona as turmas (já com horários) ao estudante.
+
 void Data :: readFile_students_classes(string fname){
     //variables
     int studentCode;
@@ -129,7 +129,7 @@ void Data :: readFile_students_classes(string fname){
 
 /**
  * Função dá output ao utilizador da informação sobre um estudante (Nome, Número de Aluno e Turmas).
- * Informa o utilizador se o estudante não existir
+ * Informa o utilizador se o estudante não existir.
  *
  * COMPLEXIDADE: O(n^2).
  * @param code int que indica o código do objeto do tipo Student cujas informaçoes vao ser impressas
@@ -151,7 +151,7 @@ void Data::printSInfo(int code) const{
 }
 
 /**
- * Função procura e retorna o Estudante com um determinada número de estudante.
+ * Função procura e retorna o objeto Student com um determinado número de estudante.
  *
  * COMPLEXIDADE: O(n).
  * @param code int que indica o código do objeto do tipo Student que se pretende procurar
@@ -291,22 +291,20 @@ void Data ::class_timetable(string classcode) const{ //alterações feitas, flag
  * Função cria e guarda pedido de estudante (de adição, remoção ou troca de turma) na fila de pedidos.
  *
  * COMPLEXIDADE: O(n).
- * @param student objeto do tipo Student com que o pedido está relacionado
+ * @param student pointer de objeto do tipo Student com que o pedido está relacionado
  * @param og vetor de objetos do tipo UCClass antes da alteração envolvida no pedido
  * @param final vetor de objetos do tipo UCClass apos a alteração envolvida no pedido
  */
-//funcao recebe student code, mas tem de receber ja os vetores das classes (por isso tem de se criara os vetores na interface)
+
 void Data::saveRequests(Student* student, vector<UCClass*> og, vector<UCClass*> final) {
     Request *req;
     req = new Request(student, og, final);
     requests_.push(req);
-
-
 }
 /**
  * Função vai retirar um dos objetos do tipo Request do seu container (queue).
  *
- * COMPLEXIDADE: O(1)
+ * COMPLEXIDADE: O(1).
  */
 void Data :: data_pop(){
     requests_.pop();
@@ -316,8 +314,8 @@ void Data :: data_pop(){
  * Função verifica a compatibilidade entre horários de duas turmas.
  *
  * COMPLEXIDADE: O(n^2).
- * @param uc1 um dos objetos do tipo UCClass presentes na verificação de compatibilidade
- * @param uc2 um dos objetos do tipo UCClass presentes na verificação de compatibilidade
+ * @param uc1 um dos pointers para objeto do tipo UCClass presente na verificação de compatibilidade
+ * @param uc2 um dos pointers para objeto do tipo UCClass presente na verificação de compatibilidade
  * @return valor booleano - true se os horarios forem compativeis de acordo com os objetos UCClass recebidos
  */
 bool check_compatibility(UCClass* uc1, UCClass* uc2){
@@ -393,18 +391,18 @@ void Data:: processRequests() {
                         break;
                     } // pedido nao aceite, vai para arquivo
                     else {
-                        (req->get_student()->get_classes()).push_back(uc);
-                        uc->get_students().push_back(
-                                req->get_student()); // pedido aceite. uc é adicionada às ucs do aluno e aluno é adicionado à lista de ucs
+                        req->get_student()->add_class(uc);
+                        uc->add_student(req->get_student());// pedido aceite. uc é adicionada às ucs do aluno e aluno é adicionado à lista de ucs
                     }
                 }
 
             }
         }
-
         data_pop();
-
-        for (Request* r: archive_){requests_.push(r);}
     }
+    for (Request* r: archive_){requests_.push(r);}
 }
 
+void Data:: clear_archive(){
+    archive_.clear();
+}

@@ -29,7 +29,7 @@ class Data{
 private:
     set<Student* , studentComparatorAlpha1> students_;
     vector<UCClass*> ucClasses_;
-    queue<Request*> requests_;//como vai ser o request? pedidos únicos ou pode querer trocar várias aulas ao mm tempo
+    queue<Request*> requests_;
     vector<Request*> archive_;
     vector<Request*> success_;
 
@@ -58,6 +58,7 @@ public:
     void class_timetable(string classcode) const;
 
     void data_pop();
+    void clear_archive();
 };
 
 

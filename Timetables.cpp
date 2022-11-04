@@ -2,8 +2,8 @@
 // create timetable for student, uc and class;
 // create function that couts timetable (independentemente do timetable que for)
 
-
 /*
+
 #include "Data.h"
 #include <tuple>
 using namespace std;
@@ -81,4 +81,4 @@ void student_timetable(Student *student){
     cout_tt (friday);
 }
 
- */
+*/

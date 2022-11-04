@@ -10,10 +10,8 @@ using namespace std;
 
 
 
-class Lecture{ //aula
+class Lecture{
 private:
-    // Class class_;   -> a prof chamou a isto um slot?
-    // string UCCode_;
     string weekDay_;
     float startHour_;
     float duration_;
