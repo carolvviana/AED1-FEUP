@@ -90,7 +90,7 @@ void Interface::credits() const {
 }
 
 //2
-void Interface::mainMenu() const {
+void Interface::mainMenu() {
     cout << endl << "=========MAIN MENU=========" << endl;
     cout << endl;
     //explain the options
@@ -150,9 +150,6 @@ void Interface::studentsMenu() const {
         }
     }
 }
-//void Interface::classesMenu() const {
-//listar alunos numa class, nr
-//}//TO DO
 void Interface::timetablesMenu() const {
     cout << endl << "=========TIMETABLES MENU=========" << endl;
     cout << endl;
@@ -160,7 +157,7 @@ void Interface::timetablesMenu() const {
     cout << endl << "Options:\n\t1-Student\n\t2-UC\n\t3-Class\n\tb-Back\n\te-Exit"<<endl;
     char input;
     string ucCode, classCode;
-    Student stu;
+    Student* stu;
     int code;
     while (true){
         cout << "Choose option:";
@@ -172,7 +169,7 @@ void Interface::timetablesMenu() const {
                 cin >> code;
                 cout << endl;
                 stu = d_.findStudent(code);
-                if(stu.get_studentCode() != 0) stu.student_timetable(); //student is real
+                if(stu->get_studentCode() != 0) stu->student_timetable(); //student is real
                 lastPage();
                 return timetablesMenu();
             case ('2'):
@@ -203,7 +200,7 @@ void Interface::timetablesMenu() const {
         }
     }
 }
-void Interface::requestsMenu() const {
+void Interface::requestsMenu()  {
     cout << endl << "=========REQUESTS MENU=========" << endl;
     cout << endl;
     cout << endl << "Options:\n\t1-Create Request\n\t2-Process Requests\n\tb-Back\n\te-Exit"<<endl;
@@ -351,17 +348,17 @@ void Interface::studentsList() const{
 }
 
 //4-requests
-void Interface::createRMenu() const {
+void Interface::createRMenu()  {
     cout << endl << "=========CREATE REQUESTS=========" << endl;
     cout << endl;
     cout << endl << "Insert Student's code:";
     int code;
     cin >> code;
-    Student stu = d_.findStudent(code);
-    if (stu.get_studentCode() == 0) return createRMenu();
+    Student *stu = d_.findStudent(code);
+    if (stu->get_studentCode() == 0) {lastPage();}
     else {
         cout << "Current classes:" << endl;
-        for (UCClass *uc : stu.get_classes()){
+        for (UCClass *uc : stu->get_classes()){
             cout << "\t" << uc->get_ucCode() << ", " << uc->get_classCode() << ";" << endl;
         }
         cout << endl << "Select the type of request you want to make: " << endl;
@@ -371,20 +368,34 @@ void Interface::createRMenu() const {
         char input;
         vector<UCClass*> og = {};
         vector<UCClass*> final= {};
-
+        bool flag = true;
         while (true) {
             cout << "Choose option:";
             cin >> input;
             switch (input) {
                 case ('1'):
-                    studentsInfo(); //
-                    return createRMenu();
+                    cout << endl << endl <<"Classes you want to remove" << endl;
+                    og = createVec();
+                    d_.saveRequests(stu,og,final);
+                    cout << "Requests saved." << endl << endl;
+                    return;
                 case ('2'):
-                    studentsList(); //
-                    return createRMenu();
+                    cout << endl << endl <<"Classes you want to add" << endl;
+                    final = createVec(); //
+                    d_.saveRequests(stu,og,final);
+
+                    cout << "Requests saved." << endl << endl;
+                    return;
                 case ('3'):
-                    studentsList(); //
-                    return createRMenu();
+                    cout << endl << endl <<"Classes you want to remove" << endl;
+                    og = createVec();
+                    d_.saveRequests(stu,og,final);
+                    og.clear();//
+                    cout << endl << endl << "Classes you want to add" << endl;
+                    final = createVec();
+                    d_.saveRequests(stu,og,final);
+                    cout << "Requests saved." << endl << endl;
+                    return;
                 case ('b'):
                     return;
                 case ('e'):
@@ -396,7 +407,18 @@ void Interface::createRMenu() const {
     }
 }//WIP
 void Interface::processRMenu() const {
-
+    while (!d_.get_requests().empty()){
+        for( UCClass* uco : d_.get_requests().front()->get_class_og() ){
+            cout << uco->get_ucCode() << "," << uco->get_classCode()<<";"<< endl;
+        }
+        cout << "------\n";
+        for( UCClass* ucf : d_.get_requests().front()->get_class_final() ){
+            cout << ucf->get_ucCode() << "," << ucf->get_classCode()<<";"<< endl;
+        }
+        d_.get_requests().pop();
+    }
+    lastPage();
+    return;
 }//TO DO
 
 //sorter menus
@@ -515,5 +537,27 @@ void Interface::lastPage() const {
 void Interface::exitProgram() const {
     cout << endl << "Exiting program..." << endl;
     throw 200;
+}
+
+
+vector<UCClass*> Interface::createVec() const{
+    bool flag = true;
+    vector<UCClass*> v = {};
+    cout << "Choose your classes ('L.EIC0xx,yLEICzz'):"<< endl << "Hit 'd' when done.\n\n";
+
+    string ucCode, classCode;
+    while(flag){
+        string inp = "";
+        cin >> inp;
+        if ( inp == "d") flag = false;
+        else{
+            ucCode = inp.substr(0,8);
+            classCode = inp.substr(9,7);
+            for (UCClass* uc : d_.get_ucClasses()){
+                if(ucCode == uc->get_ucCode() && classCode == uc->get_classCode()) {v.push_back(uc); break;}
+            }
+        }
+    }
+    return v;
 }
 

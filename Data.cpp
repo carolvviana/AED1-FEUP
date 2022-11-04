@@ -152,18 +152,18 @@ void Data::printSInfo(int code) const{
  *
  * COMPLEXIDADE: O(n).
  */
-Student Data::findStudent(int code) const {
+Student* Data::findStudent(int code) const {
     bool flag = true;
-    Student s;
+    Student* s;
     for(Student * stu: students_){
         if (stu->get_studentCode() == code){
             flag = false;
-            s = *stu;
+            s = stu;
             break;
         }
     }
     if (flag){ cout << "Student not found." << endl;
-        s = Student("Failure",0);
+        s =  new Student("Failure",0);
         }
     return s;
 }
@@ -286,20 +286,12 @@ void Data ::class_timetable(string classcode) const{ //alterações feitas, flag
  * COMPLEXIDADE: O(n).
  */
 //funcao recebe student code, mas tem de receber ja os vetores das classes (por isso tem de se criara os vetores na interface)
-void Data::guardarPedidos(int sc, vector<UCClass*> og, vector<UCClass*> final) {
+void Data::saveRequests(Student* student, vector<UCClass*> og, vector<UCClass*> final) {
     Request *req;
-    bool flag = false;
-    for (Student *s: students_) {
-        if (sc == s->get_studentCode()){
-            flag = true;
-            req = new Request(s, og, final);
-            break;
-        }
-    }
-    if (flag) {
-        requests_.push(req);
-    }
-    else {cout << "Could not find student. Request creation failed." << endl;}
+    req = new Request(student, og, final);
+    requests_.push(req);
+
+
 }
 
 
@@ -389,3 +381,4 @@ void Data:: processRequests() {
         requests_.pop();
     }
 }
+

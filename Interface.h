@@ -21,15 +21,15 @@ public:
     //0
     void welcomePage();
     //1
-    void readFiles() ;
+    void readFiles();
     void credits() const;
 
     //2
-    void mainMenu() const;
+    void mainMenu();
     //3
     void studentsMenu() const;
     void timetablesMenu() const;
-    void requestsMenu()  const;
+    void requestsMenu() ;
     //4-students
     void studentsInfo() const;
     void studentsList() const;
@@ -38,7 +38,7 @@ public:
     //4-timetables
 
     //4-requests
-    void createRMenu() const;
+    void createRMenu() ;
     void processRMenu() const;
     //extra
     void lastPage() const;
@@ -50,7 +50,7 @@ public:
     void exitProgram() const;
     void quitMenu() const;
     //utils
-
+    vector<UCClass*> createVec() const;
 
 };
 

@@ -42,7 +42,7 @@ public:
 
     //auxiliary methods
     void printSInfo(int code) const;
-    Student findStudent(int code) const;
+    Student * findStudent(int code) const;
     //file reading methods
 
     void readFile_classes(string fname);
@@ -50,7 +50,7 @@ public:
     void readFile_students_classes(string fname);
 
     //request methods;
-    void guardarPedidos(int sc, vector<UCClass*> og, vector<UCClass*> final);
+    void saveRequests(Student* student, vector<UCClass*> og, vector<UCClass*> final);
     void processRequests();
 
 
