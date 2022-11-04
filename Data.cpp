@@ -342,7 +342,7 @@ void Data:: processRequests() {
 
         if ((req->get_class_final()).size() == 0) { // pedido de remoção
             for (UCClass *uc: req->get_class_og()) {
-
+/*
                 for (UCClass *uc2: ucClasses_) {  //verificar quantos alunos é que há nas outras turmas dessa cadeira
                     if (uc->get_ucCode() == uc2->get_ucCode()) aux.push_back(uc2->get_students().size());
                 }
@@ -355,8 +355,7 @@ void Data:: processRequests() {
                 if (uc->get_students().size() - 1 < (max - 4)) {
                     archive_.push_back(req);
                     break;
-                }
-                else {
+                }*/
                     req->get_student()->rem(uc);
                     uc->remo(req->get_student());
                     /*
@@ -365,8 +364,6 @@ void Data:: processRequests() {
                     (req->get_student()->get_classes()).erase(it); // remover class das classes do estudante
                     auto ite = find(uc->get_students().begin(), uc->get_students().end(), req->get_student());
                     uc->get_students().erase(ite); //remover student dos estudantes da uc*/
-                }
-
             }
         }
 
@@ -377,8 +374,8 @@ void Data:: processRequests() {
                     if (uc->get_ucCode() == uc2->get_ucCode()) aux2.push_back(uc2->get_students().size());
                 }
 
-                auto itmax = max_element(aux2.begin(), aux2.end());
-                int max = *itmax; // numero maximo de alunos nessa cadeira
+                // itmax = max_element(aux2.begin(), aux2.end());
+                //int max = *itmax; // numero maximo de alunos nessa cadeira
 
                 auto itmin = min_element(aux2.begin(), aux2.end());
                 int min = *itmin; // numero minimo de alunos dessa cadeira
@@ -405,4 +402,17 @@ void Data:: processRequests() {
 
 void Data:: clear_archive(){
     archive_.clear();
+}
+
+void Data:: file_writer(string fname){
+    ofstream f (fname);
+    if (f.is_open()){
+        f << "StudentCode,StudentName,UcCode,ClassCode" << endl;
+        for (Student* s: students_){
+            for (UCClass* uc: s->get_classes()){
+                f << s->get_studentCode() << ',' << s->get_studentName() << ',' << uc->get_ucCode() << ',' << uc->get_classCode() << endl;
+            }
+        }
+    }
+    else cout << "File not found" << endl;
 }
