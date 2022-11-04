@@ -9,6 +9,7 @@ vector<Request*> Data:: get_archive() const{return archive_;}
  * Função lê o ficheiro "classes.csv" e cria os objetos do tipo UCClass e Lecture.
  *
  * COMPLEXIDADE: O(n).
+ * @param fname string com o nome de ficheiro de input
  */
 //adiciona os horários de cada turma
 void Data :: readFile_classes(string fname){
@@ -66,6 +67,7 @@ void Data :: readFile_classes(string fname){
  * Função lê o ficheiro "students_classes.csv" e cria os objetos do tipo Student e UC.
  *
  * COMPLEXIDADE: O(n).
+ * @param fname string com o nome de ficheiro de input
  */
 //cria os estudantes e adiciona as turmas (já com horários) ao estudante.
 void Data :: readFile_students_classes(string fname){
@@ -130,6 +132,7 @@ void Data :: readFile_students_classes(string fname){
  * Informa o utilizador se o estudante não existir
  *
  * COMPLEXIDADE: O(n^2).
+ * @param code int que indica o código do objeto do tipo Student cujas informaçoes vao ser impressas
  */
 void Data::printSInfo(int code) const{
     bool flag = true;
@@ -148,9 +151,10 @@ void Data::printSInfo(int code) const{
 }
 
 /**
- * Função procura retorna o Estudante com um determinada número de estudante.
+ * Função procura e retorna o Estudante com um determinada número de estudante.
  *
  * COMPLEXIDADE: O(n).
+ * @param code int que indica o código do objeto do tipo Student que se pretende procurar
  */
 Student* Data::findStudent(int code) const {
     bool flag = true;
@@ -178,6 +182,7 @@ struct sorted_vector2{
  * Função dá print a um vetor de tuplos compostos por uma string e um objeto do tipo Lecture, que representa um dia da semana no horário de um estudante.
  *
  * COMPLEXIDADE: O(n).
+ * @param t1 vetor de tuplos de strings e objetos do tipo Lecture que contem a informaçao que vai ser impressa (horario de um objeto do tipo Student)
  */
 void cout_tt2 (vector<tuple<string,Lecture>> t1){
     for (tuple<string,Lecture> t: t1){
@@ -188,6 +193,7 @@ void cout_tt2 (vector<tuple<string,Lecture>> t1){
  * Função cria e dá output ao utilizador sobre o horário de uma determinada UC.
  *
  * COMPLEXIDADE: O(n^2).
+ * @param uccode string que contem o codigo da UC cujo horario se pretende imprimir
  */
 void Data ::uc_timetable(string uccode) const {
     vector<tuple<string,Lecture>> monday;
@@ -233,6 +239,7 @@ void Data ::uc_timetable(string uccode) const {
  * Função cria e dá output ao utilizador sobre o horário de uma determinada turma.
  *
  * COMPLEXIDADE: O(n^2).
+ * @param classcode string que recebe o codigo da turma cujo horario se pretende imprimir
  */
 void Data ::class_timetable(string classcode) const{ //alterações feitas, flag para verificar se turma existe
     bool flag = false;
@@ -281,9 +288,12 @@ void Data ::class_timetable(string classcode) const{ //alterações feitas, flag
 }
 
 /**
- * Função cria e guarda pedido de estudante (de adição, remoção ou troca de turma) na fila de pedidos)
+ * Função cria e guarda pedido de estudante (de adição, remoção ou troca de turma) na fila de pedidos.
  *
  * COMPLEXIDADE: O(n).
+ * @param student objeto do tipo Student com que o pedido está relacionado
+ * @param og vetor de objetos do tipo UCClass antes da alteração envolvida no pedido
+ * @param final vetor de objetos do tipo UCClass apos a alteração envolvida no pedido
  */
 //funcao recebe student code, mas tem de receber ja os vetores das classes (por isso tem de se criara os vetores na interface)
 void Data::saveRequests(Student* student, vector<UCClass*> og, vector<UCClass*> final) {
@@ -293,6 +303,11 @@ void Data::saveRequests(Student* student, vector<UCClass*> og, vector<UCClass*> 
 
 
 }
+/**
+ * Função vai retirar um dos objetos do tipo Request do seu container (queue).
+ *
+ * COMPLEXIDADE: O(1)
+ */
 void Data :: data_pop(){
     requests_.pop();
 }
@@ -301,6 +316,9 @@ void Data :: data_pop(){
  * Função verifica a compatibilidade entre horários de duas turmas.
  *
  * COMPLEXIDADE: O(n^2).
+ * @param uc1 um dos objetos do tipo UCClass presentes na verificação de compatibilidade
+ * @param uc2 um dos objetos do tipo UCClass presentes na verificação de compatibilidade
+ * @return valor booleano - true se os horarios forem compativeis de acordo com os objetos UCClass recebidos
  */
 bool check_compatibility(UCClass* uc1, UCClass* uc2){
     for (Lecture* l1: uc1->get_lectures())
@@ -309,6 +327,7 @@ bool check_compatibility(UCClass* uc1, UCClass* uc2){
         }
     return true;
 }
+
 /**
  * Função processa os pedidos na fila de pedidos. Assume que o valor máximo de alunos por turma é 25. Separa os pedidos em dois tipos: pedidos de adição e de remoção. Os pedidos de trocas surgem como um pedido de adição e outro de remoção por parte de dois alunos diferentes.
  * Pedidos não aceites a priori são guardados num vetor archive_ e voltam a ser processados quando os pedidos na fila principal "terminarem".
