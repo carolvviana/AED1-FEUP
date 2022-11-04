@@ -11,13 +11,7 @@ list<Student*> methodsUC(string uc, set<Student*,studentComparatorAlpha1> s);
 list<Student*> filterLess(int n, set<Student*,studentComparatorAlpha1> s);
 list<Student*> filterMore(int n, set<Student*,studentComparatorAlpha1> s);
 list<Student*> filterEqual(int n, set<Student*,studentComparatorAlpha1> s);
-//counters - are they really needed?
-int counterTurma(UCClass ucC);
-int counterYear(char number, set<Student*, studentComparatorAlpha1> s);
-int counterUC(string uc, set<Student*,studentComparatorAlpha1> s);
-int counterFilterLess(int n, set<Student*,studentComparatorAlpha1> s);
-int counterFilterMore(int n, set<Student*,studentComparatorAlpha1> s);
-int counterFilterEqual(int n, set<Student*,studentComparatorAlpha1> s);
+
 //printers
 void printList(list<Student*> lista);
 

@@ -1,0 +1,106 @@
+\hypertarget{class_data}{}\doxysection{Data Class Reference}
+\label{class_data}\index{Data@{Data}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_data_a44fb49ce5d5c67433418de8ba49dc5f2}\label{class_data_a44fb49ce5d5c67433418de8ba49dc5f2}} 
+set$<$ \mbox{\hyperlink{class_student}{Student}} $\ast$, \mbox{\hyperlink{structstudent_comparator_alpha1}{student\+Comparator\+Alpha1}} $>$ {\bfseries get\+\_\+students} () const
+\item 
+\mbox{\Hypertarget{class_data_a1e773cbf7d052562b40f164890257ad3}\label{class_data_a1e773cbf7d052562b40f164890257ad3}} 
+vector$<$ \mbox{\hyperlink{class_u_c_class}{UCClass}} $\ast$ $>$ {\bfseries get\+\_\+uc\+Classes} () const
+\item 
+\mbox{\Hypertarget{class_data_afc9a48ccf7114e7e09bbffe7b94414fe}\label{class_data_afc9a48ccf7114e7e09bbffe7b94414fe}} 
+queue$<$ \mbox{\hyperlink{class_request}{Request}} $\ast$ $>$ {\bfseries get\+\_\+requests} () const
+\item 
+\mbox{\Hypertarget{class_data_a59160133c4895a6d1d0de8046ed778d8}\label{class_data_a59160133c4895a6d1d0de8046ed778d8}} 
+vector$<$ \mbox{\hyperlink{class_request}{Request}} $\ast$ $>$ {\bfseries get\+\_\+archive} () const
+\item 
+void \mbox{\hyperlink{class_data_a198295890612974f8a98545dcff87af5}{print\+SInfo}} (int code) const
+\item 
+\mbox{\hyperlink{class_student}{Student}} \mbox{\hyperlink{class_data_ab74af5ca0d16af2bd84a32aa00f1f8a0}{find\+Student}} (int code) const
+\item 
+void \mbox{\hyperlink{class_data_ad4eae25b3b0b89a5af57932e6d8e665c}{read\+File\+\_\+classes}} (string fname)
+\item 
+void \mbox{\hyperlink{class_data_a20c84187f33ee923f3b1d08f06fe579b}{read\+File\+\_\+students\+\_\+classes}} (string fname)
+\item 
+void \mbox{\hyperlink{class_data_a7e2c8c49868e2b9a089a67d7efaf0011}{guardar\+Pedidos}} (int sc, vector$<$ \mbox{\hyperlink{class_u_c_class}{UCClass}} $\ast$ $>$ og, vector$<$ \mbox{\hyperlink{class_u_c_class}{UCClass}} $\ast$ $>$ final)
+\item 
+void \mbox{\hyperlink{class_data_a5d8a3b2ff9a0c5fc3c664b8a79bcb6f7}{process\+Requests}} ()
+\item 
+void \mbox{\hyperlink{class_data_abbc255a5272c8fd7b37d38497cf34173}{uc\+\_\+timetable}} (string uccode) const
+\item 
+void \mbox{\hyperlink{class_data_afc8b8fa4e224acb8ec19e519bad319b6}{class\+\_\+timetable}} (string classcode) const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_data_afc8b8fa4e224acb8ec19e519bad319b6}\label{class_data_afc8b8fa4e224acb8ec19e519bad319b6}} 
+\index{Data@{Data}!class\_timetable@{class\_timetable}}
+\index{class\_timetable@{class\_timetable}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{class\_timetable()}{class\_timetable()}}
+{\footnotesize\ttfamily void Data\+::class\+\_\+timetable (\begin{DoxyParamCaption}\item[{string}]{classcode }\end{DoxyParamCaption}) const}
+
+Função cria e dá output ao utilizador sobre o horário de uma determinada turma.
+
+COMPLEXIDADE\+: O(n$^\wedge$2). \mbox{\Hypertarget{class_data_ab74af5ca0d16af2bd84a32aa00f1f8a0}\label{class_data_ab74af5ca0d16af2bd84a32aa00f1f8a0}} 
+\index{Data@{Data}!findStudent@{findStudent}}
+\index{findStudent@{findStudent}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{findStudent()}{findStudent()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_student}{Student}} Data\+::find\+Student (\begin{DoxyParamCaption}\item[{int}]{code }\end{DoxyParamCaption}) const}
+
+Função procura retorna o Estudante com um determinada número de estudante.
+
+COMPLEXIDADE\+: O(n). \mbox{\Hypertarget{class_data_a7e2c8c49868e2b9a089a67d7efaf0011}\label{class_data_a7e2c8c49868e2b9a089a67d7efaf0011}} 
+\index{Data@{Data}!guardarPedidos@{guardarPedidos}}
+\index{guardarPedidos@{guardarPedidos}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{guardarPedidos()}{guardarPedidos()}}
+{\footnotesize\ttfamily void Data\+::guardar\+Pedidos (\begin{DoxyParamCaption}\item[{int}]{sc,  }\item[{vector$<$ \mbox{\hyperlink{class_u_c_class}{UCClass}} $\ast$ $>$}]{og,  }\item[{vector$<$ \mbox{\hyperlink{class_u_c_class}{UCClass}} $\ast$ $>$}]{final }\end{DoxyParamCaption})}
+
+Função cria e guarda pedido de estudante (de adição, remoção ou troca de turma) na fila de pedidos)
+
+COMPLEXIDADE\+: O(n). \mbox{\Hypertarget{class_data_a198295890612974f8a98545dcff87af5}\label{class_data_a198295890612974f8a98545dcff87af5}} 
+\index{Data@{Data}!printSInfo@{printSInfo}}
+\index{printSInfo@{printSInfo}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{printSInfo()}{printSInfo()}}
+{\footnotesize\ttfamily void Data\+::print\+SInfo (\begin{DoxyParamCaption}\item[{int}]{code }\end{DoxyParamCaption}) const}
+
+Função dá output ao utilizador da informação sobre um estudante (Nome, Número de Aluno e Turmas). Informa o utilizador se o estudante não existir
+
+COMPLEXIDADE\+: O(n$^\wedge$2). \mbox{\Hypertarget{class_data_a5d8a3b2ff9a0c5fc3c664b8a79bcb6f7}\label{class_data_a5d8a3b2ff9a0c5fc3c664b8a79bcb6f7}} 
+\index{Data@{Data}!processRequests@{processRequests}}
+\index{processRequests@{processRequests}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{processRequests()}{processRequests()}}
+{\footnotesize\ttfamily void Data\+::process\+Requests (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Função processa os pedidos na fila de pedidos. Assume que o valor máximo de alunos por turma é 25. Separa os pedidos em dois tipos\+: pedidos de adição e de remoção. Os pedidos de trocas surgem como um pedido de adição e outro de remoção por parte de dois alunos diferentes. Pedidos não aceites a priori são guardados num vetor archive\+\_\+ e voltam a ser processados quando os pedidos na fila principal \char`\"{}terminarem\char`\"{}.
+
+COMPLEXIDADE\+: O(n$^\wedge$2). \mbox{\Hypertarget{class_data_ad4eae25b3b0b89a5af57932e6d8e665c}\label{class_data_ad4eae25b3b0b89a5af57932e6d8e665c}} 
+\index{Data@{Data}!readFile\_classes@{readFile\_classes}}
+\index{readFile\_classes@{readFile\_classes}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{readFile\_classes()}{readFile\_classes()}}
+{\footnotesize\ttfamily void Data\+::read\+File\+\_\+classes (\begin{DoxyParamCaption}\item[{string}]{fname }\end{DoxyParamCaption})}
+
+Função lê o ficheiro \char`\"{}classes.\+csv\char`\"{} e cria os objetos do tipo \mbox{\hyperlink{class_u_c_class}{UCClass}} e \mbox{\hyperlink{class_lecture}{Lecture}}.
+
+COMPLEXIDADE\+: O(n). \mbox{\Hypertarget{class_data_a20c84187f33ee923f3b1d08f06fe579b}\label{class_data_a20c84187f33ee923f3b1d08f06fe579b}} 
+\index{Data@{Data}!readFile\_students\_classes@{readFile\_students\_classes}}
+\index{readFile\_students\_classes@{readFile\_students\_classes}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{readFile\_students\_classes()}{readFile\_students\_classes()}}
+{\footnotesize\ttfamily void Data\+::read\+File\+\_\+students\+\_\+classes (\begin{DoxyParamCaption}\item[{string}]{fname }\end{DoxyParamCaption})}
+
+Função lê o ficheiro \char`\"{}students\+\_\+classes.\+csv\char`\"{} e cria os objetos do tipo \mbox{\hyperlink{class_student}{Student}} e UC.
+
+COMPLEXIDADE\+: O(n). \mbox{\Hypertarget{class_data_abbc255a5272c8fd7b37d38497cf34173}\label{class_data_abbc255a5272c8fd7b37d38497cf34173}} 
+\index{Data@{Data}!uc\_timetable@{uc\_timetable}}
+\index{uc\_timetable@{uc\_timetable}!Data@{Data}}
+\doxysubsubsection{\texorpdfstring{uc\_timetable()}{uc\_timetable()}}
+{\footnotesize\ttfamily void Data\+::uc\+\_\+timetable (\begin{DoxyParamCaption}\item[{string}]{uccode }\end{DoxyParamCaption}) const}
+
+Função cria e dá output ao utilizador sobre o horário de uma determinada UC.
+
+COMPLEXIDADE\+: O(n$^\wedge$2). 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+User/\+Desktop/\+AED/\+AED-\/\+Project1.\+v2/Data.\+h\item 
+C\+:/\+Users/\+User/\+Desktop/\+AED/\+AED-\/\+Project1.\+v2/Data.\+cpp\end{DoxyCompactItemize}
