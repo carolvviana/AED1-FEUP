@@ -468,7 +468,7 @@ void Interface::processRMenu() {
     string s;
     d_.processRequests();
 
-    if (d_.get_requests().size() != 0){
+    if (d_.get_archive().size() != 0){
         cout << endl << endl << "These students' requests could not be satisfied for now: "<< endl;
         for (Request* r: d_.get_archive()){
             if (r->get_class_final().size() == 0) s = "Removal";

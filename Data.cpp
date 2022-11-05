@@ -333,7 +333,7 @@ bool check_compatibility(UCClass* uc1, UCClass* uc2){
  * COMPLEXIDADE: O(n^2).
  */
 void Data:: processRequests() {
-    int cap = 25;
+    int cap = 2;
     bool flag = true;
     vector<int> aux;
     vector<int> aux2;
@@ -384,22 +384,24 @@ void Data:: processRequests() {
                 aux2.clear();
 
                 if (uc->get_students().size() + 1 > (min + 4) || uc->get_students().size() + 1 > cap) flag = false;
-
-                for (UCClass *uc2: req->get_student()->get_classes()) {
-                    /* || uc->get_students().size() + 1 > (min + 4)*/
-                    if (!check_compatibility(uc2, uc)) {
-                        flag = false;
-                        archive_.push_back(req);
-                        break;
-                    } // pedido nao aceite, vai para arquivo
-                    else {
-                       flag = true;
+                else{
+                    for (UCClass *uc2: req->get_student()->get_classes()) {
+                        /* || uc->get_students().size() + 1 > (min + 4)*/
+                        if (!check_compatibility(uc2, uc)) {
+                            flag = false;
+                            break;
+                        } // pedido nao aceite, vai para arquivo
+                        else {
+                            flag = true;
+                        }
                     }
                 }
+
                 if (flag){
                     req->get_student()->add_class(uc);
                     uc->add_student(req->get_student());// pedido aceite. uc é adicionada às ucs do aluno e aluno é adicionado à lista de ucs}
             }
+                else{archive_.push_back(req);}
         }}
         data_pop();
     }
