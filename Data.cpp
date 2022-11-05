@@ -333,7 +333,7 @@ bool check_compatibility(UCClass* uc1, UCClass* uc2){
  * COMPLEXIDADE: O(n^2).
  */
 void Data:: processRequests() {
-    int cap = 2;
+    int cap = 25;
     bool flag = true;
     vector<int> aux;
     vector<int> aux2;
