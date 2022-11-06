@@ -46,8 +46,7 @@ void Data :: readFile_classes(string fname){
             string uccode = uc->get_ucCode();
             string classcode = uc->get_classCode();
             auto it = find_if(ucClasses_.begin(), ucClasses_.end(), [uccode, classcode](
-                    UCClass *uc2)->bool {return (uc2->get_ucCode() == uccode && uc2->get_classCode() == classcode );}); // find(students_.begin();students_.end(),student)
-
+                    UCClass *uc2)->bool {return (uc2->get_ucCode() == uccode && uc2->get_classCode() == classcode );});
             if (it != ucClasses_.end()) {
                 uc = *it;
                 uc->add_lecture(lecture);
@@ -240,7 +239,7 @@ void Data ::uc_timetable(string uccode) const {
  * COMPLEXIDADE: O(n^2).
  * @param classcode string que recebe o codigo da turma cujo horario se pretende imprimir
  */
-void Data ::class_timetable(string classcode) const{ //alterações feitas, flag para verificar se turma existe
+void Data ::class_timetable(string classcode) const{
     bool flag = false;
     vector<tuple<string,Lecture>> monday;
     vector<tuple<string,Lecture>> tuesday;

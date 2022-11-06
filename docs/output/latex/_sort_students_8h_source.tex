@@ -1,63 +1,61 @@
 \hypertarget{_sort_students_8h_source}{}\doxysection{C\+:/\+Users/\+User/\+Desktop/\+AED/\+AED-\/\+Project1.v2/\+Sort\+Students.h}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{1 \textcolor{comment}{//}}
-\DoxyCodeLine{2 \textcolor{comment}{// Created by Guilherme Monteiro on 03/11/2022.}}
-\DoxyCodeLine{3 \textcolor{comment}{//}}
-\DoxyCodeLine{4 }
-\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef AED\_PROJECT1\_SORTSTUDENTS\_H}}
-\DoxyCodeLine{6 \textcolor{preprocessor}{\#define AED\_PROJECT1\_SORTSTUDENTS\_H}}
-\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}Data.h"{}}}
-\DoxyCodeLine{8 \textcolor{comment}{//set sorters}}
-\DoxyCodeLine{9 \textcolor{keyword}{struct }\mbox{\hyperlink{structstudent_comparator_alpha2}{studentComparatorAlpha2}} \{}
-\DoxyCodeLine{10     \textcolor{keywordtype}{bool} operator()(\mbox{\hyperlink{class_student}{Student}} *s1, \mbox{\hyperlink{class_student}{Student}} *s2) \{}
-\DoxyCodeLine{11         \textcolor{keywordflow}{if} (s1-\/>get\_studentCode() != s2-\/>get\_studentCode()) \textcolor{keywordflow}{return} (s2-\/>get\_studentName() < s1-\/>get\_studentName());}
-\DoxyCodeLine{12         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
-\DoxyCodeLine{13     \}}
-\DoxyCodeLine{14 \};}
-\DoxyCodeLine{15 \textcolor{keyword}{struct }\mbox{\hyperlink{structstudent_code_comparator}{studentCodeComparator}} \{}
-\DoxyCodeLine{16     \textcolor{keywordtype}{bool} operator()(\mbox{\hyperlink{class_student}{Student}} *s1, \mbox{\hyperlink{class_student}{Student}} *s2) \{}
-\DoxyCodeLine{17         \textcolor{keywordflow}{if} (s1-\/>get\_studentCode() != s2-\/>get\_studentCode())}
-\DoxyCodeLine{18             \textcolor{keywordflow}{return} (s1-\/>get\_studentCode() < s2-\/>get\_studentCode());}
-\DoxyCodeLine{19         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
-\DoxyCodeLine{20     \}}
-\DoxyCodeLine{21 \};}
-\DoxyCodeLine{22 \textcolor{keyword}{struct }\mbox{\hyperlink{structstudent_code_comparator_inv}{studentCodeComparatorInv}} \{}
-\DoxyCodeLine{23     \textcolor{keywordtype}{bool} operator()(\mbox{\hyperlink{class_student}{Student}} *s1, \mbox{\hyperlink{class_student}{Student}} *s2) \{}
-\DoxyCodeLine{24         \textcolor{keywordflow}{if} (s1-\/>get\_studentCode() != s2-\/>get\_studentCode())}
-\DoxyCodeLine{25             \textcolor{keywordflow}{return} (s2-\/>get\_studentCode() < s1-\/>get\_studentCode());}
-\DoxyCodeLine{26         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
-\DoxyCodeLine{27     \}}
-\DoxyCodeLine{28 \};}
-\DoxyCodeLine{29 \textcolor{keyword}{struct }\mbox{\hyperlink{structstudent_comparator_u_c}{studentComparatorUC}} \{}
-\DoxyCodeLine{30     \textcolor{keywordtype}{bool} operator()(\mbox{\hyperlink{class_student}{Student}} *s1, \mbox{\hyperlink{class_student}{Student}} *s2) \{}
-\DoxyCodeLine{31         \textcolor{keywordflow}{if} (s1-\/>get\_studentCode() != s2-\/>get\_studentCode())}
-\DoxyCodeLine{32             \textcolor{keywordflow}{return} (s1-\/>get\_classes().size() < s2-\/>get\_classes().size()) || ((s1-\/>get\_classes().size() == s2-\/>get\_classes().size()) \&\& (s1-\/>get\_studentName() < s2-\/>get\_studentName()));}
-\DoxyCodeLine{33         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
-\DoxyCodeLine{34     \}}
-\DoxyCodeLine{35 \};}
-\DoxyCodeLine{36 \textcolor{keyword}{struct }\mbox{\hyperlink{structstudent_comparator_u_c_inv}{studentComparatorUCInv}} \{}
-\DoxyCodeLine{37     \textcolor{keywordtype}{bool} operator()(\mbox{\hyperlink{class_student}{Student}} *s1, \mbox{\hyperlink{class_student}{Student}} *s2) \{}
-\DoxyCodeLine{38         \textcolor{keywordflow}{if} (s1-\/>get\_studentCode() != s2-\/>get\_studentCode())}
-\DoxyCodeLine{39             \textcolor{keywordflow}{return} (s1-\/>get\_classes().size() > s2-\/>get\_classes().size()) || ((s1-\/>get\_classes().size() == s2-\/>get\_classes().size()) \&\& (s1-\/>get\_studentName() < s2-\/>get\_studentName()));}
-\DoxyCodeLine{40         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
-\DoxyCodeLine{41     \}}
-\DoxyCodeLine{42 \};}
-\DoxyCodeLine{43 \textcolor{comment}{//create sorted sets}}
-\DoxyCodeLine{44 set<Student* , studentComparatorAlpha2> s\_alphaZ(set<Student *, studentComparatorAlpha1> s);}
-\DoxyCodeLine{45 set<Student* , studentCodeComparator> s\_numb(set<Student *, studentComparatorAlpha1> s);}
-\DoxyCodeLine{46 set<Student* , studentCodeComparatorInv> s\_numbInv(set<Student *, studentComparatorAlpha1> s);}
-\DoxyCodeLine{47 set<Student* , studentComparatorUC> s\_UC(set<Student *, studentComparatorAlpha1> s);}
-\DoxyCodeLine{48 set<Student* , studentComparatorUCInv> s\_UCInv(set<Student *, studentComparatorAlpha1> s);}
-\DoxyCodeLine{49 }
-\DoxyCodeLine{50 \textcolor{comment}{//SORTERS PARA LISTAS DE ESTUDANTES}}
-\DoxyCodeLine{51 \textcolor{keywordtype}{bool} l\_AlphaA (\mbox{\hyperlink{class_student}{Student}}* s1, \mbox{\hyperlink{class_student}{Student}}* s2);}
-\DoxyCodeLine{52 \textcolor{keywordtype}{bool} l\_AlphaZ (\mbox{\hyperlink{class_student}{Student}}* s1, \mbox{\hyperlink{class_student}{Student}}* s2);}
-\DoxyCodeLine{53 \textcolor{keywordtype}{bool} l\_Numb (\mbox{\hyperlink{class_student}{Student}}* s1, \mbox{\hyperlink{class_student}{Student}}* s2);}
-\DoxyCodeLine{54 \textcolor{keywordtype}{bool} l\_NumbInv (\mbox{\hyperlink{class_student}{Student}}* s1, \mbox{\hyperlink{class_student}{Student}}* s2);}
-\DoxyCodeLine{55 \textcolor{keywordtype}{bool} l\_UC (\mbox{\hyperlink{class_student}{Student}}* s1, \mbox{\hyperlink{class_student}{Student}}* s2);}
-\DoxyCodeLine{56 \textcolor{keywordtype}{bool} l\_UCInv (\mbox{\hyperlink{class_student}{Student}}* s1, \mbox{\hyperlink{class_student}{Student}}* s2);}
-\DoxyCodeLine{57 }
-\DoxyCodeLine{58 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//AED\_PROJECT1\_SORTSTUDENTS\_H}}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef AED\_PROJECT1\_SORTSTUDENTS\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define AED\_PROJECT1\_SORTSTUDENTS\_H}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}Data.h"{}}}
+\DoxyCodeLine{4 \textcolor{comment}{//set sorters}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{keyword}{struct }\mbox{\hyperlink{structstudent_comparator_alpha2}{studentComparatorAlpha2}} \{}
+\DoxyCodeLine{15     \textcolor{keywordtype}{bool} \mbox{\hyperlink{structstudent_comparator_alpha2_ae3aaecaf3ac4c2ce7ac62c83cbbb9e20}{operator()}}(\mbox{\hyperlink{class_student}{Student}} *s1, \mbox{\hyperlink{class_student}{Student}} *s2) \{}
+\DoxyCodeLine{16         \textcolor{keywordflow}{if} (s1-\/>get\_studentCode() != s2-\/>get\_studentCode()) \textcolor{keywordflow}{return} (s2-\/>get\_studentName() < s1-\/>get\_studentName());}
+\DoxyCodeLine{17         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{18     \}}
+\DoxyCodeLine{19 \};}
+\DoxyCodeLine{20 \textcolor{keyword}{struct }\mbox{\hyperlink{structstudent_code_comparator}{studentCodeComparator}} \{}
+\DoxyCodeLine{28     \textcolor{keywordtype}{bool} \mbox{\hyperlink{structstudent_code_comparator_a4b27b940fa9cccea5cd3644ebd6f8aab}{operator()}}(\mbox{\hyperlink{class_student}{Student}} *s1, \mbox{\hyperlink{class_student}{Student}} *s2) \{}
+\DoxyCodeLine{29         \textcolor{keywordflow}{if} (s1-\/>get\_studentCode() != s2-\/>get\_studentCode())}
+\DoxyCodeLine{30             \textcolor{keywordflow}{return} (s1-\/>get\_studentCode() < s2-\/>get\_studentCode());}
+\DoxyCodeLine{31         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{32     \}}
+\DoxyCodeLine{33 \};}
+\DoxyCodeLine{34 \textcolor{keyword}{struct }\mbox{\hyperlink{structstudent_code_comparator_inv}{studentCodeComparatorInv}} \{}
+\DoxyCodeLine{42     \textcolor{keywordtype}{bool} \mbox{\hyperlink{structstudent_code_comparator_inv_a7ac8208f2e68c9bd39ccfaf2b306a9fc}{operator()}}(\mbox{\hyperlink{class_student}{Student}} *s1, \mbox{\hyperlink{class_student}{Student}} *s2) \{}
+\DoxyCodeLine{43         \textcolor{keywordflow}{if} (s1-\/>get\_studentCode() != s2-\/>get\_studentCode())}
+\DoxyCodeLine{44             \textcolor{keywordflow}{return} (s2-\/>get\_studentCode() < s1-\/>get\_studentCode());}
+\DoxyCodeLine{45         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{46     \}}
+\DoxyCodeLine{47 \};}
+\DoxyCodeLine{48 \textcolor{keyword}{struct }\mbox{\hyperlink{structstudent_comparator_u_c}{studentComparatorUC}} \{}
+\DoxyCodeLine{57     \textcolor{keywordtype}{bool} \mbox{\hyperlink{structstudent_comparator_u_c_a8d425d80ca1be8ab369ac8e8bc1156a0}{operator()}}(\mbox{\hyperlink{class_student}{Student}} *s1, \mbox{\hyperlink{class_student}{Student}} *s2) \{}
+\DoxyCodeLine{58         \textcolor{keywordflow}{if} (s1-\/>get\_studentCode() != s2-\/>get\_studentCode())}
+\DoxyCodeLine{59             \textcolor{keywordflow}{return} (s1-\/>get\_classes().size() < s2-\/>get\_classes().size()) || ((s1-\/>get\_classes().size() == s2-\/>get\_classes().size()) \&\& (s1-\/>get\_studentName() < s2-\/>get\_studentName()));}
+\DoxyCodeLine{60         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{61     \}}
+\DoxyCodeLine{62 \};}
+\DoxyCodeLine{63 \textcolor{keyword}{struct }\mbox{\hyperlink{structstudent_comparator_u_c_inv}{studentComparatorUCInv}} \{}
+\DoxyCodeLine{72     \textcolor{keywordtype}{bool} \mbox{\hyperlink{structstudent_comparator_u_c_inv_a393129f3acde0cfe049b02743e2805f2}{operator()}}(\mbox{\hyperlink{class_student}{Student}} *s1, \mbox{\hyperlink{class_student}{Student}} *s2) \{}
+\DoxyCodeLine{73         \textcolor{keywordflow}{if} (s1-\/>get\_studentCode() != s2-\/>get\_studentCode())}
+\DoxyCodeLine{74             \textcolor{keywordflow}{return} (s1-\/>get\_classes().size() > s2-\/>get\_classes().size()) || ((s1-\/>get\_classes().size() == s2-\/>get\_classes().size()) \&\& (s1-\/>get\_studentName() < s2-\/>get\_studentName()));}
+\DoxyCodeLine{75         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{76     \}}
+\DoxyCodeLine{77 \};}
+\DoxyCodeLine{78 \textcolor{comment}{//create sorted sets}}
+\DoxyCodeLine{79 set<Student* , studentComparatorAlpha2> s\_alphaZ(set<Student *, studentComparatorAlpha1> s);}
+\DoxyCodeLine{80 set<Student* , studentCodeComparator> s\_numb(set<Student *, studentComparatorAlpha1> s);}
+\DoxyCodeLine{81 set<Student* , studentCodeComparatorInv> s\_numbInv(set<Student *, studentComparatorAlpha1> s);}
+\DoxyCodeLine{82 set<Student* , studentComparatorUC> s\_UC(set<Student *, studentComparatorAlpha1> s);}
+\DoxyCodeLine{83 set<Student* , studentComparatorUCInv> s\_UCInv(set<Student *, studentComparatorAlpha1> s);}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85 \textcolor{comment}{//SORTERS PARA LISTAS DE ESTUDANTES}}
+\DoxyCodeLine{86 \textcolor{keywordtype}{bool} l\_AlphaA (\mbox{\hyperlink{class_student}{Student}}* s1, \mbox{\hyperlink{class_student}{Student}}* s2);}
+\DoxyCodeLine{87 \textcolor{keywordtype}{bool} l\_AlphaZ (\mbox{\hyperlink{class_student}{Student}}* s1, \mbox{\hyperlink{class_student}{Student}}* s2);}
+\DoxyCodeLine{88 \textcolor{keywordtype}{bool} l\_Numb (\mbox{\hyperlink{class_student}{Student}}* s1, \mbox{\hyperlink{class_student}{Student}}* s2);}
+\DoxyCodeLine{89 \textcolor{keywordtype}{bool} l\_NumbInv (\mbox{\hyperlink{class_student}{Student}}* s1, \mbox{\hyperlink{class_student}{Student}}* s2);}
+\DoxyCodeLine{90 \textcolor{keywordtype}{bool} l\_UC (\mbox{\hyperlink{class_student}{Student}}* s1, \mbox{\hyperlink{class_student}{Student}}* s2);}
+\DoxyCodeLine{91 \textcolor{keywordtype}{bool} l\_UCInv (\mbox{\hyperlink{class_student}{Student}}* s1, \mbox{\hyperlink{class_student}{Student}}* s2);}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//AED\_PROJECT1\_SORTSTUDENTS\_H}}
 
 \end{DoxyCode}

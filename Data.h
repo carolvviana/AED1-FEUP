@@ -19,6 +19,14 @@
 using namespace std;
 
 struct studentComparatorAlpha1 {
+
+    /**
+     * Função que dá overload ao operador "( )" e compara objetos do tipo Student por nome por ordem alfabética (A a Z).
+     * COMPLEXIDADE: O(1)
+     * @param s1 pointer para objeto do tipo Student incluido na comparação
+     * @param s2 pointer para objeto do tipo Student incluido na comparação
+     * @return valor booleano - true, se o nome do primeiro objeto for "menor" do que o do segundo (comparação entre caracteres).
+     */
     bool operator()(Student *s1, Student *s2) {
         if (s1->get_studentCode() != s2->get_studentCode()) return (s1->get_studentName() < s2->get_studentName());
         return false;

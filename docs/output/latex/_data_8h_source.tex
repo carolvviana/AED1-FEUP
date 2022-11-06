@@ -22,50 +22,51 @@
 \DoxyCodeLine{19 \textcolor{keyword}{using namespace }std;}
 \DoxyCodeLine{20 }
 \DoxyCodeLine{21 \textcolor{keyword}{struct }\mbox{\hyperlink{structstudent_comparator_alpha1}{studentComparatorAlpha1}} \{}
-\DoxyCodeLine{22     \textcolor{keywordtype}{bool} operator()(\mbox{\hyperlink{class_student}{Student}} *s1, \mbox{\hyperlink{class_student}{Student}} *s2) \{}
-\DoxyCodeLine{23         \textcolor{keywordflow}{if} (s1-\/>get\_studentCode() != s2-\/>get\_studentCode()) \textcolor{keywordflow}{return} (s1-\/>get\_studentName() < s2-\/>get\_studentName());}
-\DoxyCodeLine{24         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
-\DoxyCodeLine{25     \}}
-\DoxyCodeLine{26 \};}
-\DoxyCodeLine{27 }
-\DoxyCodeLine{28 \textcolor{keyword}{class }\mbox{\hyperlink{class_data}{Data}}\{}
-\DoxyCodeLine{29 \textcolor{keyword}{private}:}
-\DoxyCodeLine{30     set<Student* , studentComparatorAlpha1> students\_;}
-\DoxyCodeLine{31     vector<UCClass*> ucClasses\_;}
-\DoxyCodeLine{32     queue<Request*> requests\_;\textcolor{comment}{//como vai ser o request? pedidos únicos ou pode querer trocar várias aulas ao mm tempo}}
-\DoxyCodeLine{33     vector<Request*> archive\_;}
-\DoxyCodeLine{34     vector<Request*> success\_;}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{30     \textcolor{keywordtype}{bool} \mbox{\hyperlink{structstudent_comparator_alpha1_af15f92cfb5d3228b88b252eda416ba47}{operator()}}(\mbox{\hyperlink{class_student}{Student}} *s1, \mbox{\hyperlink{class_student}{Student}} *s2) \{}
+\DoxyCodeLine{31         \textcolor{keywordflow}{if} (s1-\/>get\_studentCode() != s2-\/>get\_studentCode()) \textcolor{keywordflow}{return} (s1-\/>get\_studentName() < s2-\/>get\_studentName());}
+\DoxyCodeLine{32         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{33     \}}
+\DoxyCodeLine{34 \};}
 \DoxyCodeLine{35 }
-\DoxyCodeLine{36 \textcolor{keyword}{public}:}
-\DoxyCodeLine{37     \textcolor{comment}{//getters}}
-\DoxyCodeLine{38     set<Student *, studentComparatorAlpha1> get\_students() \textcolor{keyword}{const};}
-\DoxyCodeLine{39     vector<UCClass*> get\_ucClasses() \textcolor{keyword}{const};}
-\DoxyCodeLine{40     queue<Request*> get\_requests() \textcolor{keyword}{const};}
-\DoxyCodeLine{41     vector<Request*> get\_archive() \textcolor{keyword}{const};}
+\DoxyCodeLine{36 \textcolor{keyword}{class }\mbox{\hyperlink{class_data}{Data}}\{}
+\DoxyCodeLine{37 \textcolor{keyword}{private}:}
+\DoxyCodeLine{38     set<Student* , studentComparatorAlpha1> students\_;}
+\DoxyCodeLine{39     vector<UCClass*> ucClasses\_;}
+\DoxyCodeLine{40     queue<Request*> requests\_;}
+\DoxyCodeLine{41     vector<Request*> archive\_;}
 \DoxyCodeLine{42 }
-\DoxyCodeLine{43     \textcolor{comment}{//auxiliary methods}}
-\DoxyCodeLine{44     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_data_a198295890612974f8a98545dcff87af5}{printSInfo}}(\textcolor{keywordtype}{int} code) \textcolor{keyword}{const};}
-\DoxyCodeLine{45     \mbox{\hyperlink{class_student}{Student}} \mbox{\hyperlink{class_data_ab74af5ca0d16af2bd84a32aa00f1f8a0}{findStudent}}(\textcolor{keywordtype}{int} code) \textcolor{keyword}{const};}
-\DoxyCodeLine{46     \textcolor{comment}{//file reading methods}}
-\DoxyCodeLine{47 }
-\DoxyCodeLine{48     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_data_ad4eae25b3b0b89a5af57932e6d8e665c}{readFile\_classes}}(\textcolor{keywordtype}{string} fname);}
-\DoxyCodeLine{49     \textcolor{comment}{//void readFile\_classes\_per\_uc(string fname);}}
-\DoxyCodeLine{50     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_data_a20c84187f33ee923f3b1d08f06fe579b}{readFile\_students\_classes}}(\textcolor{keywordtype}{string} fname);}
-\DoxyCodeLine{51 }
-\DoxyCodeLine{52     \textcolor{comment}{//request methods;}}
-\DoxyCodeLine{53     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_data_a7e2c8c49868e2b9a089a67d7efaf0011}{guardarPedidos}}(\textcolor{keywordtype}{int} sc, vector<UCClass*> og, vector<UCClass*> \textcolor{keyword}{final});}
-\DoxyCodeLine{54     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_data_a5d8a3b2ff9a0c5fc3c664b8a79bcb6f7}{processRequests}}();}
-\DoxyCodeLine{55 }
-\DoxyCodeLine{56 }
-\DoxyCodeLine{57     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_data_abbc255a5272c8fd7b37d38497cf34173}{uc\_timetable}}(\textcolor{keywordtype}{string} uccode) \textcolor{keyword}{const};}
-\DoxyCodeLine{58     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_data_afc8b8fa4e224acb8ec19e519bad319b6}{class\_timetable}}(\textcolor{keywordtype}{string} classcode) \textcolor{keyword}{const};}
-\DoxyCodeLine{59 }
-\DoxyCodeLine{60 }
-\DoxyCodeLine{61 \};}
+\DoxyCodeLine{43 \textcolor{keyword}{public}:}
+\DoxyCodeLine{44     \textcolor{comment}{//getters}}
+\DoxyCodeLine{45     set<Student *, studentComparatorAlpha1> get\_students() \textcolor{keyword}{const};}
+\DoxyCodeLine{46     vector<UCClass*> get\_ucClasses() \textcolor{keyword}{const};}
+\DoxyCodeLine{47     queue<Request*> get\_requests() \textcolor{keyword}{const};}
+\DoxyCodeLine{48     vector<Request*> get\_archive() \textcolor{keyword}{const};}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50     \textcolor{comment}{//auxiliary methods}}
+\DoxyCodeLine{51     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_data_a198295890612974f8a98545dcff87af5}{printSInfo}}(\textcolor{keywordtype}{int} code) \textcolor{keyword}{const};}
+\DoxyCodeLine{52     \mbox{\hyperlink{class_student}{Student}} * \mbox{\hyperlink{class_data_a351fe76193a9378b941ca879cc14e150}{findStudent}}(\textcolor{keywordtype}{int} code) \textcolor{keyword}{const};}
+\DoxyCodeLine{53     \textcolor{comment}{//file reading methods}}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_data_ad4eae25b3b0b89a5af57932e6d8e665c}{readFile\_classes}}(\textcolor{keywordtype}{string} fname);}
+\DoxyCodeLine{56     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_data_a20c84187f33ee923f3b1d08f06fe579b}{readFile\_students\_classes}}(\textcolor{keywordtype}{string} fname);}
+\DoxyCodeLine{57     \textcolor{keywordtype}{void} file\_writer(\textcolor{keywordtype}{string} fname) \textcolor{keyword}{const};}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59     \textcolor{comment}{//request methods;}}
+\DoxyCodeLine{60     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_data_aa886e0394dd2f4a2fe42503189b2811e}{saveRequests}}(\mbox{\hyperlink{class_student}{Student}}* student, vector<UCClass*> og, vector<UCClass*> \textcolor{keyword}{final});}
+\DoxyCodeLine{61     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_data_a5d8a3b2ff9a0c5fc3c664b8a79bcb6f7}{processRequests}}();}
 \DoxyCodeLine{62 }
 \DoxyCodeLine{63 }
-\DoxyCodeLine{64 }
-\DoxyCodeLine{65 }
-\DoxyCodeLine{66 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//AED\_PROJECT1\_CLASS\_H}}
+\DoxyCodeLine{64     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_data_abbc255a5272c8fd7b37d38497cf34173}{uc\_timetable}}(\textcolor{keywordtype}{string} uccode) \textcolor{keyword}{const};}
+\DoxyCodeLine{65     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_data_afc8b8fa4e224acb8ec19e519bad319b6}{class\_timetable}}(\textcolor{keywordtype}{string} classcode) \textcolor{keyword}{const};}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_data_a8a77c1c2e8c62a83f4b21dc1d04ffe3f}{data\_pop}}();}
+\DoxyCodeLine{68     \textcolor{keywordtype}{void} clear\_archive();}
+\DoxyCodeLine{69 \};}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//AED\_PROJECT1\_CLASS\_H}}
 
 \end{DoxyCode}

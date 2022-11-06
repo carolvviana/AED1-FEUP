@@ -627,6 +627,7 @@ void Interface::exitProgram() const {
  * Função que permite ao utilizador criar vetores de pointers para objetos do tipo UCClass, atraves do input.
  *
  * COMPLEXIDADE: O(n^2).
+ * @return vetor de pointers para objetos do tipo UCClass obtido através da UC escolhida pelo user
  */
 vector<UCClass*> Interface::createVec() const{
     bool flag = true;

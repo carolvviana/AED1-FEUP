@@ -87,11 +87,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_ucCode</b> (strin
 <tr class="memitem:a668a228be2c749e186d07e73ab78158d"><td class="memItemLeft" align="right" valign="top"><a id="a668a228be2c749e186d07e73ab78158d" name="a668a228be2c749e186d07e73ab78158d"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>set_classCode</b> (string classCode)</td></tr>
 <tr class="separator:a668a228be2c749e186d07e73ab78158d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb8ad3558b7ff06432fb95bec672d8e5"><td class="memItemLeft" align="right" valign="top"><a id="abb8ad3558b7ff06432fb95bec672d8e5" name="abb8ad3558b7ff06432fb95bec672d8e5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>add_lecture</b> (<a class="el" href="class_lecture.html">Lecture</a> *lecture)</td></tr>
+<tr class="memitem:abb8ad3558b7ff06432fb95bec672d8e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_c_class.html#abb8ad3558b7ff06432fb95bec672d8e5">add_lecture</a> (<a class="el" href="class_lecture.html">Lecture</a> *lecture)</td></tr>
 <tr class="separator:abb8ad3558b7ff06432fb95bec672d8e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea164df2272e4452e242dbfb252d8dc7"><td class="memItemLeft" align="right" valign="top"><a id="aea164df2272e4452e242dbfb252d8dc7" name="aea164df2272e4452e242dbfb252d8dc7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>add_student</b> (<a class="el" href="class_student.html">Student</a> *student)</td></tr>
+<tr class="memitem:aea164df2272e4452e242dbfb252d8dc7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_c_class.html#aea164df2272e4452e242dbfb252d8dc7">add_student</a> (<a class="el" href="class_student.html">Student</a> *student)</td></tr>
 <tr class="separator:aea164df2272e4452e242dbfb252d8dc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57bb70207826c3b6320ad5dda85aad81"><td class="memItemLeft" align="right" valign="top"><a id="a57bb70207826c3b6320ad5dda85aad81" name="a57bb70207826c3b6320ad5dda85aad81"></a>
 string&#160;</td><td class="memItemRight" valign="bottom"><b>get_ucCode</b> ()</td></tr>
@@ -108,7 +106,85 @@ list&lt; <a class="el" href="class_student.html">Student</a> * &gt;&#160;</td><t
 <tr class="memitem:ac2deb2bf246ca2ec3d602c3ca05f9d93"><td class="memItemLeft" align="right" valign="top"><a id="ac2deb2bf246ca2ec3d602c3ca05f9d93" name="ac2deb2bf246ca2ec3d602c3ca05f9d93"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const <a class="el" href="class_u_c_class.html">UCClass</a> &amp;ucc) const</td></tr>
 <tr class="separator:ac2deb2bf246ca2ec3d602c3ca05f9d93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad32b0f600ebdb3dc633772d57ff78363"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_c_class.html#ad32b0f600ebdb3dc633772d57ff78363">remo</a> (<a class="el" href="class_student.html">Student</a> *s)</td></tr>
+<tr class="separator:ad32b0f600ebdb3dc633772d57ff78363"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="abb8ad3558b7ff06432fb95bec672d8e5" name="abb8ad3558b7ff06432fb95bec672d8e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb8ad3558b7ff06432fb95bec672d8e5">&#9670;&#160;</a></span>add_lecture()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UCClass::add_lecture </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_lecture.html">Lecture</a> *&#160;</td>
+          <td class="paramname"><em>lecture</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Função adiciona um objeto do tipo <a class="el" href="class_lecture.html">Lecture</a> ao vetor de pointers para objetos de Lectures.</p>
+<p >COMPLEXIDADE: O(1). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lecture</td><td>pointer para objeto do tipo <a class="el" href="class_lecture.html">Lecture</a> a ser adicionado ao vector de pointers para objetos <a class="el" href="class_lecture.html">Lecture</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aea164df2272e4452e242dbfb252d8dc7" name="aea164df2272e4452e242dbfb252d8dc7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea164df2272e4452e242dbfb252d8dc7">&#9670;&#160;</a></span>add_student()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UCClass::add_student </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_student.html">Student</a> *&#160;</td>
+          <td class="paramname"><em>student</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Função adiciona um objeto do tipo <a class="el" href="class_student.html">Student</a> à lista de pointers para objetos de Students.</p>
+<p >COMPLEXIDADE: O(1). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ucClass</td><td>pointer para objeto do tipo <a class="el" href="class_student.html">Student</a> a ser adicionado à lista de pointers para objetos <a class="el" href="class_student.html">Student</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad32b0f600ebdb3dc633772d57ff78363" name="ad32b0f600ebdb3dc633772d57ff78363"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad32b0f600ebdb3dc633772d57ff78363">&#9670;&#160;</a></span>remo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UCClass::remo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_student.html">Student</a> *&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Função remove um objeto do tipo <a class="el" href="class_student.html">Student</a> à lista de pointers para objetos de Students, caso esteja presente.</p>
+<p >COMPLEXIDADE: O(n). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">uc</td><td>pointer para objeto do tipo <a class="el" href="class_student.html">Student</a> a ser removido da lista de pointers para objetos <a class="el" href="class_student.html">Student</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>C:/Users/User/Desktop/AED/AED-Project1.v2/<a class="el" href="_u_c_class_8h_source.html">UCClass.h</a></li>
 <li>C:/Users/User/Desktop/AED/AED-Project1.v2/UCClass.cpp</li>

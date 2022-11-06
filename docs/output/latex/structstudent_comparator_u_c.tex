@@ -3,9 +3,27 @@
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{structstudent_comparator_u_c_a8d425d80ca1be8ab369ac8e8bc1156a0}\label{structstudent_comparator_u_c_a8d425d80ca1be8ab369ac8e8bc1156a0}} 
-bool {\bfseries operator()} (\mbox{\hyperlink{class_student}{Student}} $\ast$s1, \mbox{\hyperlink{class_student}{Student}} $\ast$s2)
+bool \mbox{\hyperlink{structstudent_comparator_u_c_a8d425d80ca1be8ab369ac8e8bc1156a0}{operator()}} (\mbox{\hyperlink{class_student}{Student}} $\ast$s1, \mbox{\hyperlink{class_student}{Student}} $\ast$s2)
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{structstudent_comparator_u_c_a8d425d80ca1be8ab369ac8e8bc1156a0}\label{structstudent_comparator_u_c_a8d425d80ca1be8ab369ac8e8bc1156a0}} 
+\index{studentComparatorUC@{studentComparatorUC}!operator()@{operator()}}
+\index{operator()@{operator()}!studentComparatorUC@{studentComparatorUC}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily bool student\+Comparator\+UC\+::operator() (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_student}{Student}} $\ast$}]{s1,  }\item[{\mbox{\hyperlink{class_student}{Student}} $\ast$}]{s2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Função que dá overload ao operador \char`\"{}( )\char`\"{} e compara objetos do tipo \mbox{\hyperlink{class_student}{Student}} por numero de UCs (crescente). Caso o numero seja igual, organiza-\/os por ordem alfabética. COMPLEXIDADE\+: O(1) 
+\begin{DoxyParams}{Parameters}
+{\em s1} & pointer para objeto do tipo \mbox{\hyperlink{class_student}{Student}} incluido na comparação \\
+\hline
+{\em s2} & pointer para objeto do tipo \mbox{\hyperlink{class_student}{Student}} incluido na comparação \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+valor booleano -\/ true, se o numero de UCs do primeiro objeto for \char`\"{}menor\char`\"{} do que o do segundo 
+\end{DoxyReturn}
 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}

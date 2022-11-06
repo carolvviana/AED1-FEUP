@@ -2,13 +2,29 @@
 #define AED_PROJECT1_SORTSTUDENTS_H
 #include "Data.h"
 //set sorters
+
+
 struct studentComparatorAlpha2 {
+    /**
+     * Função que dá overload ao operador "( )" e compara objetos do tipo Student por nome por ordem contraria à alfabética (Z a A).
+     * COMPLEXIDADE: O(1)
+     * @param s1 pointer para objeto do tipo Student incluido na comparação
+     * @param s2 pointer para objeto do tipo Student incluido na comparação
+     * @return valor booleano - true, se o nome do primeiro objeto for "maior" do que o do segundo (comparação entre caracteres).
+     */
     bool operator()(Student *s1, Student *s2) {
         if (s1->get_studentCode() != s2->get_studentCode()) return (s2->get_studentName() < s1->get_studentName());
         return false;
     }
 };
 struct studentCodeComparator {
+    /**
+     * Função que dá overload ao operador "( )" e compara objetos do tipo Student por numero de estudante (crescente).
+     * COMPLEXIDADE: O(1)
+     * @param s1 pointer para objeto do tipo Student incluido na comparação
+     * @param s2 pointer para objeto do tipo Student incluido na comparação
+     * @return valor booleano - true, se o numero de estudante do primeiro objeto for "menor" do que o do segundo
+     */
     bool operator()(Student *s1, Student *s2) {
         if (s1->get_studentCode() != s2->get_studentCode())
             return (s1->get_studentCode() < s2->get_studentCode());
@@ -16,6 +32,13 @@ struct studentCodeComparator {
     }
 };
 struct studentCodeComparatorInv {
+    /**
+     * Função que dá overload ao operador "( )" e compara objetos do tipo Student por numero de estudante (decrescente).
+     * COMPLEXIDADE: O(1)
+     * @param s1 pointer para objeto do tipo Student incluido na comparação
+     * @param s2 pointer para objeto do tipo Student incluido na comparação
+     * @return valor booleano - true, se o numero de estudante do primeiro objeto for "maior" do que o do segundo
+     */
     bool operator()(Student *s1, Student *s2) {
         if (s1->get_studentCode() != s2->get_studentCode())
             return (s2->get_studentCode() < s1->get_studentCode());
@@ -23,6 +46,14 @@ struct studentCodeComparatorInv {
     }
 };
 struct studentComparatorUC {
+    /**
+     * Função que dá overload ao operador "( )" e compara objetos do tipo Student por numero de UCs (crescente).
+     * Caso o numero seja igual, organiza-os por ordem alfabética.
+     * COMPLEXIDADE: O(1)
+     * @param s1 pointer para objeto do tipo Student incluido na comparação
+     * @param s2 pointer para objeto do tipo Student incluido na comparação
+     * @return valor booleano - true, se o numero de UCs do primeiro objeto for "menor" do que o do segundo
+     */
     bool operator()(Student *s1, Student *s2) {
         if (s1->get_studentCode() != s2->get_studentCode())
             return (s1->get_classes().size() < s2->get_classes().size()) || ((s1->get_classes().size() == s2->get_classes().size()) && (s1->get_studentName() < s2->get_studentName()));
@@ -30,6 +61,14 @@ struct studentComparatorUC {
     }
 };
 struct studentComparatorUCInv {
+    /**
+     * Função que dá overload ao operador "( )" e compara objetos do tipo Student por numero de UCs (decrescente).
+     * Caso o numero seja igual, organiza-os por ordem alfabética.
+     * COMPLEXIDADE: O(1)
+     * @param s1 pointer para objeto do tipo Student incluido na comparação
+     * @param s2 pointer para objeto do tipo Student incluido na comparação
+     * @return valor booleano - true, se o numero de UCs do primeiro objeto for "maior" do que o do segundo
+     */
     bool operator()(Student *s1, Student *s2) {
         if (s1->get_studentCode() != s2->get_studentCode())
             return (s1->get_classes().size() > s2->get_classes().size()) || ((s1->get_classes().size() == s2->get_classes().size()) && (s1->get_studentName() < s2->get_studentName()));

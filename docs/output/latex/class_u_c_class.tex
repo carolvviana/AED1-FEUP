@@ -12,11 +12,9 @@ void {\bfseries set\+\_\+uc\+Code} (string uc\+Code)
 \mbox{\Hypertarget{class_u_c_class_a668a228be2c749e186d07e73ab78158d}\label{class_u_c_class_a668a228be2c749e186d07e73ab78158d}} 
 void {\bfseries set\+\_\+class\+Code} (string class\+Code)
 \item 
-\mbox{\Hypertarget{class_u_c_class_abb8ad3558b7ff06432fb95bec672d8e5}\label{class_u_c_class_abb8ad3558b7ff06432fb95bec672d8e5}} 
-void {\bfseries add\+\_\+lecture} (\mbox{\hyperlink{class_lecture}{Lecture}} $\ast$lecture)
+void \mbox{\hyperlink{class_u_c_class_abb8ad3558b7ff06432fb95bec672d8e5}{add\+\_\+lecture}} (\mbox{\hyperlink{class_lecture}{Lecture}} $\ast$lecture)
 \item 
-\mbox{\Hypertarget{class_u_c_class_aea164df2272e4452e242dbfb252d8dc7}\label{class_u_c_class_aea164df2272e4452e242dbfb252d8dc7}} 
-void {\bfseries add\+\_\+student} (\mbox{\hyperlink{class_student}{Student}} $\ast$student)
+void \mbox{\hyperlink{class_u_c_class_aea164df2272e4452e242dbfb252d8dc7}{add\+\_\+student}} (\mbox{\hyperlink{class_student}{Student}} $\ast$student)
 \item 
 \mbox{\Hypertarget{class_u_c_class_a57bb70207826c3b6320ad5dda85aad81}\label{class_u_c_class_a57bb70207826c3b6320ad5dda85aad81}} 
 string {\bfseries get\+\_\+uc\+Code} ()
@@ -32,7 +30,51 @@ list$<$ \mbox{\hyperlink{class_student}{Student}} $\ast$ $>$ {\bfseries get\+\_\
 \item 
 \mbox{\Hypertarget{class_u_c_class_ac2deb2bf246ca2ec3d602c3ca05f9d93}\label{class_u_c_class_ac2deb2bf246ca2ec3d602c3ca05f9d93}} 
 bool {\bfseries operator==} (const \mbox{\hyperlink{class_u_c_class}{UCClass}} \&ucc) const
+\item 
+void \mbox{\hyperlink{class_u_c_class_ad32b0f600ebdb3dc633772d57ff78363}{remo}} (\mbox{\hyperlink{class_student}{Student}} $\ast$s)
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_u_c_class_abb8ad3558b7ff06432fb95bec672d8e5}\label{class_u_c_class_abb8ad3558b7ff06432fb95bec672d8e5}} 
+\index{UCClass@{UCClass}!add\_lecture@{add\_lecture}}
+\index{add\_lecture@{add\_lecture}!UCClass@{UCClass}}
+\doxysubsubsection{\texorpdfstring{add\_lecture()}{add\_lecture()}}
+{\footnotesize\ttfamily void UCClass\+::add\+\_\+lecture (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_lecture}{Lecture}} $\ast$}]{lecture }\end{DoxyParamCaption})}
+
+Função adiciona um objeto do tipo \mbox{\hyperlink{class_lecture}{Lecture}} ao vetor de pointers para objetos de Lectures.
+
+COMPLEXIDADE\+: O(1). 
+\begin{DoxyParams}{Parameters}
+{\em lecture} & pointer para objeto do tipo \mbox{\hyperlink{class_lecture}{Lecture}} a ser adicionado ao vector de pointers para objetos \mbox{\hyperlink{class_lecture}{Lecture}} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_u_c_class_aea164df2272e4452e242dbfb252d8dc7}\label{class_u_c_class_aea164df2272e4452e242dbfb252d8dc7}} 
+\index{UCClass@{UCClass}!add\_student@{add\_student}}
+\index{add\_student@{add\_student}!UCClass@{UCClass}}
+\doxysubsubsection{\texorpdfstring{add\_student()}{add\_student()}}
+{\footnotesize\ttfamily void UCClass\+::add\+\_\+student (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_student}{Student}} $\ast$}]{student }\end{DoxyParamCaption})}
+
+Função adiciona um objeto do tipo \mbox{\hyperlink{class_student}{Student}} à lista de pointers para objetos de Students.
+
+COMPLEXIDADE\+: O(1). 
+\begin{DoxyParams}{Parameters}
+{\em uc\+Class} & pointer para objeto do tipo \mbox{\hyperlink{class_student}{Student}} a ser adicionado à lista de pointers para objetos \mbox{\hyperlink{class_student}{Student}} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_u_c_class_ad32b0f600ebdb3dc633772d57ff78363}\label{class_u_c_class_ad32b0f600ebdb3dc633772d57ff78363}} 
+\index{UCClass@{UCClass}!remo@{remo}}
+\index{remo@{remo}!UCClass@{UCClass}}
+\doxysubsubsection{\texorpdfstring{remo()}{remo()}}
+{\footnotesize\ttfamily void UCClass\+::remo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_student}{Student}} $\ast$}]{s }\end{DoxyParamCaption})}
+
+Função remove um objeto do tipo \mbox{\hyperlink{class_student}{Student}} à lista de pointers para objetos de Students, caso esteja presente.
+
+COMPLEXIDADE\+: O(n). 
+\begin{DoxyParams}{Parameters}
+{\em uc} & pointer para objeto do tipo \mbox{\hyperlink{class_student}{Student}} a ser removido da lista de pointers para objetos \mbox{\hyperlink{class_student}{Student}} \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

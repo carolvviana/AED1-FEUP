@@ -1,57 +1,54 @@
 \hypertarget{_student_8h_source}{}\doxysection{C\+:/\+Users/\+User/\+Desktop/\+AED/\+AED-\/\+Project1.v2/\+Student.h}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{1 \textcolor{comment}{//}}
-\DoxyCodeLine{2 \textcolor{comment}{// Created by Guilherme Monteiro on 11/10/2022.}}
-\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#ifndef AED\_PROJECT1\_STUDENT\_H}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#define AED\_PROJECT1\_STUDENT\_H}}
 \DoxyCodeLine{4 }
-\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef AED\_PROJECT1\_STUDENT\_H}}
-\DoxyCodeLine{6 \textcolor{preprocessor}{\#define AED\_PROJECT1\_STUDENT\_H}}
-\DoxyCodeLine{7 }
-\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <string>}}
-\DoxyCodeLine{9 }
-\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}UCClass.h"{}}}
-\DoxyCodeLine{11 }
-\DoxyCodeLine{12 \textcolor{keyword}{using namespace }std;}
-\DoxyCodeLine{13 }
-\DoxyCodeLine{14 \textcolor{keyword}{class }\mbox{\hyperlink{class_u_c_class}{UCClass}};}
-\DoxyCodeLine{15 }
-\DoxyCodeLine{16 \textcolor{keyword}{class }\mbox{\hyperlink{class_student}{Student}}\{}
-\DoxyCodeLine{17 \textcolor{keyword}{private}:}
-\DoxyCodeLine{18     \textcolor{keywordtype}{string} studentName\_;}
-\DoxyCodeLine{19     \textcolor{keywordtype}{int} studentCode\_;}
-\DoxyCodeLine{20     vector<UCClass*> classes\_;}
-\DoxyCodeLine{21 }
-\DoxyCodeLine{22 \textcolor{keyword}{public}:}
-\DoxyCodeLine{23     \textcolor{comment}{//constructors}}
-\DoxyCodeLine{24     \mbox{\hyperlink{class_student}{Student}}();}
-\DoxyCodeLine{25     \mbox{\hyperlink{class_student}{Student}}(\textcolor{keywordtype}{string} studentName, \textcolor{keywordtype}{int} studentCode);}
-\DoxyCodeLine{26     \textcolor{comment}{// Student(string studentName, int studentCode, list<UCClass> turma);}}
-\DoxyCodeLine{27     \mbox{\hyperlink{class_student}{Student}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_student}{Student}}\& student);}
-\DoxyCodeLine{28 }
-\DoxyCodeLine{29     \textcolor{comment}{//setters}}
-\DoxyCodeLine{30     \textcolor{keywordtype}{void} set\_studentName(\textcolor{keywordtype}{string} studentName);}
-\DoxyCodeLine{31     \textcolor{keywordtype}{void} set\_studentCode(\textcolor{keywordtype}{int} studentCode);}
-\DoxyCodeLine{32 }
-\DoxyCodeLine{33     \textcolor{keywordtype}{void} add\_class(\mbox{\hyperlink{class_u_c_class}{UCClass}}* ucClass);}
-\DoxyCodeLine{34 }
-\DoxyCodeLine{35     \textcolor{comment}{//getters}}
-\DoxyCodeLine{36     \textcolor{keywordtype}{string} get\_studentName();}
-\DoxyCodeLine{37     \textcolor{keywordtype}{int} get\_studentCode();}
-\DoxyCodeLine{38     vector <UCClass*> get\_classes();}
-\DoxyCodeLine{39 }
-\DoxyCodeLine{40     \textcolor{comment}{//overloads}}
-\DoxyCodeLine{41 }
-\DoxyCodeLine{42     \textcolor{keywordtype}{void} cout\_tt (vector<tuple<string,Lecture>> t1);}
-\DoxyCodeLine{43     \textcolor{keywordtype}{void} student\_timetable();}
-\DoxyCodeLine{44     \textcolor{comment}{//methods}}
-\DoxyCodeLine{45     \textcolor{comment}{//Student operator //operator override}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}UCClass.h"{}}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{keyword}{class }\mbox{\hyperlink{class_u_c_class}{UCClass}};}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{keyword}{class }\mbox{\hyperlink{class_student}{Student}}\{}
+\DoxyCodeLine{14 \textcolor{keyword}{private}:}
+\DoxyCodeLine{15     \textcolor{keywordtype}{string} studentName\_;}
+\DoxyCodeLine{16     \textcolor{keywordtype}{int} studentCode\_;}
+\DoxyCodeLine{17     vector<UCClass*> classes\_;}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{keyword}{public}:}
+\DoxyCodeLine{20     \textcolor{comment}{//constructors}}
+\DoxyCodeLine{21     \mbox{\hyperlink{class_student}{Student}}();}
+\DoxyCodeLine{22     \mbox{\hyperlink{class_student}{Student}}(\textcolor{keywordtype}{string} studentName, \textcolor{keywordtype}{int} studentCode);}
+\DoxyCodeLine{23     \textcolor{comment}{// Student(string studentName, int studentCode, list<UCClass> turma);}}
+\DoxyCodeLine{24     \mbox{\hyperlink{class_student}{Student}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_student}{Student}}\& student);}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26     \textcolor{comment}{//setters}}
+\DoxyCodeLine{27     \textcolor{keywordtype}{void} set\_studentName(\textcolor{keywordtype}{string} studentName);}
+\DoxyCodeLine{28     \textcolor{keywordtype}{void} set\_studentCode(\textcolor{keywordtype}{int} studentCode);}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_student_a65156885eee53d37e0799d383ae2ea91}{add\_class}}(\mbox{\hyperlink{class_u_c_class}{UCClass}}* ucClass);}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32     \textcolor{comment}{//getters}}
+\DoxyCodeLine{33     \textcolor{keywordtype}{string} get\_studentName();}
+\DoxyCodeLine{34     \textcolor{keywordtype}{int} get\_studentCode();}
+\DoxyCodeLine{35     vector <UCClass*> get\_classes();}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37     \textcolor{comment}{//overloads}}
+\DoxyCodeLine{38     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_student_a989ecb4efaf8fb6616ba45995ca9c33a}{rem}}(\mbox{\hyperlink{class_u_c_class}{UCClass}}* uc);}
+\DoxyCodeLine{39     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_student_a2b300aeed3e94353917ade0e689a70fe}{cout\_tt}} (vector<tuple<string,Lecture>> t1);}
+\DoxyCodeLine{40     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_student_ab13e271bd229b6bf7fbb7be5435e4197}{student\_timetable}}();}
+\DoxyCodeLine{41     \textcolor{comment}{//methods}}
+\DoxyCodeLine{42     \textcolor{comment}{//Student operator //operator override}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44     \textcolor{keywordtype}{bool} operator<(\textcolor{keyword}{const} \mbox{\hyperlink{class_student}{Student}}\& s1)\{ \textcolor{keywordflow}{return} (studentCode\_ < s1.studentCode\_);\}}
+\DoxyCodeLine{45 \};}
 \DoxyCodeLine{46 }
-\DoxyCodeLine{47     \textcolor{keywordtype}{bool} operator<(\textcolor{keyword}{const} \mbox{\hyperlink{class_student}{Student}}\& s1)\{ \textcolor{keywordflow}{return} (studentCode\_ < s1.studentCode\_);\}}
-\DoxyCodeLine{48 \};}
-\DoxyCodeLine{49 }
-\DoxyCodeLine{50 }
-\DoxyCodeLine{51 }
-\DoxyCodeLine{52 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//AED\_PROJECT1\_STUDENT\_H}}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//AED\_PROJECT1\_STUDENT\_H}}
 
 \end{DoxyCode}

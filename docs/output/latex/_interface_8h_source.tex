@@ -1,63 +1,55 @@
 \hypertarget{_interface_8h_source}{}\doxysection{C\+:/\+Users/\+User/\+Desktop/\+AED/\+AED-\/\+Project1.v2/\+Interface.h}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{1 \textcolor{comment}{//}}
-\DoxyCodeLine{2 \textcolor{comment}{// Created by Guilherme Monteiro on 01/11/2022.}}
-\DoxyCodeLine{3 \textcolor{comment}{//}}
-\DoxyCodeLine{4 }
-\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef AED\_PROJECT1\_INTERFACE\_H}}
-\DoxyCodeLine{6 \textcolor{preprocessor}{\#define AED\_PROJECT1\_INTERFACE\_H}}
-\DoxyCodeLine{7 }
-\DoxyCodeLine{8 \textcolor{comment}{//\#include "{}Data.h"{}}}
-\DoxyCodeLine{9 \textcolor{comment}{//\#include "{}SortStudents.cpp"{}}}
-\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}Filters.h"{}}}
-\DoxyCodeLine{11 \textcolor{comment}{//\#include "{}Timetables.cpp"{}}}
-\DoxyCodeLine{12 }
-\DoxyCodeLine{13 \textcolor{keyword}{class }\mbox{\hyperlink{class_interface}{Interface}} \{}
-\DoxyCodeLine{14 }
-\DoxyCodeLine{15 \textcolor{keyword}{public}:}
-\DoxyCodeLine{16     \mbox{\hyperlink{class_data}{Data}} d\_;}
-\DoxyCodeLine{17 }
-\DoxyCodeLine{18     \mbox{\hyperlink{class_interface}{Interface}}();}
-\DoxyCodeLine{19     \textcolor{keywordtype}{void} setData(\mbox{\hyperlink{class_data}{Data}} d)\{d\_ = d;\}}
-\DoxyCodeLine{20     \textcolor{comment}{//Data getData()\{return d;\}}}
-\DoxyCodeLine{21     \textcolor{comment}{//0}}
-\DoxyCodeLine{22     \textcolor{keywordtype}{void} welcomePage();}
-\DoxyCodeLine{23     \textcolor{comment}{//1}}
-\DoxyCodeLine{24     \textcolor{keywordtype}{void} readFiles() ;}
-\DoxyCodeLine{25     \textcolor{keywordtype}{void} credits() \textcolor{keyword}{const};}
-\DoxyCodeLine{26 }
-\DoxyCodeLine{27     \textcolor{comment}{//2}}
-\DoxyCodeLine{28     \textcolor{keywordtype}{void} mainMenu() \textcolor{keyword}{const};}
-\DoxyCodeLine{29     \textcolor{comment}{//3}}
-\DoxyCodeLine{30     \textcolor{keywordtype}{void} studentsMenu() \textcolor{keyword}{const};}
-\DoxyCodeLine{31     \textcolor{keywordtype}{void} timetablesMenu() \textcolor{keyword}{const};}
-\DoxyCodeLine{32     \textcolor{keywordtype}{void} requestsMenu()  \textcolor{keyword}{const};}
-\DoxyCodeLine{33     \textcolor{comment}{//4-\/students}}
-\DoxyCodeLine{34     \textcolor{keywordtype}{void} studentsInfo() \textcolor{keyword}{const};}
-\DoxyCodeLine{35     \textcolor{keywordtype}{void} studentsList() \textcolor{keyword}{const};}
-\DoxyCodeLine{36     \textcolor{comment}{//4-\/classes}}
-\DoxyCodeLine{37 }
-\DoxyCodeLine{38     \textcolor{comment}{//4-\/timetables}}
-\DoxyCodeLine{39 }
-\DoxyCodeLine{40     \textcolor{comment}{//4-\/requests}}
-\DoxyCodeLine{41     \textcolor{keywordtype}{void} createRMenu() \textcolor{keyword}{const};}
-\DoxyCodeLine{42     \textcolor{keywordtype}{void} processRMenu() \textcolor{keyword}{const};}
-\DoxyCodeLine{43     \textcolor{comment}{//extra}}
-\DoxyCodeLine{44     \textcolor{keywordtype}{void} lastPage() \textcolor{keyword}{const};}
-\DoxyCodeLine{45 }
-\DoxyCodeLine{46     \textcolor{comment}{//sorter menu}}
-\DoxyCodeLine{47     \textcolor{keywordtype}{void} sortMenuList(list<Student*> l) \textcolor{keyword}{const};}
-\DoxyCodeLine{48     \textcolor{keywordtype}{void} sortMenuSet(set<Student*,studentComparatorAlpha1> s) \textcolor{keyword}{const};}
-\DoxyCodeLine{49     \textcolor{comment}{//general}}
-\DoxyCodeLine{50     \textcolor{keywordtype}{void} exitProgram() \textcolor{keyword}{const};}
-\DoxyCodeLine{51     \textcolor{keywordtype}{void} quitMenu() \textcolor{keyword}{const};}
-\DoxyCodeLine{52     \textcolor{comment}{//utils}}
-\DoxyCodeLine{53 }
-\DoxyCodeLine{54 }
-\DoxyCodeLine{55 \};}
-\DoxyCodeLine{56 }
-\DoxyCodeLine{57 }
-\DoxyCodeLine{58 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//AED\_PROJECT1\_INTERFACE\_H}}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef AED\_PROJECT1\_INTERFACE\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define AED\_PROJECT1\_INTERFACE\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}Filters.h"{}}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{keyword}{class }\mbox{\hyperlink{class_interface}{Interface}} \{}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{keyword}{public}:}
+\DoxyCodeLine{10     \mbox{\hyperlink{class_data}{Data}} d\_;}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12     \mbox{\hyperlink{class_interface}{Interface}}();}
+\DoxyCodeLine{13     \textcolor{keywordtype}{void} setData(\mbox{\hyperlink{class_data}{Data}} d)\{d\_ = d;\}}
+\DoxyCodeLine{14     \textcolor{comment}{//0}}
+\DoxyCodeLine{15     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_interface_a4093ff931d12a9261cbcb181cbe418e5}{welcomePage}}();}
+\DoxyCodeLine{16     \textcolor{comment}{//1}}
+\DoxyCodeLine{17     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_interface_ab6aeb0c8fe189a66303b66547ce08419}{readFiles}}();}
+\DoxyCodeLine{18     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_interface_aeda2dc8fd7f31dff4f4c3f9194ca7323}{credits}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20     \textcolor{comment}{//2}}
+\DoxyCodeLine{21     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_interface_ae3c5680ac1fe3077ae7caffa54c737d3}{mainMenu}}();}
+\DoxyCodeLine{22     \textcolor{comment}{//3}}
+\DoxyCodeLine{23     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_interface_ac5568da078508a93ecc2af287e517434}{studentsMenu}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{24     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_interface_af000396dcaa8c805ddaa1e1e05a1e12d}{timetablesMenu}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{25     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_interface_a5752bd43b4e2c7393a1abdafd83f67c8}{requestsMenu}}() ;}
+\DoxyCodeLine{26     \textcolor{comment}{//4-\/students}}
+\DoxyCodeLine{27     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_interface_a6b94a23a8a2b1782a5ea442862b87278}{studentsInfo}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{28     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_interface_ae43364253b2ff56c8a8094f8d2a58edd}{studentsList}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{29     \textcolor{comment}{//4-\/classes}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31     \textcolor{comment}{//4-\/timetables}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33     \textcolor{comment}{//4-\/requests}}
+\DoxyCodeLine{34     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_interface_a6846b6c37b59915e89b075bab039ae5c}{createRMenu}}() ;}
+\DoxyCodeLine{35     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_interface_a227c88490db55a8bf782ae11f9f09cdf}{processRMenu}}() ;}
+\DoxyCodeLine{36     \textcolor{comment}{//extra}}
+\DoxyCodeLine{37     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_interface_a221309fdb8d797aa3fad317a360556e6}{lastPage}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39     \textcolor{comment}{//sorter menu}}
+\DoxyCodeLine{40     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_interface_a6f507a3a739cbe70f59e17a41f539061}{sortMenuList}}(list<Student*> l) \textcolor{keyword}{const};}
+\DoxyCodeLine{41     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_interface_add756b86c1b9f9434a23bde14f14746f}{sortMenuSet}}(set<Student*,studentComparatorAlpha1> s) \textcolor{keyword}{const};}
+\DoxyCodeLine{42     \textcolor{comment}{//general}}
+\DoxyCodeLine{43     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_interface_a228026f980cf710614a42021d68fed6c}{exitProgram}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{44     \textcolor{comment}{//utils}}
+\DoxyCodeLine{45     vector<UCClass*> \mbox{\hyperlink{class_interface_a3db6c09a06bcb9c49226c2c170518e09}{createVec}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \};}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//AED\_PROJECT1\_INTERFACE\_H}}
 
 \end{DoxyCode}

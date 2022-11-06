@@ -3,9 +3,27 @@
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{structstudent_comparator_u_c_inv_a393129f3acde0cfe049b02743e2805f2}\label{structstudent_comparator_u_c_inv_a393129f3acde0cfe049b02743e2805f2}} 
-bool {\bfseries operator()} (\mbox{\hyperlink{class_student}{Student}} $\ast$s1, \mbox{\hyperlink{class_student}{Student}} $\ast$s2)
+bool \mbox{\hyperlink{structstudent_comparator_u_c_inv_a393129f3acde0cfe049b02743e2805f2}{operator()}} (\mbox{\hyperlink{class_student}{Student}} $\ast$s1, \mbox{\hyperlink{class_student}{Student}} $\ast$s2)
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{structstudent_comparator_u_c_inv_a393129f3acde0cfe049b02743e2805f2}\label{structstudent_comparator_u_c_inv_a393129f3acde0cfe049b02743e2805f2}} 
+\index{studentComparatorUCInv@{studentComparatorUCInv}!operator()@{operator()}}
+\index{operator()@{operator()}!studentComparatorUCInv@{studentComparatorUCInv}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily bool student\+Comparator\+UCInv\+::operator() (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_student}{Student}} $\ast$}]{s1,  }\item[{\mbox{\hyperlink{class_student}{Student}} $\ast$}]{s2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Função que dá overload ao operador \char`\"{}( )\char`\"{} e compara objetos do tipo \mbox{\hyperlink{class_student}{Student}} por numero de UCs (decrescente). Caso o numero seja igual, organiza-\/os por ordem alfabética. COMPLEXIDADE\+: O(1) 
+\begin{DoxyParams}{Parameters}
+{\em s1} & pointer para objeto do tipo \mbox{\hyperlink{class_student}{Student}} incluido na comparação \\
+\hline
+{\em s2} & pointer para objeto do tipo \mbox{\hyperlink{class_student}{Student}} incluido na comparação \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+valor booleano -\/ true, se o numero de UCs do primeiro objeto for \char`\"{}maior\char`\"{} do que o do segundo 
+\end{DoxyReturn}
 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
