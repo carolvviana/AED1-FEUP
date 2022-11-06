@@ -171,11 +171,18 @@ Student* Data::findStudent(int code) const {
 }
 
 struct sorted_vector2{
+    /**
+     * Função que compara horas iniciais de dois objetos do tipo Lecture.
+     * @param t1 tuplo composto por uma string e um objeto do tipo Lecture presente na comparação
+     * @param t2 tuplo composto por uma string e um objeto do tipo Lecture presente na comparação
+     * @return valor booleano - true, se a hora de inicio do primeiro objeto do tipo Lecture for menor do que do segundo
+     */
     bool operator()(tuple<string,Lecture> t1, tuple<string,Lecture> t2){
         if (get<1>(t1).get_startHour() < get<1>(t2).get_startHour()) return true;
         return false;
     }
 };
+
 /**
  * Função dá print a um vetor de tuplos compostos por uma string e um objeto do tipo Lecture, que representa um dia da semana no horário de um estudante.
  *
@@ -187,6 +194,7 @@ void cout_tt2 (vector<tuple<string,Lecture>> t1){
         cout << get<1>(t).get_startHour()<< " | " << get<1>(t).get_endHour()<< " | " << get<0>(t) << " | " << get<1>(t).get_type() << endl;
     }
 }
+
 /**
  * Função cria e dá output ao utilizador sobre o horário de uma determinada UC.
  *

@@ -27,6 +27,12 @@ int Student :: get_studentCode(){return studentCode_;}
 vector<UCClass*> Student :: get_classes(){return classes_;};
 
 struct sorted_vector{
+    /**
+     * Função que compara horas iniciais de dois objetos do tipo Lecture.
+     * @param t1 tuplo composto por uma string e um objeto do tipo Lecture presente na comparação
+     * @param t2 tuplo composto por uma string e um objeto do tipo Lecture presente na comparação
+     * @return valor booleano - true, se a hora de inicio do primeiro objeto do tipo Lecture for menor do que do segundo
+     */
     bool operator()(tuple<string,Lecture> t1, tuple<string,Lecture> t2){
         if (get<1>(t1).get_startHour() < get<1>(t2).get_startHour()) return true;
         return false;
