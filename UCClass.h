@@ -1,6 +1,3 @@
-//
-// Created by carol on 11/10/2022.
-//
 
 #ifndef AED_PROJECT1_UCCLASS_H
 #define AED_PROJECT1_UCCLASS_H
@@ -9,7 +6,7 @@
 #include <list>
 #include <iostream>
 #include "Lecture.h"
-//#include "Student.h"
+
 
 
 using namespace std;

@@ -1,14 +1,8 @@
-//
-// Created by Guilherme Monteiro on 01/11/2022.
-//
-
 #ifndef AED_PROJECT1_INTERFACE_H
 #define AED_PROJECT1_INTERFACE_H
 
-//#include "Data.h"
-//#include "SortStudents.cpp"
 #include "Filters.h"
-//#include "Timetables.cpp"
+
 
 class Interface {
 
@@ -17,7 +11,6 @@ public:
 
     Interface();
     void setData(Data d){d_ = d;}
-    //Data getData(){return d;}
     //0
     void welcomePage();
     //1
@@ -48,7 +41,6 @@ public:
     void sortMenuSet(set<Student*,studentComparatorAlpha1> s) const;
     //general
     void exitProgram() const;
-    void quitMenu() const;
     //utils
     vector<UCClass*> createVec() const;
 

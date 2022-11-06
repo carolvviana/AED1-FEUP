@@ -4,8 +4,6 @@
 
 Interface::Interface()= default;
 
-//using namespace std;
-//0
 
 /**
  * Função imprime o menu inicial do programa, apresenta as opções disponiveis e recebe a escolha do utilizador.
@@ -58,9 +56,9 @@ void Interface::readFiles() {
                 mainMenu();
                 return readFiles();
             case ('2'):
-                //customFiles();
+
                 d_.readFile_classes("..\\csv\\classes.csv");
-                d_.readFile_students_classes("..\\csv\\updated_students_classes.csv"); //ALTERAR PARA UPDATED_STUDENTS
+                d_.readFile_students_classes("..\\csv\\updated_students_classes.csv");
                 mainMenu();
                 return readFiles();
             case ('b'):

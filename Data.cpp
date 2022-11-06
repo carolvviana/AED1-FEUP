@@ -119,7 +119,6 @@ void Data :: readFile_students_classes(string fname){
                 students_.insert(student);
             }
 
-            //FOI AQUI QUE ALTERÁMOS
             ucClass->add_student(student);
 
         }
@@ -343,28 +342,10 @@ void Data:: processRequests() {
 
         if ((req->get_class_final()).size() == 0) { // pedido de remoção
             for (UCClass *uc: req->get_class_og()) {
-/*
-                for (UCClass *uc2: ucClasses_) {  //verificar quantos alunos é que há nas outras turmas dessa cadeira
-                    if (uc->get_ucCode() == uc2->get_ucCode()) aux.push_back(uc2->get_students().size());
-                }
 
-                auto itmax = max_element(aux.begin(), aux.end());
-                int max = *itmax; // numero maximo de alunos nessa cadeira
-
-                aux.clear();
-
-                if (uc->get_students().size() - 1 < (max - 4)) {
-                    archive_.push_back(req);
-                    break;
-                }*/
                     req->get_student()->rem(uc);
                     uc->remo(req->get_student());
-                    /*
-                    auto it = find(req->get_student()->get_classes().begin(), req->get_student()->get_classes().end(),
-                                   uc);
-                    (req->get_student()->get_classes()).erase(it); // remover class das classes do estudante
-                    auto ite = find(uc->get_students().begin(), uc->get_students().end(), req->get_student());
-                    uc->get_students().erase(ite); //remover student dos estudantes da uc*/
+
             }
         }
 
@@ -375,9 +356,6 @@ void Data:: processRequests() {
                     if (uc->get_ucCode() == uc2->get_ucCode()) aux2.push_back(uc2->get_students().size());
                 }
 
-                // itmax = max_element(aux2.begin(), aux2.end());
-                //int max = *itmax; // numero maximo de alunos nessa cadeira
-
                 auto itmin = min_element(aux2.begin(), aux2.end());
                 int min = *itmin; // numero minimo de alunos dessa cadeira
 
@@ -386,11 +364,11 @@ void Data:: processRequests() {
                 if (uc->get_students().size() + 1 > (min + 4) || uc->get_students().size() + 1 > cap) flag = false;
                 else{
                     for (UCClass *uc2: req->get_student()->get_classes()) {
-                        /* || uc->get_students().size() + 1 > (min + 4)*/
-                        if (!check_compatibility(uc2, uc)) {
+
+                        if (!check_compatibility(uc2, uc)) { // pedido nao aceite
                             flag = false;
                             break;
-                        } // pedido nao aceite, vai para arquivo
+                        }
                         else {
                             flag = true;
                         }
@@ -402,7 +380,8 @@ void Data:: processRequests() {
                     uc->add_student(req->get_student());// pedido aceite. uc é adicionada às ucs do aluno e aluno é adicionado à lista de ucs}
             }
                 else{archive_.push_back(req);}
-        }}
+        }
+        }
         data_pop();
     }
     for (Request* r: archive_){requests_.push(r);}
@@ -418,12 +397,10 @@ void Data:: file_writer(string fname) const{
         f << "StudentCode,StudentName,UcCode,ClassCode" << endl;
         for (Student* s: students_){
 
-
                 for (UCClass *uc: s->get_classes()) {
                     f << s->get_studentCode() << ',' << s->get_studentName() << ',' << uc->get_ucCode() << ','
                       << uc->get_classCode() << endl;
                 }
-
         }
     }
     else cout << "File not found" << endl;

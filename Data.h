@@ -31,7 +31,6 @@ private:
     vector<UCClass*> ucClasses_;
     queue<Request*> requests_;
     vector<Request*> archive_;
-    vector<Request*> success_;
 
 public:
     //getters
@@ -46,7 +45,6 @@ public:
     //file reading methods
 
     void readFile_classes(string fname);
-    //void readFile_classes_per_uc(string fname);
     void readFile_students_classes(string fname);
     void file_writer(string fname) const;
 
